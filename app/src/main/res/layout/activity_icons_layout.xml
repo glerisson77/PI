@@ -125,7 +125,7 @@
         tools:layout_editor_absoluteX="252dp" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/frequenciatv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="FREQUÊNCIA"
@@ -135,42 +135,29 @@
         tools:layout_editor_absoluteX="16dp" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/mapeamentotv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:text="MAPEAMENTO"
         android:textColor="@color/white"
         android:textStyle="normal|bold"
-        app:layout_constraintEnd_toStartOf="@+id/textView4"
         app:layout_constraintHorizontal_bias="0.073"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
         tools:layout_editor_absoluteY="286dp" />
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="AMBIENTE "
-        android:textColor="@color/white"
-        android:textStyle="normal|bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="286dp" />
-
-    <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/ambientevirtualtv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
-        android:text="VIRTUAL"
+        android:text="AMBIENTE VIRTUAL"
         android:textColor="@color/white"
         android:textStyle="normal|bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintBottom_toBottomOf="@+id/iconava"/>
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/bibliotecatv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -182,134 +169,77 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/cursostv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="92dp"
         android:text="CURSOS"
         android:textColor="@color/white"
         android:textStyle="normal|bold"
-        app:layout_constraintEnd_toStartOf="@+id/textView9"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
         tools:layout_editor_absoluteY="443dp" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/senactv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="92dp"
         android:text="SENAC"
         android:textColor="@color/white"
         android:textStyle="normal|bold"
-        app:layout_constraintEnd_toStartOf="@+id/textView9"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
         tools:layout_editor_absoluteY="459dp" />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="36dp"
-        android:text="CURSOS"
-        android:textColor="@color/white"
-        android:textStyle="normal|bold"
-        app:layout_constraintBottom_toBottomOf="@+id/iconcursosdis"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/cursosdisponiveistv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="DISPONÍVEIS"
+        android:text="CURSOS DISPONÍVEIS"
         android:textColor="@color/white"
         android:textStyle="normal|bold"
         app:layout_constraintBottom_toBottomOf="@+id/iconcursosdis"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
         app:layout_constraintVertical_bias="0.117" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/apredizagemcomercialtv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="112dp"
-        android:text="APRENDIZAGEM"
+        android:text="APRENDIZAGEM COMERCIAL"
         android:textColor="@color/white"
         android:textStyle="normal|bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:text="COMECIAL"
-        android:textColor="@color/white"
-        android:textStyle="normal|bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/redecarreirastv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="88dp"
         android:layout_marginBottom="28dp"
-        android:text="REDE"
+        android:text="REDE DE CARREIRAS"
         android:textColor="@color/white"
         android:textStyle="normal|bold"
-        app:layout_constraintBottom_toBottomOf="@+id/iconrede"
-        app:layout_constraintStart_toEndOf="@+id/textView12" />
+        app:layout_constraintBottom_toBottomOf="@+id/iconrede" />
 
     <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:text="DE CARREIRAS"
-        android:textColor="@color/white"
-        android:textStyle="normal|bold"
-        app:layout_constraintBottom_toBottomOf="@+id/iconrede"
-        app:layout_constraintStart_toEndOf="@+id/textView12"
-        app:layout_constraintTop_toBottomOf="@+id/textView13"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/projetointegradortv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="108dp"
-        android:text="PROJETO"
+        android:text="PROJETO INTEGRADOR"
         android:textColor="@color/white"
         android:textStyle="normal|bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.752"
-        app:layout_constraintStart_toEndOf="@+id/textView14" />
+        app:layout_constraintHorizontal_bias="0.752"/>
+
 
     <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="INTEGRADOR"
-        android:textColor="@color/white"
-        android:textStyle="normal|bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.784"
-        app:layout_constraintStart_toEndOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/textView15"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/creditostv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
