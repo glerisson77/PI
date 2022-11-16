@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/iconfrequencia"
         android:layout_width="112dp"
         android:layout_height="78dp"
         android:layout_marginStart="8dp"
@@ -43,7 +43,7 @@
         app:srcCompat="@drawable/frequencia2_removebg_preview" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/iconcredi"
         android:layout_width="110dp"
         android:layout_height="130dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,7 +53,7 @@
         tools:layout_editor_absoluteY="619dp" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/iconapec"
         android:layout_width="168dp"
         android:layout_height="121dp"
         android:layout_marginBottom="96dp"
@@ -62,27 +62,27 @@
         tools:layout_editor_absoluteX="-34dp" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/iconbiblio"
         android:layout_width="154dp"
         android:layout_height="148dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView4"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintBottom_toTopOf="@+id/iconapec"
+        app:layout_constraintTop_toBottomOf="@+id/iconfrequencia"
         app:layout_constraintVertical_bias="0.55"
         app:srcCompat="@drawable/biblioteca_virtual_removebg_preview"
         tools:layout_editor_absoluteX="-27dp" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/iconmapa"
         android:layout_width="135dp"
         android:layout_height="134dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="12dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/iconfrequencia"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:srcCompat="@drawable/mapeamento_removebg_preview" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/iconava"
         android:layout_width="200dp"
         android:layout_height="156dp"
         android:layout_marginTop="4dp"
@@ -91,15 +91,15 @@
         tools:layout_editor_absoluteX="262dp" />
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/iconrede"
         android:layout_width="153dp"
         android:layout_height="155dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9"
+        app:layout_constraintStart_toEndOf="@+id/iconapec"
+        app:layout_constraintTop_toBottomOf="@+id/iconinfocursos"
         app:srcCompat="@drawable/rede_de_carreiras2_removebg_preview" />
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/iconpi"
         android:layout_width="195dp"
         android:layout_height="218dp"
         android:layout_marginBottom="44dp"
@@ -108,18 +108,18 @@
         tools:layout_editor_absoluteX="262dp" />
 
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/iconinfocursos"
         android:layout_width="165dp"
         android:layout_height="164dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView5"
+        app:layout_constraintStart_toEndOf="@+id/iconbiblio"
         app:srcCompat="@drawable/cursos_removebg_preview"
         tools:layout_editor_absoluteY="330dp" />
 
     <ImageView
-        android:id="@+id/imageView11"
+        android:id="@+id/iconcursosdis"
         android:layout_width="210dp"
         android:layout_height="164dp"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7"
+        app:layout_constraintTop_toBottomOf="@+id/iconava"
         app:srcCompat="@drawable/cursos_disponiveis_removebg_preview"
         tools:layout_editor_absoluteX="252dp" />
 
@@ -130,7 +130,7 @@
         android:text="FREQUÊNCIA"
         android:textColor="@color/white"
         android:textStyle="normal|bold"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/iconfrequencia"
         tools:layout_editor_absoluteX="16dp" />
 
     <TextView
@@ -142,7 +142,7 @@
         android:textColor="@color/white"
         android:textStyle="normal|bold"
         app:layout_constraintEnd_toStartOf="@+id/textView4"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.073"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         tools:layout_editor_absoluteY="286dp" />
 
@@ -177,7 +177,7 @@
         android:text="BIBLIOTECA"
         android:textColor="@color/white"
         android:textStyle="normal|bold"
-        app:layout_constraintBottom_toTopOf="@+id/imageView4"
+        app:layout_constraintBottom_toTopOf="@+id/iconapec"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -215,7 +215,7 @@
         android:text="CURSOS"
         android:textColor="@color/white"
         android:textStyle="normal|bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView11"
+        app:layout_constraintBottom_toBottomOf="@+id/iconcursosdis"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
@@ -225,7 +225,7 @@
         android:text="DISPONÍVEIS"
         android:textColor="@color/white"
         android:textStyle="normal|bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView11"
+        app:layout_constraintBottom_toBottomOf="@+id/iconcursosdis"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9"
         app:layout_constraintVertical_bias="0.117" />
@@ -264,7 +264,7 @@
         android:text="REDE"
         android:textColor="@color/white"
         android:textStyle="normal|bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+        app:layout_constraintBottom_toBottomOf="@+id/iconrede"
         app:layout_constraintStart_toEndOf="@+id/textView12" />
 
     <TextView
@@ -275,7 +275,7 @@
         android:text="DE CARREIRAS"
         android:textColor="@color/white"
         android:textStyle="normal|bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+        app:layout_constraintBottom_toBottomOf="@+id/iconrede"
         app:layout_constraintStart_toEndOf="@+id/textView12"
         app:layout_constraintTop_toBottomOf="@+id/textView13"
         app:layout_constraintVertical_bias="0.0" />
