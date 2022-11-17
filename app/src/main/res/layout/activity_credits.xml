@@ -38,7 +38,7 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" Allana Oliveira \n Davi Magno \n Erick Teixeira \n Felipe Cruz \n Gersin Fabiano \n Glerisson Costa \n Gustavo Borges \n Helen Oliveira \n Jennifer Reis \n Jennifer Silva"
+        android:text=" Allana Oliveira \n Davi Magno \n Erick Vinicius \n Felipe Cruz \n Gersin Fabiano \n Glerisson Costa \n Gustavo Borges \n Helen Oliveira \n Jennifer Reis \n Jennifer Silva"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
