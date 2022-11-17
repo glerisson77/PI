@@ -16,7 +16,5 @@ public class MainActivity extends AppCompatActivity {
     String tesgfgte = "teste2";
     String tesggfgfgte = "teste2";
     String tes54ggfgfgte = "teste2";
-    String Willvern = "teste";
-    String comprimento = "Bom dia, boa tarde, boa noite, como estão";
-    int a=5151513513213514351351651;
+    String Willvern = "teste"
 }
