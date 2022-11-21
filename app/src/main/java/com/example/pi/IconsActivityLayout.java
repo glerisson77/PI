@@ -75,7 +75,7 @@ public class IconsActivityLayout extends AppCompatActivity {
         webView.loadUrl(url);
     }
     public void projetoint(View v){
-        Intent projint = new Intent(this, );
+        Intent projint = new Intent(this, projetoIntegradorActivity.class);
         startActivity(projint);
     }
     public void creditos(View v){
