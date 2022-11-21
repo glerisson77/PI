@@ -22,22 +22,44 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="100dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/projectsscreentv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
                     android:gravity="center"
-                    android:textSize="30dp"
-                    android:text="Projetos em andamento" />
+                    android:text="Projetos em andamento"
+                    android:textColor="@color/white"
+                    android:textSize="30dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:layout_width="165dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/orange_strong"
+                        android:text="voltar" />
+
+                    <Button
+                        android:layout_width="271dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/orange_strong"
+                        android:gravity="center"
+                        android:text="Postar seu projeto" />
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:background="@color/orange_strong"
                 android:orientation="vertical">
 
                 <TextView
@@ -62,8 +84,9 @@
 
                 <ImageView
                     android:id="@+id/imageView1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_width="250dp"
+                    android:layout_height="200dp"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
@@ -80,12 +103,18 @@
                     android:id="@+id/contatoprojeto1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:hint="contato do projeto"
                     android:text="@string/projectcontact" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:background="@color/orange_strong"
                 android:orientation="vertical">
 
                 <TextView
@@ -110,26 +139,37 @@
 
                 <ImageView
                     android:id="@+id/imageView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_width="250dp"
+                    android:layout_height="200dp"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
                     android:id="@+id/informationproject2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:hint="nome do projeto"
+                    android:text="@string/projectinfo" />
 
                 <TextView
                     android:id="@+id/contatoprojeto2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:hint="contato do projeto"
+                    android:text="@string/projectcontact" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:background="@color/orange_strong"
                 android:orientation="vertical">
 
                 <TextView
@@ -155,25 +195,35 @@
                 <ImageView
                     android:id="@+id/imageView3"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200dp"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
                     android:id="@+id/informationproject3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:hint="nome do projeto"
+                    android:text="@string/projectinfo" />
 
                 <TextView
                     android:id="@+id/contatoprojeto3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:hint="contato do projeto"
+                    android:text="@string/projectcontact" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:background="@color/orange_strong"
                 android:orientation="vertical">
 
                 <TextView
@@ -199,25 +249,35 @@
                 <ImageView
                     android:id="@+id/imageView4"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200dp"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
                     android:id="@+id/informationproject4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:hint="nome do projeto"
+                    android:text="@string/projectinfo" />
 
                 <TextView
                     android:id="@+id/contatoprojeto4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:hint="contato do projeto"
+                    android:text="@string/projectcontact" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:background="@color/orange_strong"
                 android:orientation="vertical">
 
                 <TextView
@@ -243,25 +303,35 @@
                 <ImageView
                     android:id="@+id/imageView5"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200dp"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
                     android:id="@+id/informationproject5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:hint="nome do projeto"
+                    android:text="@string/projectinfo" />
 
                 <TextView
                     android:id="@+id/contatoprojeto5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:hint="contato do projeto"
+                    android:text="@string/projectcontact" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:background="@color/orange_strong"
                 android:orientation="vertical">
 
                 <TextView
@@ -287,25 +357,35 @@
                 <ImageView
                     android:id="@+id/imageView6"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200dp"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
                     android:id="@+id/informationproject6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:hint="nome do projeto"
+                    android:text="@string/projectinfo" />
 
                 <TextView
                     android:id="@+id/contatoprojeto6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:hint="contato do projeto"
+                    android:text="@string/projectcontact"/>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:background="@color/orange_strong"
                 android:orientation="vertical">
 
                 <TextView
@@ -331,25 +411,35 @@
                 <ImageView
                     android:id="@+id/imageView7"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200dp"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
                     android:id="@+id/informationproject7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:hint="nome do projeto"
+                    android:text="@string/projectinfo" />
 
                 <TextView
                     android:id="@+id/contatoprojeto7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:hint="contato do projeto"
+                    android:text="@string/projectcontact" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:background="@color/orange_strong"
                 android:orientation="vertical">
 
                 <TextView
@@ -375,25 +465,35 @@
                 <ImageView
                     android:id="@+id/imageView8"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200dp"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
                     android:id="@+id/informationproject8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:hint="nome do projeto"
+                    android:text="@string/projectinfo"/>
 
                 <TextView
                     android:id="@+id/contatoprojeto8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:hint="contato do projeto"
+                    android:text="@string/projectcontact" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:background="@color/orange_strong"
                 android:orientation="vertical">
 
                 <TextView
@@ -419,25 +519,35 @@
                 <ImageView
                     android:id="@+id/imageView9"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200dp"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
                     android:id="@+id/informationproject9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:hint="nome do projeto"
+                    android:text="@string/projectinfo" />
 
                 <TextView
                     android:id="@+id/contatoprojeto9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:hint="contato do projeto"
+                    android:text="@string/projectcontact" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:background="@color/orange_strong"
                 android:orientation="vertical">
 
                 <TextView
@@ -463,25 +573,35 @@
                 <ImageView
                     android:id="@+id/imageView10"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200dp"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
                     android:id="@+id/informationproject10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:hint="nome do projeto"
+                    android:text="@string/projectinfo" />
 
                 <TextView
                     android:id="@+id/contatoprojeto10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:hint="contato do projeto"
+                    android:text="@string/projectcontact" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:background="@color/orange_strong"
                 android:orientation="vertical">
 
                 <TextView
@@ -507,25 +627,35 @@
                 <ImageView
                     android:id="@+id/imageView11"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200dp"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
                     android:id="@+id/informationproject11"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:hint="nome do projeto"
+                    android:text="@string/projectinfo" />
 
                 <TextView
                     android:id="@+id/contatoprojeto11"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:hint="contato do projeto"
+                    android:text="@string/projectcontact" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:background="@color/orange_strong"
                 android:orientation="vertical">
 
                 <TextView
@@ -551,25 +681,35 @@
                 <ImageView
                     android:id="@+id/imageView12"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200dp"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
                     android:id="@+id/informationproject12"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:hint="nome do projeto"
+                    android:text="@string/projectinfo" />
 
                 <TextView
                     android:id="@+id/contatoprojeto12"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:hint="contato do projeto"
+                    android:text="@string/projectcontact" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:background="@color/orange_strong"
                 android:orientation="vertical">
 
                 <TextView
@@ -595,25 +735,35 @@
                 <ImageView
                     android:id="@+id/imageView13"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200dp"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
                     android:id="@+id/informationproject13"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:hint="nome do projeto"
+                    android:text="@string/projectinfo" />
 
                 <TextView
                     android:id="@+id/contatoprojeto13"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:hint="contato do projeto"
+                    android:text="@string/projectcontact" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:background="@color/orange_strong"
                 android:orientation="vertical">
 
                 <TextView
@@ -639,20 +789,28 @@
                 <ImageView
                     android:id="@+id/imageView14"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200dp"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
                     android:id="@+id/informationproject14"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:hint="nome do projeto"
+                    android:text="@string/projectinfo" />
 
                 <TextView
                     android:id="@+id/contatoprojeto14"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:hint="contato do projeto"
+                    android:text="@string/projectcontact" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
