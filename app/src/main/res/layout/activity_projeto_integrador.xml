@@ -50,6 +50,7 @@
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/orange_strong"
                         android:gravity="center"
+                        android:onClick="postarProjeto"
                         android:text="Postar seu projeto" />
                 </LinearLayout>
 

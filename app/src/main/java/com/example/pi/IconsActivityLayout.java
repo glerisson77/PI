@@ -82,4 +82,6 @@ public class IconsActivityLayout extends AppCompatActivity {
         Intent cred = new Intent(this, CreditsActivity.class);
         startActivity(cred);
     }
+
+
 }
