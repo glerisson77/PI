@@ -11,10 +11,4 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-    int i =04455454;
-    String teste = "teste2";
-    String tesgfgte = "teste2";
-    String tesggfgfgte = "teste2";
-    String tes54ggfgfgte = "teste2";
-    String Willvern = "teste"
 }
