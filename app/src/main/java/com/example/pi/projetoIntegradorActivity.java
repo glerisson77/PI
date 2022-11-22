@@ -32,6 +32,7 @@ import java.util.Arrays;
 public class projetoIntegradorActivity extends AppCompatActivity {
 
     StorageReference storageReference;
+    //tentar trocar depois
     ImageView imageView1, imageView2, imageView3, imageView4, imageView5, imageView6, imageView7, imageView8, imageView9, imageView10,imageView11, imageView12, imageView13, imageView14;
     TextView projectname1, projectname2, projectname3, projectname4, projectname5, projectname6, projectname7, projectname8, projectname9, projectname10, projectname11, projectname12, projectname13, projectname14;
     ArrayList<ImageView> imagesList;
