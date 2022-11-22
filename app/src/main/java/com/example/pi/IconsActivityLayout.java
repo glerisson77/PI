@@ -19,13 +19,9 @@ public class IconsActivityLayout extends AppCompatActivity {
         setContentView(R.layout.activity_icons_layout);
     }
     public void frequencia(View v){
-//        Intent intent = new Intent(IconsActivityLayout.this, frequencyActivity.class);
-//        startActivity(intent);
-        String url = "https://www.mg.senac.br/ambienteacademico/detalheCurso";
+        Intent intent = new Intent(IconsActivityLayout.this, frequencyActivity.class);
+        startActivity(intent);
 
-        webView.getSettings().setLoadsImagesAutomatically(true);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl(url);
 
 
     }
@@ -47,7 +43,7 @@ public class IconsActivityLayout extends AppCompatActivity {
         String url = "mg.senac.br/faculdade/Paginas/biblioteca-nova.aspx";
         webView.getSettings().setLoadsImagesAutomatically(true);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.setScrollBarStyle(btOpenUrl.SCROLLBARS_INSIDE_OVERLAY);
+//        webView.setScrollBarStyle(btOpenUrl.SCROLLBARS_INSIDE_OVERLAY);
         webView.loadUrl(url);
     }
     public void cursossenac(View v){
