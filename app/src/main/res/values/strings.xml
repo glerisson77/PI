@@ -3,4 +3,9 @@
     <string name="entrar">ENTRAR</string>
     <string name="text_cadastro">Cadastre-se</string>
     <string name="titulo_cadastro">Cadastre-se</string>
+    <string name="vazio"> </string>
+    <string name="projectsname">nome do projeto</string>
+    <string name="teachersname">nome do professor</string>
+    <string name="projectinfo">informações do projeto</string>
+    <string name="projectcontact">contato do projeto</string>
 </resources>

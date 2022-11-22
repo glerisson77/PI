@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "327790472763",
+    "project_id": "projetointegraalunos",
+    "storage_bucket": "projetointegraalunos.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:327790472763:android:cf0b6eb5a1b574f589361e",
+        "android_client_info": {
+          "package_name": "com.example.pi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "327790472763-gbdg6mg2mpf9ac1mbfdrk2e6h6aste2v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqsB9gx12Qsd5luyefhKe5XlSSZIRFDtE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "327790472763-gbdg6mg2mpf9ac1mbfdrk2e6h6aste2v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
