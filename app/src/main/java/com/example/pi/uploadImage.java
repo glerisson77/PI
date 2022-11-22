@@ -26,8 +26,12 @@ import com.google.firebase.storage.UploadTask;
 
 public class uploadImage extends AppCompatActivity {
 
-    EditText imageName;
     Button uploadImagebt;
+    EditText projectName;
+    EditText professorName;
+    EditText projectResume;
+    EditText projectContact;
+
     private static final int IMAGE_REQUEST = 2;
     private Uri imageUri;
 
@@ -36,13 +40,26 @@ public class uploadImage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_image);
 
-        imageName = findViewById(R.id.nomeprojetoet);
+        projectName = findViewById(R.id.nomeprojetoet);
+        professorName = findViewById(R.id.professoret);
+        projectResume = findViewById(R.id.informationprojectet);
+        projectContact = findViewById(R.id.contatoprojetoet);
         uploadImagebt = findViewById(R.id.postarprojetobt);
+
+
 
         uploadImagebt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openImage();
+                Boolean projectNameCheck = projectName.getText().toString().matches("");
+                Boolean professorNameCheck = professorName.getText().toString().matches("");
+                Boolean projectResumeCheck = projectResume.getText().toString().matches("");
+                Boolean projectContactCheck = projectContact.getText().toString().matches("");
+                if (projectNameCheck == true || professorNameCheck == true || projectResumeCheck == true || projectContactCheck == true){
+                    Toast.makeText(uploadImage.this, "Um ou mais campos estao vazios", Toast.LENGTH_SHORT).show();
+                }else{
+                    openImage();
+                }
             }
         });
     }
@@ -78,13 +95,17 @@ public class uploadImage extends AppCompatActivity {
                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                     ///store the name of the file on the database to after retrieving
                     FirebaseDatabase.getInstance().getReference().child("imagesnames").child("id" + System.currentTimeMillis()).setValue(imageName);
+                    FirebaseDatabase.getInstance().getReference().child("nomesdeprojetos").child("id" + System.currentTimeMillis()).setValue(projectName.getText().toString());
+                    FirebaseDatabase.getInstance().getReference().child("professores").child("id" + System.currentTimeMillis()).setValue(professorName.getText().toString());
+                    FirebaseDatabase.getInstance().getReference().child("contatos").child("id" + System.currentTimeMillis()).setValue(projectContact.getText().toString());
+                    FirebaseDatabase.getInstance().getReference().child("resumodeprojetos").child("id" + System.currentTimeMillis()).setValue(projectResume.getText().toString());
                     fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
                             String url = uri.toString();
                             Log.d("DownloadUrl", url);
                             pd.dismiss();
-                            Toast.makeText(uploadImage.this, "Upload successfull", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(uploadImage.this, "O projeto foi postado", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
