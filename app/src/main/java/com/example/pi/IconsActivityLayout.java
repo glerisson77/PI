@@ -21,58 +21,34 @@ public class IconsActivityLayout extends AppCompatActivity {
     public void frequencia(View v){
         Intent intent = new Intent(IconsActivityLayout.this, frequencyActivity.class);
         startActivity(intent);
-
-
-
     }
     public void mapeamento(View v){
-        String url = "https://www.google.com/maps/place/Senac/@-21.684343,-45.2637301,20z/data=!4m5!3m4!1s0x94cadd299037c0c1:0x1b4dc77c7d066faa!8m2!3d-21.684343!4d-45.2635";
-        webView.getSettings().setLoadsImagesAutomatically(true);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.setScrollBarStyle(btOpenUrl.SCROLLBARS_INSIDE_OVERLAY);
-        webView.loadUrl(url);
+        Intent intent = new Intent(IconsActivityLayout.this, mapeamentoActivity.class);
+        startActivity(intent);
     }
     public void ava(View v){
-        String url = "https://ava.mg.senac.br/edu/";
-        webView.getSettings().setLoadsImagesAutomatically(true);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.setScrollBarStyle(btOpenUrl.SCROLLBARS_INSIDE_OVERLAY);
-        webView.loadUrl(url);
+        Intent intent = new Intent(IconsActivityLayout.this, avaActivity.class);
+        startActivity(intent);
     }
     public void biblioteca(View v){
-        String url = "mg.senac.br/faculdade/Paginas/biblioteca-nova.aspx";
-        webView.getSettings().setLoadsImagesAutomatically(true);
-        webView.getSettings().setJavaScriptEnabled(true);
-//        webView.setScrollBarStyle(btOpenUrl.SCROLLBARS_INSIDE_OVERLAY);
-        webView.loadUrl(url);
+        Intent intent = new Intent(IconsActivityLayout.this, biblioActivity.class);
+        startActivity(intent);
     }
     public void cursossenac(View v){
-        String url = "https://www.mg.senac.br/faculdade/Paginas/default.aspx";
-        webView.getSettings().setLoadsImagesAutomatically(true);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.setScrollBarStyle(btOpenUrl.SCROLLBARS_INSIDE_OVERLAY);
-        webView.loadUrl(url);
+        Intent intent = new Intent(IconsActivityLayout.this, cursosSenacActivity.class);
+        startActivity(intent);
     }
     public void cursosdisponiveis(View v){
-        String url = "https://www.mg.senac.br/programasenacdegratuidade/vagas.aspx";
-        webView.getSettings().setLoadsImagesAutomatically(true);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.setScrollBarStyle(btOpenUrl.SCROLLBARS_INSIDE_OVERLAY);
-        webView.loadUrl(url);
+        Intent intent = new Intent(IconsActivityLayout.this, cursosdisponiveis.class);
+        startActivity(intent);
     }
     public void aprendizagemcomercial(View v){
-        String url = "https://www.mg.senac.br/Paginas/aprendizagem-comercial.aspx";
-        webView.getSettings().setLoadsImagesAutomatically(true);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.setScrollBarStyle(btOpenUrl.SCROLLBARS_INSIDE_OVERLAY);
-        webView.loadUrl(url);
+        Intent intent = new Intent(IconsActivityLayout.this, aprendizagemComercialActivity.class);
+        startActivity(intent);
     }
     public void redecarreiras(View v){
-        String url = "https://www.mg.senac.br/Paginas/rededecarreiras.aspx";
-        webView.getSettings().setLoadsImagesAutomatically(true);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.setScrollBarStyle(btOpenUrl.SCROLLBARS_INSIDE_OVERLAY);
-        webView.loadUrl(url);
+        Intent intent = new Intent(IconsActivityLayout.this, redeCarreirasActivity.class);
+        startActivity(intent);
     }
     public void projetoint(View v){
         Intent projint = new Intent(this, projetoIntegradorActivity.class);

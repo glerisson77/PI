@@ -13,6 +13,13 @@
         android:theme="@style/Theme.PI"
         tools:targetApi="31">
         <activity
+            android:name=".cursosdisponiveis"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".redeCarreirasActivity"
             android:exported="false">
             <meta-data
