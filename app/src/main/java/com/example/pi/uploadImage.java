@@ -46,8 +46,6 @@ public class uploadImage extends AppCompatActivity {
         projectContact = findViewById(R.id.contatoprojetoet);
         uploadImagebt = findViewById(R.id.postarprojetobt);
 
-
-
         uploadImagebt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,6 +85,10 @@ public class uploadImage extends AppCompatActivity {
 
         if (imageUri != null){
             String imageName = System.currentTimeMillis() + "." + getFileExtension(imageUri);
+            String projectNameS = projectName.getText().toString();
+            String professorNameS = professorName.getText().toString();
+            String projectResumeS = projectResume.getText().toString();
+            String projectContactS = projectContact.getText().toString();
 
             ///storage the image
             StorageReference fileRef = FirebaseStorage.getInstance().getReference().child("uploads").child(imageName);
@@ -94,11 +96,11 @@ public class uploadImage extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                     ///store the name of the file on the database to after retrieving
+
+
+                    projectInformation projectInformation = new projectInformation(projectNameS, professorNameS, projectResumeS, projectContactS, imageName);
                     FirebaseDatabase.getInstance().getReference().child("imagesnames").child("id" + System.currentTimeMillis()).setValue(imageName);
-                    FirebaseDatabase.getInstance().getReference().child("nomesdeprojetos").child("id" + System.currentTimeMillis()).setValue(projectName.getText().toString());
-                    FirebaseDatabase.getInstance().getReference().child("professores").child("id" + System.currentTimeMillis()).setValue(professorName.getText().toString());
-                    FirebaseDatabase.getInstance().getReference().child("contatos").child("id" + System.currentTimeMillis()).setValue(projectContact.getText().toString());
-                    FirebaseDatabase.getInstance().getReference().child("resumodeprojetos").child("id" + System.currentTimeMillis()).setValue(projectResume.getText().toString());
+                    FirebaseDatabase.getInstance().getReference().child("projects").child("id" + System.currentTimeMillis()).setValue(projectInformation);
                     fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
