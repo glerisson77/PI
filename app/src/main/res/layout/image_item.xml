@@ -7,10 +7,19 @@
 
     <LinearLayout
         android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_height="350dp"
         android:layout_gravity="center"
         android:background="@color/orange_strong"
         android:orientation="vertical">
+
+        <Button
+            android:id="@+id/deleteproject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:backgroundTint="@color/blue"
+            android:onClick="deleteProject"
+            android:text="deletar projeto" />
 
         <TextView
             android:id="@+id/nomeprojeto"
@@ -58,6 +67,15 @@
             android:textSize="15dp"
             android:hint="contato do projeto"
             android:text="@string/projectcontact" />
+
+        <TextView
+            android:id="@+id/projectid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/orange_strong"
+            android:gravity="center"
+            android:textSize="1dp"
+            android:text= "" />
     </LinearLayout>
 
 

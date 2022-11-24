@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.pi.models.projectInformation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -85,6 +86,8 @@ public class uploadImage extends AppCompatActivity {
 
         if (imageUri != null){
             String imageName = System.currentTimeMillis() + "." + getFileExtension(imageUri);
+
+            ///storage the imagename to exclude after #implement
             String projectNameS = projectName.getText().toString();
             String professorNameS = professorName.getText().toString();
             String projectResumeS = projectResume.getText().toString();
@@ -99,8 +102,10 @@ public class uploadImage extends AppCompatActivity {
 
 
                     projectInformation projectInformation = new projectInformation(projectNameS, professorNameS, projectResumeS, projectContactS, imageName);
-                    FirebaseDatabase.getInstance().getReference().child("imagesnames").child("id" + System.currentTimeMillis()).setValue(imageName);
-                    FirebaseDatabase.getInstance().getReference().child("projects").child("id" + System.currentTimeMillis()).setValue(projectInformation);
+//                    FirebaseDatabase.getInstance().getReference().child("imagesnames").child("id" + System.currentTimeMillis()).setValue(imageName);
+                    String projectid = "id" + System.currentTimeMillis();
+                    ///storage the project id to exclude after #implement
+                    FirebaseDatabase.getInstance().getReference().child("projects").child(projectid).setValue(projectInformation);
                     fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
@@ -113,9 +118,6 @@ public class uploadImage extends AppCompatActivity {
                 }
             });
         }
-    }
-
-    private void storageImagename() {
     }
 
     private String getFileExtension(Uri imageUri) {

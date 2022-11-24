@@ -1,4 +1,4 @@
-package com.example.pi;
+package com.example.pi.models;
 
 public class projectInformation {
 
