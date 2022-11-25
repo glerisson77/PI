@@ -7,6 +7,7 @@ public class Questions {
     String resposta2;
     String resposta3;
     String resposta4;
+    int id;
 
     public Questions(){}
 
@@ -56,5 +57,13 @@ public class Questions {
 
     public void setResposta4(String resposta4) {
         this.resposta4 = resposta4;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

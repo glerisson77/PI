@@ -46,10 +46,13 @@ public class quizActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 listquiz.clear();
+                int perguntaCont = 1;
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
                     Questions pergunta = dataSnapshot.getValue(Questions.class);
+                    pergunta.setId(perguntaCont);
                     listquiz.add(pergunta);
-//                    Toast.makeText(quizActivity.this, "carregamento completo", Toast.LENGTH_SHORT).show();
+                    perguntaCont++;
+                    Toast.makeText(quizActivity.this, String.valueOf(pergunta.getId()).toString(), Toast.LENGTH_SHORT).show();
                 }
                 adapter.notifyDataSetChanged();
             }
