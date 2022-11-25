@@ -59,6 +59,9 @@ public class IconsActivityLayout extends AppCompatActivity {
         Uri uri = Uri.parse(link);
         startActivity(new Intent(Intent.ACTION_VIEW, uri));
     }
-
+    public void postarQuiz(View v){
+        Intent intent = new Intent(IconsActivityLayout.this, quizActivity.class);
+        startActivity(intent);
+    }
 
 }

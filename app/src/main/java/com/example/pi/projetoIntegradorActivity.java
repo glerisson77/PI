@@ -55,6 +55,7 @@ public class projetoIntegradorActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                list.clear();
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
                     projectInformation projectInformation = dataSnapshot.getValue(projectInformation.class);
                     list.add(projectInformation);
@@ -79,5 +80,11 @@ public class projetoIntegradorActivity extends AppCompatActivity {
         databaseReference.child("id1669162440741").removeValue();
         storageReference.child("1669162437358.jpg").delete();
 
+    }
+
+    public void voltar(View v){
+        Intent intent = new Intent(projetoIntegradorActivity.this, IconsActivityLayout.class);
+        startActivity(intent);
+        finish();
     }
 }

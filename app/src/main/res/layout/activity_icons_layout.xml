@@ -161,4 +161,15 @@
         app:layout_constraintTop_toBottomOf="@+id/iconfrequencia"
         app:layout_constraintVertical_bias="0.586" />
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="126dp"
+        android:layout_height="106dp"
+        android:onClick="postarQuiz"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView12"
+        app:srcCompat="@drawable/jogos" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
