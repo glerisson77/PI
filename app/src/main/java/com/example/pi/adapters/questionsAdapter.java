@@ -58,7 +58,7 @@ public class questionsAdapter extends RecyclerView.Adapter<questionsAdapter.MyVi
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView pergunta;
-        RadioButton resposta1, resposta2, resposta3, resposta4;
+        public RadioButton resposta1, resposta2, resposta3, resposta4;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             pergunta = itemView.findViewById(R.id.perguntaqi);
@@ -69,4 +69,7 @@ public class questionsAdapter extends RecyclerView.Adapter<questionsAdapter.MyVi
         }
 
     }
+    public void check(){
+    }
+
 }

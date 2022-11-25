@@ -53,6 +53,7 @@ public class quizActivity extends AppCompatActivity {
                     listquiz.add(pergunta);
                     perguntaCont++;
                     Toast.makeText(quizActivity.this, String.valueOf(pergunta.getId()).toString(), Toast.LENGTH_SHORT).show();
+
                 }
                 adapter.notifyDataSetChanged();
             }
@@ -67,4 +68,5 @@ public class quizActivity extends AppCompatActivity {
         Intent intent = new Intent(quizActivity.this, UploadQuestions.class);
         startActivity(intent);
     }
+    
 }
