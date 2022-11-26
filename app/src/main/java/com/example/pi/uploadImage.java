@@ -25,6 +25,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+
 public class uploadImage extends AppCompatActivity {
 
     Button uploadImagebt;
@@ -100,8 +101,7 @@ public class uploadImage extends AppCompatActivity {
                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                     ///store the name of the file on the database to after retrieving
 
-
-                    projectInformation projectInformation = new projectInformation(projectNameS, professorNameS, projectResumeS, projectContactS, imageName);
+                    projectInformation projectInformation = new projectInformation(projectNameS, professorNameS, projectResumeS, projectContactS, imageName, "ghut");
 //                    FirebaseDatabase.getInstance().getReference().child("imagesnames").child("id" + System.currentTimeMillis()).setValue(imageName);
                     String projectid = "id" + System.currentTimeMillis();
                     ///storage the project id to exclude after #implement

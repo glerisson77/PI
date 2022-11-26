@@ -4,66 +4,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroud"
+    android:background="@color/azule"
     tools:context=".activity_form_cadastro">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/logo_senac_png"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/titulo_cadastre_se"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/titulo_cadastro"
-        android:textSize="50sp"
-        android:textColor="@color/white"
-        android:textStyle="bold"
         android:layout_marginTop="100dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/titulo_cadastro"
+        android:textColor="@color/white"
+        android:textSize="50sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/containerComponents"
         style="@style/ContainerComponents"
-        app:layout_constraintTop_toBottomOf="@id/titulo_cadastre_se"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/titulo_cadastre_se" />
 
     <EditText
         android:id="@+id/edit_nome"
         style="@style/Edit_Text_nome"
         android:hint="NOME"
         android:inputType="text"
-        app:layout_constraintTop_toTopOf="@id/containerComponents"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents"
         app:layout_constraintStart_toStartOf="@id/containerComponents"
-        app:layout_constraintEnd_toEndOf="@id/containerComponents" />
+        app:layout_constraintTop_toTopOf="@id/containerComponents" />
 
     <EditText
-        android:id="@+id/edit_ra"
+        android:id="@+id/edit_racadastro"
         style="@style/Edit_Text"
         android:hint="RA"
         android:inputType="numberDecimal"
-        app:layout_constraintTop_toBottomOf="@id/edit_nome"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents"
         app:layout_constraintStart_toStartOf="@id/containerComponents"
-        app:layout_constraintEnd_toEndOf="@id/containerComponents" />
+        app:layout_constraintTop_toBottomOf="@id/edit_nome" />
 
     <EditText
-        android:id="@+id/edit_senha"
+        android:id="@+id/edit_senhacadastro"
         style="@style/Edit_Text_senha"
-        android:hint="SENHA"
-        android:inputType="textPassword"
         android:drawableRight="@drawable/ic_eye"
-        app:layout_constraintTop_toBottomOf="@id/edit_ra"
+        android:hint="SENHA"
+        android:textColor="@color/black"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents"
         app:layout_constraintStart_toStartOf="@id/containerComponents"
-        app:layout_constraintEnd_toEndOf="@id/containerComponents" />
+        app:layout_constraintTop_toBottomOf="@id/edit_racadastro" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/cadastrarbt"
         style="@style/button"
-        android:text="CADASTRAR"
         android:layout_marginTop="30dp"
-        app:layout_constraintTop_toBottomOf="@id/containerComponents"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="CADASTRAR"
         app:layout_constraintEnd_toEndOf="parent"
-        />
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/containerComponents" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

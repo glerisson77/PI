@@ -7,15 +7,17 @@ public class projectInformation {
     private String projectResume;
     private String projectContact;
     private String imageName;
+    private String raMatching;
 
     public projectInformation(){}
 
-    public projectInformation(String projectName, String professorName, String projectResume, String projectContact, String imageName) {
+    public projectInformation(String projectName, String professorName, String projectResume, String projectContact, String imageName, String raMatching) {
         this.projectName = projectName;
         this.professorName = professorName;
         this.projectResume = projectResume;
         this.projectContact = projectContact;
         this.imageName = imageName;
+        this.raMatching = raMatching;
     }
 
     public String getName() {
@@ -58,5 +60,11 @@ public class projectInformation {
         this.imageName = imageName;
     }
 
+    public String getRaMatching() {
+        return raMatching;
+    }
 
+    public void setRaMatching(String raMatching) {
+        this.raMatching = raMatching;
+    }
 }

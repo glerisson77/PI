@@ -47,7 +47,7 @@ public class IconsActivityLayout extends AppCompatActivity {
         abrirLink("https://www.mg.senac.br/Paginas/rededecarreiras.aspx");
     }
     public void projetoint(View v){
-        Intent projint = new Intent(this, projetoIntegradorActivity.class);
+        Intent projint = new Intent(this, activity_form_login.class);
         startActivity(projint);
     }
     public void creditos(View v){
@@ -60,7 +60,7 @@ public class IconsActivityLayout extends AppCompatActivity {
         startActivity(new Intent(Intent.ACTION_VIEW, uri));
     }
     public void postarQuiz(View v){
-        Intent intent = new Intent(IconsActivityLayout.this, quizActivity.class);
+        Intent intent = new Intent(IconsActivityLayout.this, quizRhActivity.class);
         startActivity(intent);
     }
 

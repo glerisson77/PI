@@ -2,68 +2,78 @@ package com.example.pi.models;
 
 public class Questions {
 
-    String pergunta;
-    String resposta1;
-    String resposta2;
-    String resposta3;
-    String resposta4;
-    int id;
+    public static String question[] = {
+            ///Perguntas
+            "Maior pais do mundo",
+            "Cidade mais populosa do Brasil",
+            "Ano da copa",
+            "Ano da copa",
+            "Ano da copa",
+            "Ano da copa",
+            "Ano da copa",
+            "Ano da copa",
+            "Ano da copa",
+            "Ano da copa",
+            "Ano da copa",
+            "Ano da copa",
+            "Ano da copa",
+            "Ano da copa",
+            "Ano da copa",
+            "Ano da copa",
+            "Ano da copa",
+            "Ano da copa",
+            "Ano da copa"
+
+    };
+
+    public static String choices[][] = {
+            ///escolhas
+            {"Russia", "Brasil", "EUA", "China"},
+            {"Sao Paulo", "Rio de janeiro", "Brasilia", "TC"},
+            {"2011", "2022", "1500", "2023"},
+            {"2011", "2022", "1500", "2023"},
+            {"2011", "2022", "1500", "2023"},
+            {"2011", "2022", "1500", "2023"},
+            {"2011", "2022", "1500", "2023"},
+            {"2011", "2022", "1500", "2023"},
+            {"2011", "2022", "1500", "2023"},
+            {"2011", "2022", "1500", "2023"},
+            {"2011", "2022", "1500", "2023"},
+            {"2011", "2022", "1500", "2023"},
+            {"2011", "2022", "1500", "2023"},
+            {"2011", "2022", "1500", "2023"},
+            {"2011", "2022", "1500", "2023"},
+            {"2011", "2022", "1500", "2023"},
+            {"2011", "2022", "1500", "2023"},
+            {"2011", "2022", "1500", "2023"},
+            {"2011", "2022", "1500", "2023"}
+
+
+    };
+
+    public static String correctAnswers[] = {
+            ///respotas certas
+            "Russia",
+            "Sao Paulo",
+            "2022",
+            "2022",
+            "2022",
+            "2022",
+            "2022",
+            "2022",
+            "2022",
+            "2022",
+            "2022",
+            "2022",
+            "2022",
+            "2022",
+            "2022",
+            "2022",
+            "2022",
+            "2022",
+            "2022"
+    };
 
     public Questions(){}
 
-    public Questions(String pergunta, String resposta1, String resposta2, String resposta3, String resposta4) {
-        this.pergunta = pergunta;
-        this.resposta1 = resposta1;
-        this.resposta2 = resposta2;
-        this.resposta3 = resposta3;
-        this.resposta4 = resposta4;
-    }
-
-    public String getPergunta() {
-        return pergunta;
-    }
-
-    public void setPergunta(String pergunta) {
-        this.pergunta = pergunta;
-    }
-
-    public String getResposta1() {
-        return resposta1;
-    }
-
-    public void setResposta1(String resposta1) {
-        this.resposta1 = resposta1;
-    }
-
-    public String getResposta2() {
-        return resposta2;
-    }
-
-    public void setResposta2(String resposta2) {
-        this.resposta2 = resposta2;
-    }
-
-    public String getResposta3() {
-        return resposta3;
-    }
-
-    public void setResposta3(String resposta3) {
-        this.resposta3 = resposta3;
-    }
-
-    public String getResposta4() {
-        return resposta4;
-    }
-
-    public void setResposta4(String resposta4) {
-        this.resposta4 = resposta4;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 }
