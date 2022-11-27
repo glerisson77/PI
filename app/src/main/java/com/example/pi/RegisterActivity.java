@@ -16,7 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class activity_form_cadastro extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
     private EditText email;
     private EditText password;
@@ -26,7 +26,7 @@ public class activity_form_cadastro extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_form_cadastro);
+        setContentView(R.layout.activity_register);
 
         email = findViewById(R.id.edit_racadastro);
         password = findViewById(R.id.edit_senhacadastro);
@@ -41,9 +41,9 @@ public class activity_form_cadastro extends AppCompatActivity {
                 String txt_password = password.getText().toString();
 
                 if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)){
-                    Toast.makeText(activity_form_cadastro.this, "The camps must not be empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "The camps must not be empty", Toast.LENGTH_SHORT).show();
                 } else if (txt_password.length() < 6){
-                    Toast.makeText(activity_form_cadastro.this, "The password must contain more than 6 caracters", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "The password must contain more than 6 caracters", Toast.LENGTH_SHORT).show();
                 }else{
                     registerUser(txt_email, txt_password);
                 }
@@ -52,15 +52,15 @@ public class activity_form_cadastro extends AppCompatActivity {
     }
 
     private void registerUser(String txt_email, String txt_password) {
-        auth.createUserWithEmailAndPassword(txt_email, txt_password).addOnCompleteListener(activity_form_cadastro.this, new OnCompleteListener<AuthResult>() {
+        auth.createUserWithEmailAndPassword(txt_email, txt_password).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    Toast.makeText(activity_form_cadastro.this, "User created successfully", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(activity_form_cadastro.this, projetoIntegradorActivity.class));
+                    Toast.makeText(RegisterActivity.this, "User created successfully", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(RegisterActivity.this, PiPostsActivity.class));
                     finish();
                 }else{
-                    Toast.makeText(activity_form_cadastro.this, "Registration failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
                 }
             }
         });

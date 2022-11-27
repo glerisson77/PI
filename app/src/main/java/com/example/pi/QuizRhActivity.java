@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.example.pi.models.Questions;
 
-public class quizRhActivity extends AppCompatActivity implements View.OnClickListener{
+public class QuizRhActivity extends AppCompatActivity implements View.OnClickListener{
     ///declaracao das variaveis
     TextView totalquestionstv, question, actualuc;
     Button answer1,answer2,answer3,answer4, confirm;

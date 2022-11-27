@@ -11,20 +11,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class IconsActivityLayout extends AppCompatActivity {
+public class MainIconsActivity extends AppCompatActivity {
     Button btOpenUrl;
     EditText editText;
     WebView webView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_icons_layout);
+        setContentView(R.layout.activity_main_icons);
     }
     public void frequencia(View v){
         abrirLink("https://www.mg.senac.br/ambienteacademico/detalheCurso");
     }
     public void mapeamento(View v){
-        Toast.makeText(IconsActivityLayout.this, "Recurso ainda não implementado", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainIconsActivity.this, "Recurso ainda não implementado", Toast.LENGTH_SHORT).show();
     }
     public void ava(View v){
         abrirLink("https://ava.mg.senac.br/edu/");
@@ -35,7 +35,7 @@ public class IconsActivityLayout extends AppCompatActivity {
     }
     public void cursossenac(View v){
         ///abre a tela info cursos
-        Toast.makeText(IconsActivityLayout.this, "Recurso ainda não implementado", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainIconsActivity.this, "Recurso ainda não implementado", Toast.LENGTH_SHORT).show();
     }
     public void cursosdisponiveis(View v){
         abrirLink("https://www.mg.senac.br/programasenacdegratuidade/vagas.aspx");
@@ -47,7 +47,7 @@ public class IconsActivityLayout extends AppCompatActivity {
         abrirLink("https://www.mg.senac.br/Paginas/rededecarreiras.aspx");
     }
     public void projetoint(View v){
-        Intent projint = new Intent(this, activity_form_login.class);
+        Intent projint = new Intent(this, LoginActivity.class);
         startActivity(projint);
     }
     public void creditos(View v){
@@ -60,7 +60,7 @@ public class IconsActivityLayout extends AppCompatActivity {
         startActivity(new Intent(Intent.ACTION_VIEW, uri));
     }
     public void postarQuiz(View v){
-        Intent intent = new Intent(IconsActivityLayout.this, quizRhActivity.class);
+        Intent intent = new Intent(MainIconsActivity.this, QuizRhActivity.class);
         startActivity(intent);
     }
 

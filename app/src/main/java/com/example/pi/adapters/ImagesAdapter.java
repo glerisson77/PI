@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pi.R;
-import com.example.pi.models.projectInformation;
+import com.example.pi.models.ProjectInformation;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FileDownloadTask;
@@ -24,15 +24,15 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class imagesAdapter extends RecyclerView.Adapter<imagesAdapter.MyViewHolder> {
+public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHolder> {
 
     StorageReference storageReference;
     Context context;
-    ArrayList<projectInformation> list;
+    ArrayList<ProjectInformation> list;
 
-    public imagesAdapter(){}
+    public ImagesAdapter(){}
 
-    public imagesAdapter(Context context, ArrayList<projectInformation> list) {
+    public ImagesAdapter(Context context, ArrayList<ProjectInformation> list) {
         this.context = context;
         this.list = list;
     }
@@ -45,8 +45,8 @@ public class imagesAdapter extends RecyclerView.Adapter<imagesAdapter.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull imagesAdapter.MyViewHolder holder, int position) {
-        projectInformation projectInformation = list.get(position);
+    public void onBindViewHolder(@NonNull ImagesAdapter.MyViewHolder holder, int position) {
+        ProjectInformation projectInformation = list.get(position);
         holder.projectName.setText(projectInformation.getName());
         holder.professorName.setText(projectInformation.getProfessorName());
         holder.projectResume.setText(projectInformation.getProjectResume());

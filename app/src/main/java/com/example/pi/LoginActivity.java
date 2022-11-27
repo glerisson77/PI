@@ -14,13 +14,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
-public class activity_form_login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private EditText email;
     private EditText password;
@@ -31,7 +25,7 @@ public class activity_form_login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_form_login);
+        setContentView(R.layout.activity_login);
 
         email = findViewById(R.id.edit_ra);
         password = findViewById(R.id.edit_senha);
@@ -43,17 +37,12 @@ public class activity_form_login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String txt_email = email.getText().toString() + "@senacminas.edu.br";
-                String ra = "";
-                Path ratxt = Paths.get("C:/Users/gleri/AndroidStudioProjects/PI/app/src/main/assets/ra.txt");
-                try {
-                    Toast.makeText(activity_form_login.this, Files.readAllLines(ratxt).toString(), Toast.LENGTH_SHORT).show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                ///we will use the ra to store in sqllite and further upload the project with ra and use the ra reference to grant the user delete only his/her project
+                String ra = email.getText().toString();
 
                 String text_password = password.getText().toString();
                 if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(text_password)){
-                    Toast.makeText(activity_form_login.this, "Um dos campos está vazio", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Um dos campos está vazio", Toast.LENGTH_SHORT).show();
                 }else{
                     loginUser(txt_email, text_password);
 
@@ -66,15 +55,15 @@ public class activity_form_login extends AppCompatActivity {
         auth.signInWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
-                Toast.makeText(activity_form_login.this, "Login feito", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(activity_form_login.this, projetoIntegradorActivity.class));
+                Toast.makeText(LoginActivity.this, "Login feito", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(LoginActivity.this, PiPostsActivity.class));
                 finish();
             }
         });
     }
 
     public void registerScreen(View v){
-        Intent intent = new Intent(activity_form_login.this, activity_form_cadastro.class);
+        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
         startActivity(intent);
     }
 }

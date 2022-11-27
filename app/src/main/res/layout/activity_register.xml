@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/azule"
-    tools:context=".activity_form_cadastro">
+    tools:context=".RegisterActivity">
 
     <ImageView
         android:layout_width="100dp"

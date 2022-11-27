@@ -8,7 +8,7 @@ import android.os.Bundle;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class telaInicial extends AppCompatActivity {
+public class InitialSplashScreenActivity extends AppCompatActivity {
 
     private final Timer timer = new Timer();
     TimerTask timerTask;
@@ -16,7 +16,7 @@ public class telaInicial extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_inicial);
+        setContentView(R.layout.activity_initial_splash_screen);
 
         timerTask = new TimerTask() {
             @Override
@@ -33,7 +33,7 @@ public class telaInicial extends AppCompatActivity {
     }
 
     private void gotoInconsActivity() {
-        Intent intent = new Intent(getApplicationContext(), IconsActivityLayout.class);
+        Intent intent = new Intent(getApplicationContext(), MainIconsActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish();

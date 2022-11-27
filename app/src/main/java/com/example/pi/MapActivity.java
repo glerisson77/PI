@@ -3,15 +3,13 @@ package com.example.pi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.webkit.WebView;
 
-public class tela_info_cursos extends AppCompatActivity {
-    //String text="Cursos do Senac";
+public class MapActivity extends AppCompatActivity {
+    WebView webView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_info_cursos);
+        setContentView(R.layout.activity_map);
     }
-    /*private void cursos(){
-
-    }*/
 }

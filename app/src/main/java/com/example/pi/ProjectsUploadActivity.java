@@ -16,7 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.pi.models.projectInformation;
+import com.example.pi.models.ProjectInformation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -26,7 +26,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 
-public class uploadImage extends AppCompatActivity {
+public class ProjectsUploadActivity extends AppCompatActivity {
 
     Button uploadImagebt;
     EditText projectName;
@@ -40,7 +40,7 @@ public class uploadImage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_upload_image);
+        setContentView(R.layout.activity_projects_upload);
 
         projectName = findViewById(R.id.nomeprojetoet);
         professorName = findViewById(R.id.professoret);
@@ -56,7 +56,7 @@ public class uploadImage extends AppCompatActivity {
                 Boolean projectResumeCheck = projectResume.getText().toString().matches("");
                 Boolean projectContactCheck = projectContact.getText().toString().matches("");
                 if (projectNameCheck == true || professorNameCheck == true || projectResumeCheck == true || projectContactCheck == true){
-                    Toast.makeText(uploadImage.this, "Um ou mais campos estao vazios", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ProjectsUploadActivity.this, "Um ou mais campos estao vazios", Toast.LENGTH_SHORT).show();
                 }else{
                     openImage();
                 }
@@ -94,6 +94,8 @@ public class uploadImage extends AppCompatActivity {
             String projectResumeS = projectResume.getText().toString();
             String projectContactS = projectContact.getText().toString();
 
+            ///the ra will be picked from here using sql lite and inserted in a string to be put inside the projectinformation object
+
             ///storage the image
             StorageReference fileRef = FirebaseStorage.getInstance().getReference().child("uploads").child(imageName);
             fileRef.putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
@@ -101,7 +103,7 @@ public class uploadImage extends AppCompatActivity {
                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                     ///store the name of the file on the database to after retrieving
 
-                    projectInformation projectInformation = new projectInformation(projectNameS, professorNameS, projectResumeS, projectContactS, imageName, "ghut");
+                    ProjectInformation projectInformation = new ProjectInformation(projectNameS, professorNameS, projectResumeS, projectContactS, imageName, "raisgoindtobeusedhere");
 //                    FirebaseDatabase.getInstance().getReference().child("imagesnames").child("id" + System.currentTimeMillis()).setValue(imageName);
                     String projectid = "id" + System.currentTimeMillis();
                     ///storage the project id to exclude after #implement
@@ -112,7 +114,7 @@ public class uploadImage extends AppCompatActivity {
                             String url = uri.toString();
                             Log.d("DownloadUrl", url);
                             pd.dismiss();
-                            Toast.makeText(uploadImage.this, "O projeto foi postado", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ProjectsUploadActivity.this, "O projeto foi postado", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }

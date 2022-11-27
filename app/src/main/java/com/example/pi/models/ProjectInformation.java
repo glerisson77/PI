@@ -1,6 +1,6 @@
 package com.example.pi.models;
 
-public class projectInformation {
+public class ProjectInformation {
 
     private String projectName;
     private String professorName;
@@ -9,9 +9,9 @@ public class projectInformation {
     private String imageName;
     private String raMatching;
 
-    public projectInformation(){}
+    public ProjectInformation(){}
 
-    public projectInformation(String projectName, String professorName, String projectResume, String projectContact, String imageName, String raMatching) {
+    public ProjectInformation(String projectName, String professorName, String projectResume, String projectContact, String imageName, String raMatching) {
         this.projectName = projectName;
         this.professorName = professorName;
         this.projectResume = projectResume;

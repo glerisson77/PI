@@ -9,8 +9,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.pi.adapters.imagesAdapter;
-import com.example.pi.models.projectInformation;
+import com.example.pi.adapters.ImagesAdapter;
+import com.example.pi.models.ProjectInformation;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,33 +21,33 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
-public class projetoIntegradorActivity extends AppCompatActivity {
+public class PiPostsActivity extends AppCompatActivity {
 
 
     RecyclerView recyclerView;
-    ArrayList<projectInformation> list;
+    ArrayList<ProjectInformation> list;
     DatabaseReference databaseReference;
     StorageReference storageReference;
-    imagesAdapter adapter;
+    ImagesAdapter adapter;
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(projetoIntegradorActivity.this, IconsActivityLayout.class));
+        startActivity(new Intent(PiPostsActivity.this, MainIconsActivity.class));
         finish();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_projeto_integrador);
+        setContentView(R.layout.activity_pi_posts);
 
         recyclerView = findViewById(R.id.recyclerviewpi);
         databaseReference = FirebaseDatabase.getInstance().getReference("projects");
         storageReference = FirebaseStorage.getInstance().getReference("uploads/");
         list = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new imagesAdapter(this, list);
+        adapter = new ImagesAdapter(this, list);
         recyclerView.setAdapter(adapter);
 //        idtxt = "C:/Users/gleri/AndroidStudioProjects/PIcopy/app/src/main/res/values/idtxt.txt";
 //        Toast.makeText(projetoIntegradorActivity.this, idtxt, Toast.LENGTH_SHORT).show();
@@ -57,7 +57,9 @@ public class projetoIntegradorActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    projectInformation projectInformation = dataSnapshot.getValue(projectInformation.class);
+                    ProjectInformation projectInformation = dataSnapshot.getValue(ProjectInformation.class);
+
+                    ///the ra from projectinformation.getraMatching will be insert in a string to be used in a if verification to let the user delete only the right project
                     list.add(projectInformation);
                 }
                 adapter.notifyDataSetChanged();
@@ -72,7 +74,7 @@ public class projetoIntegradorActivity extends AppCompatActivity {
 
     }
     public void postarProjeto(View v){
-        Intent intent = new Intent(projetoIntegradorActivity.this, uploadImage.class);
+        Intent intent = new Intent(PiPostsActivity.this, ProjectsUploadActivity.class);
         startActivity(intent);
     }
 
@@ -83,7 +85,7 @@ public class projetoIntegradorActivity extends AppCompatActivity {
     }
 
     public void voltar(View v){
-        Intent intent = new Intent(projetoIntegradorActivity.this, IconsActivityLayout.class);
+        Intent intent = new Intent(PiPostsActivity.this, MainIconsActivity.class);
         startActivity(intent);
         finish();
     }
