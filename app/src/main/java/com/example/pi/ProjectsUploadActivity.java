@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.pi.models.DataBaseHelper;
 import com.example.pi.models.ProjectInformation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -33,6 +35,7 @@ public class ProjectsUploadActivity extends AppCompatActivity {
     EditText professorName;
     EditText projectResume;
     EditText projectContact;
+    DataBaseHelper myDB;
 
     private static final int IMAGE_REQUEST = 2;
     private Uri imageUri;
@@ -42,6 +45,7 @@ public class ProjectsUploadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_projects_upload);
 
+        myDB = new DataBaseHelper(this);
         projectName = findViewById(R.id.nomeprojetoet);
         professorName = findViewById(R.id.professoret);
         projectResume = findViewById(R.id.informationprojectet);
@@ -86,7 +90,7 @@ public class ProjectsUploadActivity extends AppCompatActivity {
         pd.show();
 
         if (imageUri != null){
-            String imageName = System.currentTimeMillis() + "." + getFileExtension(imageUri);
+            String imageName = String.valueOf(System.currentTimeMillis());
 
             ///storage the imagename to exclude after #implement
             String projectNameS = projectName.getText().toString();
@@ -97,15 +101,16 @@ public class ProjectsUploadActivity extends AppCompatActivity {
             ///the ra will be picked from here using sql lite and inserted in a string to be put inside the projectinformation object
 
             ///storage the image
+//            StorageReference fileRef = FirebaseStorage.getInstance().getReference().child("uploads").child(imageName + "." + getFileExtension(imageUri));
             StorageReference fileRef = FirebaseStorage.getInstance().getReference().child("uploads").child(imageName);
             fileRef.putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                     ///store the name of the file on the database to after retrieving
-
-                    ProjectInformation projectInformation = new ProjectInformation(projectNameS, professorNameS, projectResumeS, projectContactS, imageName, "raisgoindtobeusedhere");
+                    String ra = getRaFromDB();
+                    ProjectInformation projectInformation = new ProjectInformation(projectNameS, professorNameS, projectResumeS, projectContactS, imageName, ra);
 //                    FirebaseDatabase.getInstance().getReference().child("imagesnames").child("id" + System.currentTimeMillis()).setValue(imageName);
-                    String projectid = "id" + System.currentTimeMillis();
+                    String projectid = "id" + imageName;
                     ///storage the project id to exclude after #implement
                     FirebaseDatabase.getInstance().getReference().child("projects").child(projectid).setValue(projectInformation);
                     fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -126,5 +131,17 @@ public class ProjectsUploadActivity extends AppCompatActivity {
         ContentResolver contentResolver = getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
         return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(imageUri));
+    }
+    public String getRaFromDB (){
+        Cursor res = myDB.getAllData();
+        if (res.getCount() == 0){
+            Toast.makeText(this, "no data found", Toast.LENGTH_SHORT).show();
+        }
+        StringBuffer buffer = new StringBuffer();
+        while (res.moveToNext()){
+            buffer.append(res.getString(0));
+        }
+        String ra_text = buffer.toString();
+        return ra_text;
     }
 }

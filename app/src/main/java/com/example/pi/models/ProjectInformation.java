@@ -20,11 +20,11 @@ public class ProjectInformation {
         this.raMatching = raMatching;
     }
 
-    public String getName() {
+    public String getProjectName() {
         return projectName;
     }
 
-    public void setName(String professorName) {
+    public void setProjectName(String projectName) {
         this.projectName = projectName;
     }
 
@@ -67,4 +67,5 @@ public class ProjectInformation {
     public void setRaMatching(String raMatching) {
         this.raMatching = raMatching;
     }
+
 }
