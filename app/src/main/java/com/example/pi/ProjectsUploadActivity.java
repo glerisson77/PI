@@ -17,7 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.pi.models.DataBaseHelper;
+import com.example.pi.models.DatabaseRA;
 import com.example.pi.models.ProjectInformation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -35,7 +35,7 @@ public class ProjectsUploadActivity extends AppCompatActivity {
     EditText professorName;
     EditText projectResume;
     EditText projectContact;
-    DataBaseHelper myDB;
+    DatabaseRA myDB;
 
     private static final int IMAGE_REQUEST = 2;
     private Uri imageUri;
@@ -45,7 +45,7 @@ public class ProjectsUploadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_projects_upload);
 
-        myDB = new DataBaseHelper(this);
+        myDB = new DatabaseRA(this);
         projectName = findViewById(R.id.nomeprojetoet);
         professorName = findViewById(R.id.professoret);
         projectResume = findViewById(R.id.informationprojectet);

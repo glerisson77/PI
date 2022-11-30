@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.pi.adapters.ImagesAdapter;
-import com.example.pi.models.DataBaseHelper;
+import com.example.pi.models.DatabaseRA;
 import com.example.pi.models.ProjectInformation;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,7 +33,7 @@ public class PiPostsActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     StorageReference storageReference;
     ImagesAdapter adapter;
-    DataBaseHelper myDB;
+    DatabaseRA myDB;
     EditText projectNameInput;
     Boolean deleteButtonPressed = false;
 
@@ -58,7 +58,7 @@ public class PiPostsActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new ImagesAdapter(this, list);
         recyclerView.setAdapter(adapter);
-        myDB = new DataBaseHelper(this);
+        myDB = new DatabaseRA(this);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override

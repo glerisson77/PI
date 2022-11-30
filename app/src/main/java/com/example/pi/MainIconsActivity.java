@@ -7,30 +7,26 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.webkit.WebView;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.pi.models.DabaseRA;
-import com.example.pi.models.DataBaseHelper;
+import com.example.pi.models.DatabaseRA;
 
 public class MainIconsActivity extends AppCompatActivity {
-    DabaseRA myDB;
+    DatabaseRA myDB;
     Boolean logged = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_icons);
-        myDB = new DabaseRA(this);
-//        String ra = getRaFromDB();
-//        if (ra.equals("empty")){
-//            logged = false;
-//        }else{
-//            logged = true;
-//        }
-//        Toast.makeText(this, ra, Toast.LENGTH_SHORT).show();
+        myDB = new DatabaseRA(this);
+        String ra = getRaFromDB();
+        if (ra.equals("empty")){
+            logged = false;
+        }else{
+            logged = true;
+        }
+        Toast.makeText(this, ra, Toast.LENGTH_SHORT).show();
     }
     public void frequencia(View v){
         abrirLink("https://www.mg.senac.br/ambienteacademico/detalheCurso");
@@ -84,19 +80,19 @@ public class MainIconsActivity extends AppCompatActivity {
         }
     }
 
-//    public String getRaFromDB(){
-//        Cursor res = myDB.getAllData();
-//        if (res.getCount() == 0){
-//        }
-//        StringBuffer buffer = new StringBuffer();
+    public String getRaFromDB(){
+        Cursor res = myDB.getAllData();
+        if (res.getCount() == 0){
+        }
+        StringBuffer buffer = new StringBuffer();
 //        while (res.moveToNext()){
 //            buffer.append(res.getString(0));
 //        }
-////        res.moveToNext();
-////        buffer.append(res.getString(0));
-//
-//        String ra_text = buffer.toString();
-//        return ra_text;
-//    }
+        res.moveToNext();
+        buffer.append(res.getString(0));
+
+        String ra_text = buffer.toString();
+        return ra_text;
+    }
 
 }

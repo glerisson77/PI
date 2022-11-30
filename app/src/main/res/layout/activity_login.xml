@@ -43,12 +43,23 @@
             android:id="@+id/edit_senha"
             style="@style/Edit_Text_senha"
             android:hint="SENHA"
-            android:drawableRight="@drawable/ic_eye"
             android:inputType="textPassword"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="@id/containerComponets"
             app:layout_constraintEnd_toEndOf="@id/containerComponets"
             app:layout_constraintTop_toBottomOf="@id/edit_ra" />
+
+        <CheckBox
+            android:id="@+id/ver_senha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ver a senha"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="@id/edit_senha"
+            app:layout_constraintStart_toStartOf="@id/edit_senha"
+            app:layout_constraintEnd_toEndOf="@id/edit_senha"
+            android:layout_marginLeft="175dp"
+            android:layout_marginTop="5dp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_entrar"

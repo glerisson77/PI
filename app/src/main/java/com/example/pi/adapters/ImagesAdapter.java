@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pi.R;
-import com.example.pi.models.DataBaseHelper;
+import com.example.pi.models.DatabaseRA;
 import com.example.pi.models.ProjectInformation;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -33,7 +33,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
     DatabaseReference databaseReference;
     Context context;
     ArrayList<ProjectInformation> list;
-    DataBaseHelper myDB;
+    DatabaseRA myDB;
 
     public ImagesAdapter(){}
 
@@ -45,7 +45,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        myDB = new DataBaseHelper(context);
+        myDB = new DatabaseRA(context);
         View v = LayoutInflater.from(context).inflate(R.layout.image_item, parent, false);
         return new MyViewHolder(v);
     }

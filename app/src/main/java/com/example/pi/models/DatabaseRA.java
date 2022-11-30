@@ -6,33 +6,30 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public class DataBaseHelper extends SQLiteOpenHelper {
+public class DatabaseRA extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "Studentra_db";
     public static final String TABLE_NAME = "student";
     public static final String COL_RA = "RA";
 
-    public DataBaseHelper(Context context) {
+    public DatabaseRA(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
 
     @Override
-    public void onCreate(@NonNull SQLiteDatabase sqLiteDatabase) {
+    public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("CREATE TABLE " +TABLE_NAME+ " (" + COL_RA + " VARCHAR(10))");
-
     }
-
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " +TABLE_NAME);
         onCreate(sqLiteDatabase);
     }
-
     public void insertData(String ra){
         SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM " +TABLE_NAME);
         db.delete(TABLE_NAME, COL_RA, null);
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_RA, ra);

@@ -5,23 +5,27 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.pi.models.DabaseRA;
-import com.example.pi.models.DataBaseHelper;
+import com.example.pi.models.DatabaseRA;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
-
+    EditText edit_senha;
+    CheckBox ver_senha;
     private EditText emailet;
     private EditText password;
     private Button login;
-    private DabaseRA dataBaseHelper;
+    private DatabaseRA dataBaseHelper;
 
     private FirebaseAuth auth;
 
@@ -29,7 +33,23 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        dataBaseHelper = new DabaseRA(LoginActivity.this);
+
+        edit_senha = findViewById(R.id.edit_senha);
+        ver_senha = findViewById(R.id.ver_senha);
+
+        ver_senha.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b){
+                    edit_senha.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                } else {
+                    edit_senha.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+            }
+        });
+
+
+        dataBaseHelper = new DatabaseRA(LoginActivity.this);
         emailet = findViewById(R.id.edit_ra);
         password = findViewById(R.id.edit_senha);
         login = findViewById(R.id.bt_entrar);

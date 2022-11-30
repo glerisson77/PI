@@ -30,27 +30,29 @@
 
             <Button
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:backgroundTint="@color/orange_strong"
                 android:onClick="voltar"
-                android:text="voltar" />
+                android:text="voltar"
+                android:textSize="12dp"/>
 
             <Button
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:backgroundTint="@color/orange_strong"
-                android:gravity="center_vertical"
                 android:onClick="postarProjeto"
-                android:text="Postar seu projeto" />
+                android:text="Postar seu projeto"
+                android:textSize="12dp"/>
 
             <Button
                 android:id="@+id/deleteprojectbt"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:backgroundTint="@color/orange_strong"
-                android:gravity="center_vertical"
+                android:layout_gravity="center"
                 android:onClick="deleteProject"
-                android:text="deletar projeto" />
+                android:text="deletar projeto"
+                android:textSize="12dp"/>
         </LinearLayout>
 
     </LinearLayout>
@@ -66,9 +68,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/orange_strong"
-            android:textColor="@color/black"
             android:hint="@string/vazio"
-            android:textSize="20dp"/>
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            tools:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
