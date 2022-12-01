@@ -3,20 +3,26 @@ package com.example.pi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.pi.models.Questions;
+import com.example.pi.models.StudentScore;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class QuizRhActivity extends AppCompatActivity implements View.OnClickListener{
     ///declaracao das variaveis
     TextView totalquestionstv, question, actualuc;
     Button answer1,answer2,answer3,answer4, confirm;
     LinearLayout linearLayout;
+    EditText nameForRecord;
 
     int score = 0;
     int totalquestions = Questions.question.length;
@@ -38,6 +44,7 @@ public class QuizRhActivity extends AppCompatActivity implements View.OnClickLis
         confirm = findViewById(R.id.confirmarbt);
         actualuc = findViewById(R.id.ucatual);
         linearLayout = findViewById(R.id.layoutdasrespostas);
+        nameForRecord = findViewById(R.id.nameperson);
         ///seta o metodo de click nos botoes
         answer1.setOnClickListener(this);
         answer2.setOnClickListener(this);
@@ -55,17 +62,26 @@ public class QuizRhActivity extends AppCompatActivity implements View.OnClickLis
 
     private void changeLinearLayoutColor() {
         linearLayout.setBackgroundColor(Color.GREEN);
-        switch (unidadeCurricular){
-            case 1: linearLayout.setBackgroundColor(Color.GREEN);
-            case 2: linearLayout.setBackgroundColor(Color.BLUE);
-            case 3: linearLayout.setBackgroundColor(Color.RED);
-            case 4: linearLayout.setBackgroundColor(Color.YELLOW);
-            case 5: linearLayout.setBackgroundColor(Color.GRAY);
-            case 6: linearLayout.setBackgroundColor(Color.CYAN);
-            case 7: linearLayout.setBackgroundColor(Color.DKGRAY);
-            case 8: linearLayout.setBackgroundColor(Color.LTGRAY);
-            case 9: linearLayout.setBackgroundColor(-6434);
-            case 10: linearLayout.setBackgroundColor(-78566);
+        if (unidadeCurricular == 1){
+            linearLayout.setBackgroundColor(Color.GREEN);
+        }else if (unidadeCurricular == 2){
+            linearLayout.setBackgroundColor(Color.RED);
+        }else if(unidadeCurricular == 3){
+            linearLayout.setBackgroundColor(Color.BLUE);
+        }else if(unidadeCurricular == 4){
+            linearLayout.setBackgroundColor(Color.YELLOW);
+        }else if(unidadeCurricular == 5){
+            linearLayout.setBackgroundColor(Color.GRAY);
+        }else if(unidadeCurricular == 6){
+            linearLayout.setBackgroundColor(Color.CYAN);
+        }else if(unidadeCurricular == 7){
+            linearLayout.setBackgroundColor(Color.DKGRAY);
+        }else if(unidadeCurricular == 8){
+            linearLayout.setBackgroundColor(Color.LTGRAY);
+        }else if(unidadeCurricular == 9){
+            linearLayout.setBackgroundColor(-6434);
+        }else if(unidadeCurricular == 10){
+            linearLayout.setBackgroundColor(-78566);
         }
     }
 
@@ -82,33 +98,44 @@ public class QuizRhActivity extends AppCompatActivity implements View.OnClickLis
         answer3.setText(Questions.choices[currentQuestionIndex][2]);
         answer4.setText(Questions.choices[currentQuestionIndex][3]);
 
-        if (currentQuestionIndex > 10){
+        if (currentQuestionIndex >= 10){
             unidadeCurricular = 2;
-        }else if (currentQuestionIndex > 20){
+        }else if (currentQuestionIndex >= 20){
             unidadeCurricular = 3;
-        }else if (currentQuestionIndex > 30) {
+        }else if (currentQuestionIndex >= 30) {
             unidadeCurricular = 4;
-        }else if (currentQuestionIndex > 40) {
+        }else if (currentQuestionIndex >= 40) {
             unidadeCurricular = 5;
-        }else if (currentQuestionIndex > 50) {
+        }else if (currentQuestionIndex >= 50) {
             unidadeCurricular = 6;
-        }else if (currentQuestionIndex > 60) {
+        }else if (currentQuestionIndex >= 60) {
             unidadeCurricular = 7;
-        }else if (currentQuestionIndex > 70) {
+        }else if (currentQuestionIndex >= 70) {
             unidadeCurricular = 8;
-        }else if (currentQuestionIndex > 80) {
+        }else if (currentQuestionIndex >= 80) {
             unidadeCurricular = 9;
-        }else if (currentQuestionIndex > 90) {
+        }else if (currentQuestionIndex >= 90) {
             unidadeCurricular = 10;
         }
         actualuc.setText("UC " + unidadeCurricular);
+        changeLinearLayoutColor();
 
     }
 
 
     private void finishQuiz() {
         ///mostra os pontos que a pessoa fez
+        String getName = nameForRecord.getText().toString();
+
+        if (getName.equals(""))
+            getName = "Anônimo";
         String passStatus = "";
+
+        StudentScore studentScore = new StudentScore(getName, String.valueOf(score));
+
+        String id = "id" + System.currentTimeMillis();
+
+        FirebaseDatabase.getInstance().getReference().child("rankingrhquiz").child(id).setValue(studentScore);
         if(score > totalquestions*0.60){
             passStatus = "Passed";
         }else{
@@ -125,6 +152,7 @@ public class QuizRhActivity extends AppCompatActivity implements View.OnClickLis
     private void restartQuiz() {
         ///da restart no quiz
         score = 0;
+        unidadeCurricular = 1;
         currentQuestionIndex = 0;
         loadNewQuestion();
     }
@@ -156,5 +184,9 @@ public class QuizRhActivity extends AppCompatActivity implements View.OnClickLis
             selectedAnswer = clickedButton.getText().toString();
             clickedButton.setBackgroundColor(Color.MAGENTA);
         }
+    }
+    public void openRankingScreen(View v){
+        Intent intent = new Intent(QuizRhActivity.this, RecordsRHQuiz.class);
+        startActivity(intent);
     }
 }

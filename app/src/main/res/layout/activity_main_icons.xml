@@ -7,156 +7,154 @@
     android:fillViewport="true"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/azul"
-    tools:context=".MainIconsActivity">
-
-        <ImageView
-            android:id="@+id/senacsimbolo"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_marginTop="16dp"
-            android:layout_centerHorizontal="true"
-
-            app:srcCompat="@drawable/logo_senac_png" />
-
-        <ImageView
-            android:id="@+id/iconava"
-            android:layout_width="124dp"
-            android:layout_height="116dp"
-            android:layout_below="@id/nameapp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="2dp"
-            android:onClick="ava"
-            android:paddingTop="20dp"
-            android:paddingRight="20dp"
-            app:srcCompat="@drawable/ambientevirtual" />
-
-        <ImageView
-            android:id="@+id/iconmapeamento"
-            android:layout_width="110dp"
-            android:layout_height="113dp"
-            android:layout_below="@id/nameapp"
-            android:layout_centerHorizontal="true"
-            android:paddingTop="20dp"
-            android:onClick="mapeamento"
-            app:srcCompat="@drawable/mapeamento" />
-
-        <ImageView
-            android:id="@+id/iconfrequencia"
-            android:layout_width="113dp"
-            android:layout_height="112dp"
-            android:layout_below="@id/nameapp"
-            android:layout_alignParentLeft="true"
-            android:paddingTop="20dp"
-            android:paddingLeft="20dp"
-            android:onClick="frequencia"
-            app:srcCompat="@drawable/frequencia" />
-
-        <ImageView
-            android:id="@+id/iconbiblioteca"
-            android:layout_width="114dp"
-            android:layout_height="116dp"
-            android:layout_below="@id/iconfrequencia"
-            android:layout_alignParentLeft="true"
-            android:paddingTop="20dp"
-            android:paddingLeft="20dp"
-            android:onClick="biblioteca"
-            app:srcCompat="@drawable/biblioteca" />
-
-        <ImageView
-            android:id="@+id/iconcursosenac"
-            android:layout_width="120dp"
-            android:layout_height="118dp"
-            android:onClick="cursossenac"
-            android:layout_centerHorizontal="true"
-            android:paddingTop="20dp"
-            android:layout_below="@id/iconmapeamento"
-            app:srcCompat="@drawable/cursossenac" />
-
-        <ImageView
-            android:id="@+id/iconcursosdisponiveis"
-            android:layout_width="127dp"
-            android:layout_height="122dp"
-            android:layout_below="@id/iconava"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="0dp"
-            android:layout_marginRight="3dp"
-            android:onClick="cursosdisponiveis"
-            android:paddingTop="20dp"
-            android:paddingRight="20dp"
-            app:srcCompat="@drawable/cursosdisponiveis" />
-
-        <ImageView
-            android:id="@+id/iconaprendizagemcoemrcial"
-            android:layout_width="116dp"
-            android:layout_height="122dp"
-            android:onClick="aprendizagemcomercial"
-            android:layout_alignParentLeft="true"
-            android:paddingTop="20dp"
-            android:paddingLeft="20dp"
-            android:layout_below="@id/iconbiblioteca"
-            app:srcCompat="@drawable/aprendizagemcomercial" />
-
-        <ImageView
-            android:id="@+id/iconredecarreiras"
-            android:layout_width="119dp"
-            android:layout_height="121dp"
-            android:onClick="redecarreiras"
-            android:layout_below="@id/iconcursosenac"
-            android:layout_centerHorizontal="true"
-            android:paddingTop="20dp"
-            app:srcCompat="@drawable/rededecarreiras"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-        <ImageView
-            android:id="@+id/imageView14"
-            android:layout_width="126dp"
-            android:layout_height="122dp"
-            android:layout_below="@id/iconcursosdisponiveis"
-            android:paddingRight="20dp"
-            android:layout_alignParentRight="true"
-            android:paddingTop="20dp"
-            android:onClick="projetoint"
-            app:srcCompat="@drawable/projetointegrador" />
-
-        <ImageView
-            android:id="@+id/creditos"
-            android:layout_width="126dp"
-            android:layout_height="125dp"
-            android:onClick="creditos"
-            android:layout_centerHorizontal="true"
-            android:paddingTop="20dp"
-            android:layout_below="@id/iconredecarreiras"
-            app:srcCompat="@drawable/creditos" />
-
-        <TextView
-            android:id="@+id/nameapp"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/senacsimbolo"
-            android:gravity="center"
-            android:text="Sistema de Suport ao Aluno"
+            android:layout_height="match_parent"
+            android:background="@drawable/bluebackground"
+            tools:context=".MainIconsActivity">
 
-            android:textColor="@color/white"
-            android:textSize="20dp" />
+                <ImageView
+                    android:id="@+id/senacsimbolo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="16dp"
 
-        <ImageView
-            android:id="@+id/icongame"
-            android:layout_width="126dp"
-            android:layout_height="106dp"
-            android:paddingTop="20dp"
-            android:paddingLeft="20dp"
-            android:layout_below="@+id/iconaprendizagemcoemrcial"
-            android:layout_alignParentLeft="true"
-            android:onClick="postarQuiz"
-            app:srcCompat="@drawable/jogos" />
+                    app:srcCompat="@drawable/logo_senac_png" />
+
+                <ImageView
+                    android:id="@+id/iconava"
+                    android:layout_width="124dp"
+                    android:layout_height="116dp"
+                    android:layout_below="@id/nameapp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="2dp"
+                    android:onClick="ava"
+                    android:paddingTop="20dp"
+                    android:paddingRight="20dp"
+                    app:srcCompat="@drawable/ambientevirtual" />
+
+                <ImageView
+                    android:id="@+id/iconmapeamento"
+                    android:layout_width="110dp"
+                    android:layout_height="113dp"
+                    android:layout_below="@id/nameapp"
+                    android:layout_centerHorizontal="true"
+                    android:onClick="mapeamento"
+                    android:paddingTop="20dp"
+                    app:srcCompat="@drawable/mapeamento" />
+
+                <ImageView
+                    android:id="@+id/iconfrequencia"
+                    android:layout_width="113dp"
+                    android:layout_height="112dp"
+                    android:layout_below="@id/nameapp"
+                    android:layout_alignParentLeft="true"
+                    android:onClick="frequencia"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="20dp"
+                    app:srcCompat="@drawable/frequencia" />
+
+                <ImageView
+                    android:id="@+id/iconbiblioteca"
+                    android:layout_width="114dp"
+                    android:layout_height="116dp"
+                    android:layout_below="@id/iconfrequencia"
+                    android:layout_alignParentLeft="true"
+                    android:onClick="biblioteca"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="20dp"
+                    app:srcCompat="@drawable/biblioteca" />
+
+                <ImageView
+                    android:id="@+id/iconcursosenac"
+                    android:layout_width="120dp"
+                    android:layout_height="118dp"
+                    android:layout_below="@id/iconmapeamento"
+                    android:layout_centerHorizontal="true"
+                    android:onClick="cursossenac"
+                    android:paddingTop="20dp"
+                    app:srcCompat="@drawable/cursossenac" />
+
+                <ImageView
+                    android:id="@+id/iconcursosdisponiveis"
+                    android:layout_width="127dp"
+                    android:layout_height="122dp"
+                    android:layout_below="@id/iconava"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginRight="3dp"
+                    android:onClick="cursosdisponiveis"
+                    android:paddingTop="20dp"
+                    android:paddingRight="20dp"
+                    app:srcCompat="@drawable/cursosdisponiveis" />
+
+                <ImageView
+                    android:id="@+id/iconaprendizagemcoemrcial"
+                    android:layout_width="116dp"
+                    android:layout_height="122dp"
+                    android:layout_below="@id/iconbiblioteca"
+                    android:layout_alignParentLeft="true"
+                    android:onClick="aprendizagemcomercial"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="20dp"
+                    app:srcCompat="@drawable/aprendizagemcomercial" />
+
+                <ImageView
+                    android:id="@+id/iconredecarreiras"
+                    android:layout_width="119dp"
+                    android:layout_height="121dp"
+                    android:layout_below="@id/iconcursosenac"
+                    android:layout_centerHorizontal="true"
+                    android:onClick="redecarreiras"
+                    android:paddingTop="20dp"
+                    app:srcCompat="@drawable/rededecarreiras"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <ImageView
+                    android:id="@+id/imageView14"
+                    android:layout_width="126dp"
+                    android:layout_height="122dp"
+                    android:layout_below="@id/iconcursosdisponiveis"
+                    android:layout_alignParentRight="true"
+                    android:onClick="projetoint"
+                    android:paddingTop="20dp"
+                    android:paddingRight="20dp"
+                    app:srcCompat="@drawable/projetointegrador" />
+
+                <ImageView
+                    android:id="@+id/creditos"
+                    android:layout_width="126dp"
+                    android:layout_height="125dp"
+                    android:layout_below="@id/iconredecarreiras"
+                    android:layout_centerHorizontal="true"
+                    android:onClick="creditos"
+                    android:paddingTop="20dp"
+                    app:srcCompat="@drawable/creditos" />
+
+                <TextView
+                    android:id="@+id/nameapp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/senacsimbolo"
+                    android:gravity="center"
+                    android:text="Sistema de Suport ao Aluno"
+
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+                <ImageView
+                    android:id="@+id/icongame"
+                    android:layout_width="126dp"
+                    android:layout_height="106dp"
+                    android:layout_below="@+id/iconaprendizagemcoemrcial"
+                    android:layout_alignParentLeft="true"
+                    android:onClick="openGames"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="20dp"
+                    app:srcCompat="@drawable/jogos" />
 
 
-</RelativeLayout>
+        </RelativeLayout>
 
 </androidx.core.widget.NestedScrollView>

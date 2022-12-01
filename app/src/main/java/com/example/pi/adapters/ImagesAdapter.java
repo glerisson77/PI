@@ -14,8 +14,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pi.R;
+import com.example.pi.RecordsRHQuiz;
 import com.example.pi.models.DatabaseRA;
 import com.example.pi.models.ProjectInformation;
+import com.example.pi.models.StudentScore;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -35,7 +37,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
     ArrayList<ProjectInformation> list;
     DatabaseRA myDB;
 
-    public ImagesAdapter(){}
+    public ImagesAdapter(RecordsRHQuiz context, ArrayList<StudentScore> list){}
 
     public ImagesAdapter(Context context, ArrayList<ProjectInformation> list) {
         this.context = context;

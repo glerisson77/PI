@@ -26,7 +26,7 @@ public class MainIconsActivity extends AppCompatActivity {
         }else{
             logged = true;
         }
-        Toast.makeText(this, ra, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, ra, Toast.LENGTH_SHORT).show();
     }
     public void frequencia(View v){
         abrirLink("https://www.mg.senac.br/ambienteacademico/detalheCurso");
@@ -39,10 +39,11 @@ public class MainIconsActivity extends AppCompatActivity {
     }
     public void biblioteca(View v){
         ///corrigir link que está crashando o app
-        abrirLink("mg.senac.br/faculdade/Paginas/biblioteca-nova.aspx");
+//        Toast.makeText(MainIconsActivity.this, "Recurso ainda não implementado", Toast.LENGTH_SHORT).show();
+        abrirLink("https://pergamum.mg.senac.br/pergamum/biblioteca_s/php/login_usu.php");
     }
     public void cursossenac(View v){
-        ///abre a tela info cursos
+        ///abre a tela info cursos jenifer
         Toast.makeText(MainIconsActivity.this, "Recurso ainda não implementado", Toast.LENGTH_SHORT).show();
     }
     public void cursosdisponiveis(View v){
@@ -71,9 +72,9 @@ public class MainIconsActivity extends AppCompatActivity {
         Uri uri = Uri.parse(link);
         startActivity(new Intent(Intent.ACTION_VIEW, uri));
     }
-    public void postarQuiz(View v){
+    public void openGames(View v){
         if (logged){
-            Intent intent = new Intent(MainIconsActivity.this, QuizRhActivity.class);
+            Intent intent = new Intent(MainIconsActivity.this, GamesActivity.class);
             startActivity(intent);
         }else{
             Toast.makeText(this, "Você deve estar logado para usar esta ferramenta", Toast.LENGTH_SHORT).show();

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blueicon"
+    android:background="@drawable/bluebackground"
     android:padding="24dp"
     tools:context=".QuizRhActivity">
 
@@ -16,6 +16,15 @@
         android:onClick="sair"
         android:text="sair" />
 
+    <Button
+        android:id="@+id/rankingbt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/sairquizbt"
+        android:backgroundTint="@color/azul"
+        android:onClick="openRankingScreen"
+        android:text="ranking" />
+
     <TextView
         android:id="@+id/totalperguntas"
         android:layout_width="match_parent"
@@ -23,7 +32,7 @@
         android:text="Pergunta: "
         android:textColor="@color/white"
         android:textSize="24dp"
-        android:textAlignment="center"/>
+        android:layout_alignParentLeft="true"/>
 
     <TextView
         android:id="@+id/ucatual"
@@ -52,9 +61,9 @@
     <LinearLayout
         android:id="@+id/layoutdasrespostas"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="250dp"
         android:layout_centerInParent="true"
-        android:background="@color/green"
+        android:background="@drawable/strongbluebackground"
         android:orientation="vertical">
 
         <Button
@@ -64,7 +73,8 @@
             android:layout_margin="5dp"
             android:backgroundTint="@color/white"
             android:text="resposta 1"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black" />
+
         <Button
             android:id="@+id/resposta2"
             android:layout_width="match_parent"
@@ -73,6 +83,7 @@
             android:backgroundTint="@color/white"
             android:text="resposta 2"
             android:textColor="@color/black" />
+
         <Button
             android:id="@+id/resposta3"
             android:layout_width="match_parent"
@@ -80,7 +91,8 @@
             android:layout_margin="5dp"
             android:backgroundTint="@color/white"
             android:text="resposta 3"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black" />
+
         <Button
             android:id="@+id/resposta4"
             android:layout_width="match_parent"
@@ -88,7 +100,7 @@
             android:layout_margin="5dp"
             android:backgroundTint="@color/white"
             android:text="resposta 4"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black" />
     </LinearLayout>
     <Button
         android:id="@+id/confirmarbt"
@@ -99,6 +111,18 @@
         android:text="confirmar"
         android:textColor="@color/black"
         android:layout_below="@id/layoutdasrespostas"/>
+
+    <EditText
+        android:id="@+id/nameperson"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:textColor="@color/black"
+        android:textSize="45dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Escreva seu nome: "
+        android:layout_alignParentBottom="true"/>
 
 
 </RelativeLayout>
