@@ -138,7 +138,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/senacsimbolo"
                     android:gravity="center"
-                    android:text="Sistema de Suport ao Aluno"
+                    android:text="Sistema de Suporte ao Aluno"
 
                     android:textColor="@color/white"
                     android:textSize="20dp" />

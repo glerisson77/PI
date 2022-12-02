@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bluebackground"
+    android:background="@drawable/whitecurledbackground"
     android:padding="24dp"
     tools:context=".QuizRhActivity">
 
@@ -29,17 +29,19 @@
         android:id="@+id/totalperguntas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/rankingbt"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="19dp"
         android:text="Pergunta: "
-        android:textColor="@color/white"
-        android:textSize="24dp"
-        android:layout_alignParentLeft="true"/>
+        android:textColor="@color/black"
+        android:textSize="24dp" />
 
     <TextView
         android:id="@+id/ucatual"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="UC "
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="24dp"
         android:textAlignment="center"
         android:layout_above="@id/perguntatv"/>
@@ -55,7 +57,7 @@
         android:layout_marginBottom="20dp"
         android:text="Pergunta"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="24dp" />
 
     <LinearLayout
@@ -107,16 +109,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:backgroundTint="@color/orange_strong"
+        android:backgroundTint="@color/lightgray"
         android:text="confirmar"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:layout_below="@id/layoutdasrespostas"/>
 
     <EditText
         android:id="@+id/nameperson"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/lightgray"
         android:textColor="@color/black"
         android:textSize="45dp"
         android:ems="10"

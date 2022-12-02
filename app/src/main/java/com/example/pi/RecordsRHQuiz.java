@@ -19,11 +19,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class RecordsRHQuiz extends AppCompatActivity {
 
     DatabaseReference databaseReference;
     ListView studentsScoreListView;
+    ArrayList<StudentScore> studentScoresSortList;
     int cont;
 
     @Override
@@ -32,6 +35,7 @@ public class RecordsRHQuiz extends AppCompatActivity {
         setContentView(R.layout.activity_records_rhquiz);
         databaseReference = FirebaseDatabase.getInstance().getReference("rankingrhquiz");
         studentsScoreListView = findViewById(R.id.rankinglist);
+        studentScoresSortList = new ArrayList<>();
 
         ArrayList<String> list = new ArrayList<>();
         ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.records_list_item, list);
@@ -41,11 +45,26 @@ public class RecordsRHQuiz extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
                 cont = 0;
+                ///obtem os valores do database e gera objeto do tipo studentscore a partir dos valores
                 for (DataSnapshot snapshot1: snapshot.getChildren()){
                     if (cont < 10){
                         StudentScore studentScore = snapshot1.getValue(StudentScore.class);
-                        list.add(cont + 1+"° " +studentScore.getStudentName() + " : " + studentScore.getStudentScorePoint());
+                        studentScoresSortList.add(studentScore);
+//                        list.add(cont + 1+"° " +studentScore.getStudentName() + " : " + studentScore.getStudentScorePoint());
                     }
+
+                }
+                ///organiza a lista de rankings do maior para o menor
+                Collections.sort(studentScoresSortList, new Comparator<StudentScore>() {
+                    @Override
+                    public int compare(StudentScore studentScoret1, StudentScore studentScoret2) {
+                        ///compara em ordem decrescente, inverter o objeto para or crescente
+                        return studentScoret2.getStudentScorePoint().compareTo(studentScoret1.getStudentScorePoint());
+                    }
+                });
+                for (StudentScore studentScore : studentScoresSortList){
+                    ///adiciona o nome e pontos da pessoa na listview
+                    list.add(cont + 1+"° " +studentScore.getStudentName() + " : " + studentScore.getStudentScorePoint());
                     cont++;
                 }
                 adapter.notifyDataSetChanged();

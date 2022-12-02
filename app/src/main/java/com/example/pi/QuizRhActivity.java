@@ -1,5 +1,7 @@
 package com.example.pi;
 
+import static com.example.pi.R.drawable.whitecurledbackground;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -61,15 +63,17 @@ public class QuizRhActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void changeLinearLayoutColor() {
-        linearLayout.setBackgroundColor(Color.GREEN);
+//        linearLayout.setBackgroundColor(Color.GREEN);
         if (unidadeCurricular == 1){
-            linearLayout.setBackgroundColor(Color.GREEN);
+//            linearLayout.setBackgroundColor(Color.GREEN);
+            linearLayout.setBackground(getDrawable(R.drawable.orangebackground));
         }else if (unidadeCurricular == 2){
             linearLayout.setBackgroundColor(Color.RED);
         }else if(unidadeCurricular == 3){
             linearLayout.setBackgroundColor(Color.BLUE);
         }else if(unidadeCurricular == 4){
             linearLayout.setBackgroundColor(Color.YELLOW);
+
         }else if(unidadeCurricular == 5){
             linearLayout.setBackgroundColor(Color.GRAY);
         }else if(unidadeCurricular == 6){
@@ -92,7 +96,7 @@ public class QuizRhActivity extends AppCompatActivity implements View.OnClickLis
             return;
         }
         ///seta o texto das perguntas e respostas nos botoes
-        question.setText("Pergunta " + (currentQuestionIndex  + 1) + " " + Questions.question[currentQuestionIndex]);
+        question.setText("Pergunta " + (currentQuestionIndex  + 1) + " '" + Questions.question[currentQuestionIndex] + "'");
         answer1.setText(Questions.choices[currentQuestionIndex][0]);
         answer2.setText(Questions.choices[currentQuestionIndex][1]);
         answer3.setText(Questions.choices[currentQuestionIndex][2]);
