@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.pi.MainIconsActivity">
+
+    <item
+        android:id="@+id/action_sobre"
+        android:orderInCategory="100"
+        android:title="Sobre "
+        app:showAsAction="never" />
+
+</menu>

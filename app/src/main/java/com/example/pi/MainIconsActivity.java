@@ -6,10 +6,13 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.pi.models.DatabaseRA;
+import com.example.pi.models.MessageDialog;
 
 public class MainIconsActivity extends AppCompatActivity {
     DatabaseRA myDB;
@@ -28,6 +31,14 @@ public class MainIconsActivity extends AppCompatActivity {
         }
 //        Toast.makeText(this, ra, Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main_icons, menu);
+        return true;
+    }
+
     public void frequencia(View v){
         abrirLink("https://www.mg.senac.br/ambienteacademico/detalheCurso");
     }
@@ -79,6 +90,15 @@ public class MainIconsActivity extends AppCompatActivity {
         }else{
             Toast.makeText(this, "Você deve estar logado para usar esta ferramenta", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void about(View v){
+        showUpDialogMessage("aqui vai ficar o texto sobre o app ", "Sobre o aplicativo");
+    }
+
+    public void showUpDialogMessage(String txt, String title){
+        MessageDialog messageDialog = new MessageDialog(txt, title);
+        messageDialog.show(getSupportFragmentManager(), "mensagem");
     }
 
     public String getRaFromDB(){

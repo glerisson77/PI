@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Projeto Integrador</string>
+    <string name="app_name">Sistema de suporte ao aluno</string>
     <string name="entrar">ENTRAR</string>
     <string name="text_cadastro">Cadastre-se</string>
     <string name="titulo_cadastro">Cadastre-se</string>
