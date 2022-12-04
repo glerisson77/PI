@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/whitecurledbackground"
+    android:background="@color/light_teal"
     android:padding="24dp"
     tools:context=".QuizRhActivity">
 
@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@id/sairquizbt"
-        android:backgroundTint="@color/azul"
+        android:backgroundTint="@color/mainblue"
         android:onClick="openRankingScreen"
         android:text="ranking" />
 
@@ -65,7 +65,7 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_centerInParent="true"
-        android:background="@drawable/strongbluebackground"
+
         android:orientation="vertical">
 
         <Button
@@ -104,15 +104,19 @@
             android:text="resposta 4"
             android:textColor="@color/black" />
     </LinearLayout>
+
     <Button
         android:id="@+id/confirmarbt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:backgroundTint="@color/lightgray"
+        android:layout_below="@id/layoutdasrespostas"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:backgroundTint="@color/orange_strong"
         android:text="confirmar"
-        android:textColor="@color/white"
-        android:layout_below="@id/layoutdasrespostas"/>
+        android:textColor="@color/white" />
 
     <EditText
         android:id="@+id/nameperson"

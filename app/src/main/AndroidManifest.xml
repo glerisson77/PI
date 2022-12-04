@@ -69,14 +69,16 @@
         </activity>
         <activity
             android:name=".CreditsActivity"
-            android:exported="false">
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".MainIconsActivity"
-            android:exported="false">
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
