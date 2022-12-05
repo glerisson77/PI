@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.pi.adapters.ImagesAdapter;
+import com.example.pi.models.DatabaseRA;
 import com.example.pi.models.ProjectInformation;
 import com.example.pi.models.StudentScore;
 import com.google.firebase.database.DataSnapshot;
@@ -25,8 +28,11 @@ import java.util.Comparator;
 public class RecordsRHQuiz extends AppCompatActivity {
 
     DatabaseReference databaseReference;
+    DatabaseRA myDB;
     ListView studentsScoreListView;
     ArrayList<StudentScore> studentScoresSortList;
+    ArrayList<Integer> myScores;
+    TextView myRecord;
     int cont;
 
     @Override
@@ -34,8 +40,11 @@ public class RecordsRHQuiz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_records_rhquiz);
         databaseReference = FirebaseDatabase.getInstance().getReference("rankingrhquiz");
+        myDB = new DatabaseRA(this);
         studentsScoreListView = findViewById(R.id.rankinglist);
         studentScoresSortList = new ArrayList<>();
+        myScores = new ArrayList<>();
+        myRecord = findViewById(R.id.minhapontuação);
 
         ArrayList<String> list = new ArrayList<>();
         ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.records_list_item, list);
@@ -49,6 +58,10 @@ public class RecordsRHQuiz extends AppCompatActivity {
                 for (DataSnapshot snapshot1: snapshot.getChildren()){
                     if (cont < 10){
                         StudentScore studentScore = snapshot1.getValue(StudentScore.class);
+                        if (studentScore.getRa().equals(getRaFromDB()))
+                            myScores.add(Integer.getInteger(studentScore.getStudentScorePoint()));
+                        Collections.sort(myScores);
+                            myRecord.setText(myScores.get(myScores.size() -1));
                         studentScoresSortList.add(studentScore);
 //                        list.add(cont + 1+"° " +studentScore.getStudentName() + " : " + studentScore.getStudentScorePoint());
                     }
@@ -76,5 +89,20 @@ public class RecordsRHQuiz extends AppCompatActivity {
             }
         });
 
+    }
+
+    public String getRaFromDB(){
+        Cursor res = myDB.getAllData();
+        if (res.getCount() == 0){
+        }
+        StringBuffer buffer = new StringBuffer();
+//        while (res.moveToNext()){
+//            buffer.append(res.getString(0));
+//        }
+        res.moveToNext();
+        buffer.append(res.getString(0));
+
+        String ra_text = buffer.toString();
+        return ra_text;
     }
 }

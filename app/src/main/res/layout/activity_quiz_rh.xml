@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_teal"
+    android:background="@drawable/lightbluebackgorund"
     android:padding="24dp"
     tools:context=".QuizRhActivity">
 
@@ -13,122 +13,123 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:backgroundTint="@color/red"
         android:onClick="sair"
-        android:text="sair" />
-
-    <Button
-        android:id="@+id/rankingbt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toLeftOf="@id/sairquizbt"
-        android:backgroundTint="@color/mainblue"
-        android:onClick="openRankingScreen"
-        android:text="ranking" />
-
-    <TextView
-        android:id="@+id/totalperguntas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rankingbt"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="19dp"
-        android:text="Pergunta: "
-        android:textColor="@color/black"
-        android:textSize="24dp" />
+        android:text="sair"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/ucatual"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/nperguntasdetperguntas"
         android:text="UC "
-        android:textColor="@color/black"
-        android:textSize="24dp"
         android:textAlignment="center"
-        android:layout_above="@id/perguntatv"/>
+        android:textColor="@color/white"
+        android:textSize="24dp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/perguntatv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/layoutdasrespostas"
+        android:layout_below="@id/ucatual"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:text="Pergunta"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="24dp" />
+        android:textAlignment="textStart"
+        android:textColor="@color/white"
+        android:textSize="24dp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:id="@+id/layoutdasrespostas"
+        android:layout_below="@id/perguntatv"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="350dp"
         android:layout_centerInParent="true"
-
         android:orientation="vertical">
 
         <Button
             android:id="@+id/resposta1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_margin="5dp"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/lightyellow"
+            android:gravity="left"
             android:text="resposta 1"
             android:textColor="@color/black" />
 
         <Button
             android:id="@+id/resposta2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_margin="5dp"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/lightyellow"
+            android:gravity="left"
             android:text="resposta 2"
             android:textColor="@color/black" />
 
         <Button
             android:id="@+id/resposta3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_margin="5dp"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/lightyellow"
+            android:gravity="left"
             android:text="resposta 3"
             android:textColor="@color/black" />
 
         <Button
             android:id="@+id/resposta4"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_margin="5dp"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/lightyellow"
+            android:gravity="left"
             android:text="resposta 4"
             android:textColor="@color/black" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/confirmarbt"
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/layoutdasrespostas"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
-        android:backgroundTint="@color/orange_strong"
-        android:text="confirmar"
-        android:textColor="@color/white" />
+        android:layout_above="@id/nameperson"
+        android:layout_alignParentLeft="true"
+        android:text="Digite o seu nome aqui: "
+        android:textColor="@color/white"
+        android:textSize="30dp" />
 
     <EditText
         android:id="@+id/nameperson"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/lightgray"
-        android:textColor="@color/black"
-        android:textSize="45dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/lightyellowbuttonbackground"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Escreva seu nome: "
-        android:layout_alignParentBottom="true"/>
+        android:textColor="@color/black"
+        android:textSize="45dp" />
+
+    <ProgressBar
+        android:id="@+id/progressbarrhquiz"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sairquizbt" />
+
+    <TextView
+        android:id="@+id/nperguntasdetperguntas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/progressbarrhquiz"
+        android:text=" "
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

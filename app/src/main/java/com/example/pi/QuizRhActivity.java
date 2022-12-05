@@ -6,25 +6,31 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.pi.models.DatabaseRA;
 import com.example.pi.models.Questions;
 import com.example.pi.models.StudentScore;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.internal.Sleeper;
 
 public class QuizRhActivity extends AppCompatActivity implements View.OnClickListener{
     ///declaracao das variaveis
-    TextView totalquestionstv, question, actualuc;
-    Button answer1,answer2,answer3,answer4, confirm;
+    TextView question, actualuc, numberQuestions;
+    Button answer1,answer2,answer3,answer4;
     LinearLayout linearLayout;
     EditText nameForRecord;
+    ProgressBar progressBar;
+    DatabaseRA myDB;
 
     int score = 0;
     int totalquestions = Questions.question.length;
@@ -37,70 +43,54 @@ public class QuizRhActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_rh);
         ///atribui as views as variaveis
-        totalquestionstv = findViewById(R.id.totalperguntas);
+        myDB = new DatabaseRA(this);
         question = findViewById(R.id.perguntatv);
         answer1 = findViewById(R.id.resposta1);
         answer2 = findViewById(R.id.resposta2);
         answer3 = findViewById(R.id.resposta3);
         answer4 = findViewById(R.id.resposta4);
-        confirm = findViewById(R.id.confirmarbt);
         actualuc = findViewById(R.id.ucatual);
+        numberQuestions = findViewById(R.id.nperguntasdetperguntas);
         linearLayout = findViewById(R.id.layoutdasrespostas);
         nameForRecord = findViewById(R.id.nameperson);
+
         ///seta o metodo de click nos botoes
         answer1.setOnClickListener(this);
         answer2.setOnClickListener(this);
         answer3.setOnClickListener(this);
         answer4.setOnClickListener(this);
-        confirm.setOnClickListener(this);
     ///coloca o numero de perguntas do quiz
-    totalquestionstv.setText("Perguntas totais : " + totalquestions);
+    numberQuestions.setText(currentQuestionIndex + "/" + totalquestions);
     actualuc.setText("UC " + unidadeCurricular);
+        prog();
     ///carrega as perguntas
     loadNewQuestion();
-    changeLinearLayoutColor();
 
     }
 
-    private void changeLinearLayoutColor() {
-//        linearLayout.setBackgroundColor(Color.GREEN);
-        if (unidadeCurricular == 1){
-//            linearLayout.setBackgroundColor(Color.GREEN);
-            linearLayout.setBackground(getDrawable(R.drawable.orangebackground));
-        }else if (unidadeCurricular == 2){
-            linearLayout.setBackgroundColor(Color.RED);
-        }else if(unidadeCurricular == 3){
-            linearLayout.setBackgroundColor(Color.BLUE);
-        }else if(unidadeCurricular == 4){
-            linearLayout.setBackgroundColor(Color.YELLOW);
-
-        }else if(unidadeCurricular == 5){
-            linearLayout.setBackgroundColor(Color.GRAY);
-        }else if(unidadeCurricular == 6){
-            linearLayout.setBackgroundColor(Color.CYAN);
-        }else if(unidadeCurricular == 7){
-            linearLayout.setBackgroundColor(Color.DKGRAY);
-        }else if(unidadeCurricular == 8){
-            linearLayout.setBackgroundColor(Color.LTGRAY);
-        }else if(unidadeCurricular == 9){
-            linearLayout.setBackgroundColor(-6434);
-        }else if(unidadeCurricular == 10){
-            linearLayout.setBackgroundColor(-78566);
-        }
+    private void prog() {
+        progressBar = findViewById(R.id.progressbarrhquiz);
+        progressBar.setProgress(currentQuestionIndex);
     }
 
     private void loadNewQuestion() {
+        prog();
+        numberQuestions.setText(currentQuestionIndex + "/" + totalquestions);
 
         if(currentQuestionIndex == totalquestions){
             finishQuiz();
             return;
         }
         ///seta o texto das perguntas e respostas nos botoes
-        question.setText("Pergunta " + (currentQuestionIndex  + 1) + " '" + Questions.question[currentQuestionIndex] + "'");
+        question.setText(" '" + Questions.question[currentQuestionIndex] + "'");
         answer1.setText(Questions.choices[currentQuestionIndex][0]);
         answer2.setText(Questions.choices[currentQuestionIndex][1]);
         answer3.setText(Questions.choices[currentQuestionIndex][2]);
         answer4.setText(Questions.choices[currentQuestionIndex][3]);
+        answer1.setBackgroundColor(Color.rgb(255,230,153));
+        answer2.setBackgroundColor(Color.rgb(255,230,153));
+        answer3.setBackgroundColor(Color.rgb(255,230,153));
+        answer4.setBackgroundColor(Color.rgb(255,230,153));
 
         if (currentQuestionIndex >= 10){
             unidadeCurricular = 2;
@@ -122,7 +112,6 @@ public class QuizRhActivity extends AppCompatActivity implements View.OnClickLis
             unidadeCurricular = 10;
         }
         actualuc.setText("UC " + unidadeCurricular);
-        changeLinearLayoutColor();
 
     }
 
@@ -135,7 +124,7 @@ public class QuizRhActivity extends AppCompatActivity implements View.OnClickLis
             getName = "Anônimo";
         String passStatus = "";
 
-        StudentScore studentScore = new StudentScore(getName, String.valueOf(score));
+        StudentScore studentScore = new StudentScore(getName, String.valueOf(score), getRaFromDB());
 
         String id = "id" + System.currentTimeMillis();
 
@@ -167,30 +156,39 @@ public class QuizRhActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
-        ///coloca o cor dos botoes de volta para o branco
-        answer1.setBackgroundColor(Color.WHITE);
-        answer2.setBackgroundColor(Color.WHITE);
-        answer3.setBackgroundColor(Color.WHITE);
-        answer4.setBackgroundColor(Color.WHITE);
+        ///coloca o cor dos botoes de volta para o amarelo
+        answer1.setBackgroundColor(Color.rgb(255,230,153));
+        answer2.setBackgroundColor(Color.rgb(255,230,153));
+        answer3.setBackgroundColor(Color.rgb(255,230,153));
+        answer4.setBackgroundColor(Color.rgb(255,230,153));
 
         Button clickedButton = (Button) view;
         ///se selecionar a resposta certa aumenta o score
-        if (clickedButton.getId() == R.id.confirmarbt){
-            if(selectedAnswer.equals(Questions.correctAnswers[currentQuestionIndex])){
-                score++;
-            }
-            currentQuestionIndex++;
-            changeLinearLayoutColor();
-            loadNewQuestion();
 
-        }else{
-            //if choice button clicked
-            selectedAnswer = clickedButton.getText().toString();
-            clickedButton.setBackgroundColor(Color.MAGENTA);
+        selectedAnswer = clickedButton.getText().toString();
+        clickedButton.setBackgroundColor(Color.BLUE);
+
+        if(selectedAnswer.equals(Questions.correctAnswers[currentQuestionIndex])){
+            score++;
         }
+        currentQuestionIndex++;
+        loadNewQuestion();
+
     }
-    public void openRankingScreen(View v){
-        Intent intent = new Intent(QuizRhActivity.this, RecordsRHQuiz.class);
-        startActivity(intent);
+
+    public String getRaFromDB(){
+        Cursor res = myDB.getAllData();
+        if (res.getCount() == 0){
+        }
+        StringBuffer buffer = new StringBuffer();
+//        while (res.moveToNext()){
+//            buffer.append(res.getString(0));
+//        }
+        res.moveToNext();
+        buffer.append(res.getString(0));
+
+        String ra_text = buffer.toString();
+        return ra_text;
     }
+
 }

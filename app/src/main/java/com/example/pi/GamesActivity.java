@@ -15,7 +15,7 @@ public class GamesActivity extends AppCompatActivity {
     }
 
     public void OpenQuizRH(View v){
-        Intent intent = new Intent(GamesActivity.this, QuizRhActivity.class);
+        Intent intent = new Intent(GamesActivity.this, RhQuizInitialScreenActivity.class);
         startActivity(intent);
     }
 }
