@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.pi.adapters.ImagesAdapter;
 import com.example.pi.models.DatabaseRA;
@@ -58,10 +59,16 @@ public class RecordsRHQuiz extends AppCompatActivity {
                 for (DataSnapshot snapshot1: snapshot.getChildren()){
                     if (cont < 10){
                         StudentScore studentScore = snapshot1.getValue(StudentScore.class);
-                        if (studentScore.getRa().equals(getRaFromDB()))
-                            myScores.add(Integer.getInteger(studentScore.getStudentScorePoint()));
-                        Collections.sort(myScores);
-                            myRecord.setText(myScores.get(myScores.size() -1));
+                        if (studentScore.getRa().equals(getRaFromDB())){
+//                            if (!studentScore.getStudentScorePoint().equals(""))
+                            myScores.add(studentScore.getStudentScorePoint());
+                            Collections.sort(myScores);
+                            if (myScores.size() < 1){
+                                myRecord.setText(String.valueOf(myScores.get(myScores.size() -1)));
+                            }else{
+                                myRecord.setText("Você ainda não pontuou");
+                            }
+                        }
                         studentScoresSortList.add(studentScore);
 //                        list.add(cont + 1+"° " +studentScore.getStudentName() + " : " + studentScore.getStudentScorePoint());
                     }
@@ -72,7 +79,8 @@ public class RecordsRHQuiz extends AppCompatActivity {
                     @Override
                     public int compare(StudentScore studentScoret1, StudentScore studentScoret2) {
                         ///compara em ordem decrescente, inverter o objeto para or crescente
-                        return studentScoret2.getStudentScorePoint().compareTo(studentScoret1.getStudentScorePoint());
+                        return Integer.compare(studentScoret2.getStudentScorePoint(), studentScoret1.getStudentScorePoint());
+//                        return studentScoret2.getStudentScorePoint().compareTo(studentScoret1.getStudentScorePoint());
                     }
                 });
                 for (StudentScore studentScore : studentScoresSortList){

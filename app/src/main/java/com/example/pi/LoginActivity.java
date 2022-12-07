@@ -3,6 +3,7 @@ package com.example.pi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
@@ -24,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     CheckBox ver_senha;
     private EditText emailet;
     private EditText password;
-    private Button login;
+    private Button login, entrar;
     private DatabaseRA dataBaseHelper;
 
     private FirebaseAuth auth;
@@ -34,7 +35,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        edit_senha = findViewById(R.id.edit_senha);
         ver_senha = findViewById(R.id.ver_senha);
 
         ver_senha.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -48,21 +48,18 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
         dataBaseHelper = new DatabaseRA(LoginActivity.this);
         emailet = findViewById(R.id.edit_ra);
         password = findViewById(R.id.edit_senha);
         login = findViewById(R.id.bt_entrar);
-
         auth = FirebaseAuth.getInstance();
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                login.setBackgroundColor(Color.rgb(39,69,123));
                 String txt_email = emailet.getText().toString() + "@senacminas.edu.br";
                 ///we will use the ra to store in sqllite and further upload the project with ra and use the ra reference to grant the user delete only his/her project
-
-
                 String text_password = password.getText().toString();
                 if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(text_password)){
                     Toast.makeText(LoginActivity.this, "Um dos campos está vazio", Toast.LENGTH_SHORT).show();
@@ -97,5 +94,11 @@ public class LoginActivity extends AppCompatActivity {
         dataBaseHelper.insertData(ra);
         startActivity(new Intent(LoginActivity.this, MainIconsActivity.class));
         finish();
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        login.setBackgroundColor(Color.rgb(68,114,195));
     }
 }

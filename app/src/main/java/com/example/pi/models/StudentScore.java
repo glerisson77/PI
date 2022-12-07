@@ -3,15 +3,15 @@ package com.example.pi.models;
 public class StudentScore {
 
     private String studentName;
-    private String studentScorePoint;
+    private int studentScorePoint;
     private String Ra;
 
     public StudentScore(){}
 
-    public StudentScore(String studentName, String studentScorePoint, String Ra) {
+    public StudentScore(String studentName, int studentScorePoint, String ra) {
         this.studentName = studentName;
         this.studentScorePoint = studentScorePoint;
-        this.Ra = Ra;
+        Ra = ra;
     }
 
     public String getStudentName() {
@@ -22,11 +22,11 @@ public class StudentScore {
         this.studentName = studentName;
     }
 
-    public String getStudentScorePoint() {
+    public int getStudentScorePoint() {
         return studentScorePoint;
     }
 
-    public void setStudentScorePoint(String studentScorePoint) {
+    public void setStudentScorePoint(int studentScorePoint) {
         this.studentScorePoint = studentScorePoint;
     }
 
@@ -35,6 +35,6 @@ public class StudentScore {
     }
 
     public void setRa(String ra) {
-        this.Ra = ra;
+        Ra = ra;
     }
 }

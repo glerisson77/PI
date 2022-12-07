@@ -32,7 +32,8 @@
         <EditText
             android:id="@+id/edit_ra"
             style="@style/Edit_Text"
-            android:hint="RA"
+            android:hint="Digite seu RA:"
+            android:textColorHint="@color/black"
             android:inputType="numberDecimal"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="@id/containerComponets"
@@ -42,7 +43,8 @@
         <EditText
             android:id="@+id/edit_senha"
             style="@style/Edit_Text_senha"
-            android:hint="SENHA"
+            android:hint="Digite sua senha:"
+            android:textColorHint="@color/black"
             android:inputType="textPassword"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="@id/containerComponets"

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,72 +8,56 @@
     tools:context=".RegisterActivity">
 
     <ImageView
+        android:id="@+id/senacsymbol"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/logo_senac_png"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/titulo_cadastre_se"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="10dp"
         android:text="@string/titulo_cadastro"
         android:textColor="@color/white"
         android:textSize="50sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_below="@id/senacsymbol"
+        android:layout_centerHorizontal="true"/>
 
     <View
         android:id="@+id/containerComponents"
         style="@style/ContainerComponents"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titulo_cadastre_se" />
-
-    <EditText
-        android:id="@+id/edit_nome"
-        style="@style/Edit_Text_nome"
-        android:hint="NOME"
-        android:inputType="text"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@id/containerComponents"
-        app:layout_constraintStart_toStartOf="@id/containerComponents"
-        app:layout_constraintTop_toTopOf="@id/containerComponents" />
+        android:layout_below="@id/titulo_cadastre_se" />
 
     <EditText
         android:id="@+id/edit_racadastro"
         style="@style/Edit_Text"
-        android:hint="RA"
+        android:hint="Digite seu RA:"
+        android:textColorHint="@color/black"
         android:inputType="numberDecimal"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@id/containerComponents"
-        app:layout_constraintStart_toStartOf="@id/containerComponents"
-        app:layout_constraintTop_toBottomOf="@id/edit_nome" />
+        android:layout_alignTop="@id/containerComponents"
+        android:layout_marginTop="40dp"/>
 
     <EditText
         android:id="@+id/edit_senhacadastro"
         style="@style/Edit_Text_senha"
         android:drawableRight="@drawable/ic_eye"
-        android:hint="SENHA"
+        android:layout_marginTop="40dp"
+        android:textColorHint="@color/black"
+        android:hint="Digite sua senha:"
         android:textColor="@color/black"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@id/containerComponents"
-        app:layout_constraintStart_toStartOf="@id/containerComponents"
-        app:layout_constraintTop_toBottomOf="@id/edit_racadastro" />
+        android:layout_below="@id/edit_racadastro" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/cadastrarbt"
         style="@style/button"
         android:layout_marginTop="30dp"
         android:text="CADASTRAR"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/containerComponents" />
+        android:layout_below="@id/containerComponents" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

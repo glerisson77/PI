@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.pi.models.DatabaseRA;
@@ -17,11 +18,16 @@ import com.example.pi.models.MessageDialog;
 public class MainIconsActivity extends AppCompatActivity {
     DatabaseRA myDB;
     Boolean logged = true;
+    ImageView credits;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_icons);
+
+
+        credits = findViewById(R.id.creditos);
+
         myDB = new DatabaseRA(this);
         String ra = getRaFromDB();
         if (ra.equals("empty")){
@@ -75,8 +81,15 @@ public class MainIconsActivity extends AppCompatActivity {
         }
     }
     public void creditos(View v){
+
+
+        credits.setImageResource(R.drawable.creditospressed);
+
+
         Intent cred = new Intent(this, CreditsActivity.class);
         startActivity(cred);
+//        credits.setImageResource(R.drawable.creditos);
+
     }
 
     public void abrirLink(String link){
@@ -116,4 +129,9 @@ public class MainIconsActivity extends AppCompatActivity {
         return ra_text;
     }
 
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        credits.setImageResource(R.drawable.creditos);
+    }
 }

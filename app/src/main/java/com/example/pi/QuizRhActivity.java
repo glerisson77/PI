@@ -124,7 +124,7 @@ public class QuizRhActivity extends AppCompatActivity implements View.OnClickLis
             getName = "Anônimo";
         String passStatus = "";
 
-        StudentScore studentScore = new StudentScore(getName, String.valueOf(score), getRaFromDB());
+        StudentScore studentScore = new StudentScore(getName, score, getRaFromDB());
 
         String id = "id" + System.currentTimeMillis();
 
