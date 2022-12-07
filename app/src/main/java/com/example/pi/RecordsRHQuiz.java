@@ -63,8 +63,8 @@ public class RecordsRHQuiz extends AppCompatActivity {
 //                            if (!studentScore.getStudentScorePoint().equals(""))
                             myScores.add(studentScore.getStudentScorePoint());
                             Collections.sort(myScores);
-                            if (myScores.size() < 1){
-                                myRecord.setText(String.valueOf(myScores.get(myScores.size() -1)));
+                            if (myScores.size() > 1){
+                                myRecord.setText("Sua maior pontuação: " + String.valueOf(myScores.get(myScores.size() -1)));
                             }else{
                                 myRecord.setText("Você ainda não pontuou");
                             }

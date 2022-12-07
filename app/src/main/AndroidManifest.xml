@@ -49,7 +49,8 @@
         </activity>
         <activity
             android:name=".ProjectsUploadActivity"
-            android:exported="false">
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar">>
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

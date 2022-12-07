@@ -11,6 +11,9 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -18,6 +21,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.pi.models.DatabaseRA;
+import com.example.pi.models.MessageDialog;
 import com.example.pi.models.ProjectInformation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -143,5 +147,28 @@ public class ProjectsUploadActivity extends AppCompatActivity {
         }
         String ra_text = buffer.toString();
         return ra_text;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main_icons, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_sobre) {
+            showUpDialogMessage("Aqui você pode publicar o projeto da sua turma, digite as informações nos campos e escolha uma imagem representativa sobre o projeto", "informações");
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void showUpDialogMessage(String txt, String title) {
+        MessageDialog messageDialog = new MessageDialog(txt, title);
+        messageDialog.show(getSupportFragmentManager(), "mensagem");
     }
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/orangebackground"
+    android:background="@drawable/lightbluebackgorund"
     tools:context=".RecordsRHQuiz">
 
     <TextView
@@ -21,15 +21,27 @@
         android:id="@+id/rankinglist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ranking"/>
+        android:layout_below="@id/ranking">
+
+
+    </ListView>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_above="@id/minhapontuação"
+        android:layout_centerInParent="true"
+        app:srcCompat="@drawable/dgdfgdf" />
 
     <TextView
         android:id="@+id/minhapontuação"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="minha pontuação"
         android:textColor="@color/white"
         android:textSize="30dp"
+        android:gravity="center_horizontal"
         android:layout_alignParentRight="true"
         android:paddingRight="10dp"
         android:layout_alignParentBottom="true"/>
