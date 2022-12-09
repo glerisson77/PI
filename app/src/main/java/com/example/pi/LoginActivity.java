@@ -21,7 +21,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
-    EditText edit_senha;
     CheckBox ver_senha;
     private EditText emailet;
     private EditText password;
@@ -36,23 +35,22 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         ver_senha = findViewById(R.id.ver_senha);
-
-        ver_senha.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b){
-                    edit_senha.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                } else {
-                    edit_senha.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                }
-            }
-        });
-
         dataBaseHelper = new DatabaseRA(LoginActivity.this);
         emailet = findViewById(R.id.edit_ra);
         password = findViewById(R.id.edit_senha);
         login = findViewById(R.id.bt_entrar);
         auth = FirebaseAuth.getInstance();
+
+        ver_senha.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b){
+                    password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                } else {
+                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+            }
+        });
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override

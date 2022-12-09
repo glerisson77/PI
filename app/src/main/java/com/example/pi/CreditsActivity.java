@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.example.pi.models.MessageDialog;
 
 public class CreditsActivity extends AppCompatActivity {
@@ -16,6 +19,7 @@ public class CreditsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_credits);
+        animate();
     }
 
     @Override
@@ -39,5 +43,12 @@ public class CreditsActivity extends AppCompatActivity {
     public void showUpDialogMessage(String txt, String title) {
         MessageDialog messageDialog = new MessageDialog(txt, title);
         messageDialog.show(getSupportFragmentManager(), "mensagem");
+    }
+
+    public void animate(){
+        YoYo.with(Techniques.RubberBand)
+                .duration(700)
+                .repeat(3)
+                .playOn(findViewById(R.id.titlecredits));
     }
 }
