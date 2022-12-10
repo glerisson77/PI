@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -19,6 +22,8 @@ public class InitialSplashScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial_splash_screen);
+
+        animate();
 
         timerTask = new TimerTask() {
             @Override
@@ -39,5 +44,12 @@ public class InitialSplashScreenActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish();
+    }
+
+    public void animate(){
+        YoYo.with(Techniques.RollOut)
+                .duration(700)
+                .repeat(3)
+                .playOn(findViewById(R.id.splashapptittle));
     }
 }

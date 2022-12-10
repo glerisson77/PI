@@ -8,17 +8,17 @@
     tools:context=".InitialSplashScreenActivity">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/logoimage"
         android:layout_width="98dp"
         android:layout_height="79dp"
-        app:srcCompat="@drawable/appicon"
-        android:layout_centerInParent="true"/>
+        android:layout_centerInParent="true"
+        app:srcCompat="@drawable/appicon" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/splashapptittle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/imageView3"
+        android:layout_above="@+id/logoimage"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="100dp"
         android:text="SISTEMA SUPORTE AO ALUNO"
