@@ -4,7 +4,7 @@ public class Questions {
 
     public static String question[] = {
             ///Perguntas
-            "tO que é um mapa mental?",
+            "O que é um mapa mental?",
             "Oque é um organograma?",
             "São tipos de recrutamento e seleção:",
             "Qual a jornada de trabalho de um Jovem Aprendiz?",

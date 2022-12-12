@@ -13,6 +13,9 @@
     android:background="@drawable/orangebackground"
     tools:context=".ProjectsUploadActivity">
 
+
+
+
         <TextView
             android:id="@+id/projectnametv"
             android:layout_width="wrap_content"
@@ -134,48 +137,62 @@
         android:textSize="30dp"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <ImageView
-        android:id="@+id/porjectnameiv"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieproject"
         android:layout_width="110dp"
-        android:layout_height="103dp"
-        android:layout_alignParentLeft="true"
+        android:layout_height="100dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="30dp"
-        android:background="@color/white"
-        app:srcCompat="@drawable/pinameicon" />
+        app:lottie_rawRes="@raw/greenlight"
+        app:lottie_autoPlay="true"
+        android:background="@color/white"/>
 
-    <ImageView
-        android:id="@+id/teachernameiv"
-        android:layout_width="wrap_content"
-        android:layout_height="94dp"
-        android:layout_below="@id/porjectnameiv"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieprofessor"
+        android:layout_width="110dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/lottieproject"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="18dp"
         android:background="@color/white"
-        app:srcCompat="@drawable/piteachericon" />
+        app:lottie_rawRes="@raw/businessmanwinnerwithtrophy"
+        app:lottie_autoPlay="true" />
 
-    <ImageView
-        android:id="@+id/projectresumeiv"
-        android:layout_width="108dp"
-        android:layout_height="80dp"
-        android:layout_below="@id/teachernameiv"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieresume"
+        android:layout_width="110dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/lottieprofessor"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="11dp"
         android:layout_marginTop="16dp"
         android:background="@color/white"
-        app:srcCompat="@drawable/piresumeicon" />
+        app:lottie_rawRes="@raw/chatletter"
+        app:lottie_autoPlay="true" />
 
     <ImageView
         android:id="@+id/projectcontactiv"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/projectresumeiv"
+        android:layout_below="@id/lottieresume"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="20dp"
         android:background="@color/white"
         app:srcCompat="@drawable/picontacticon" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottiecontact"
+        android:layout_width="110dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/lottieresume"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        app:lottie_rawRes="@raw/email"
+        app:lottie_autoPlay="true" />
 
         <Button
             android:id="@+id/postarprojetobt"
