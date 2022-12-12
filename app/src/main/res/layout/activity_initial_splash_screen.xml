@@ -21,7 +21,11 @@
         android:layout_above="@+id/logoimage"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="100dp"
-        android:text="SISTEMA SUPORTE AO ALUNO"
+        android:text="SISTEMA DE SUPORTE AO ALUNO"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/farceb"
+        android:textAlignment="center"
         android:textColor="@color/white" />
 
     <com.airbnb.lottie.LottieAnimationView
@@ -31,7 +35,14 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         app:lottie_autoPlay="true"
-        app:lottie_rawRes="@raw/applogoanimate"
+        app:lottie_rawRes="@raw/gearlottie"
         tools:ignore="ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/senaclogoup"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerInParent="true"
+        app:srcCompat="@drawable/logosenacupdated" />
 
 </RelativeLayout>

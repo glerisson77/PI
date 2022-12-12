@@ -18,15 +18,24 @@ import com.example.pi.models.MessageDialog;
 public class MainIconsActivity extends AppCompatActivity {
     DatabaseRA myDB;
     Boolean logged = true;
-    ImageView credits;
+    ImageView credits, ava, aprendizagem, biblio, cursosDisponiveis, cursosSenac, games, mapeamento, pi, frequency, redeCarreiras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_icons);
 
-
-        credits = findViewById(R.id.creditos);
+        credits = findViewById(R.id.iconcreditos);
+        ava = findViewById(R.id.iconava);
+        frequency = findViewById(R.id.iconfrequencia);
+        mapeamento = findViewById(R.id.iconmapeamento);
+        games = findViewById(R.id.icongame);
+        aprendizagem = findViewById(R.id.iconaprendizagemcoemrcial);
+        biblio = findViewById(R.id.iconbiblioteca);
+        cursosDisponiveis = findViewById(R.id.iconcursosdisponiveis);
+        cursosSenac  = findViewById(R.id.iconcursosenac);
+        pi  = findViewById(R.id.iconpi);
+        redeCarreiras  = findViewById(R.id.iconredecarreiras);
 
         myDB = new DatabaseRA(this);
         String ra = getRaFromDB();
@@ -46,34 +55,41 @@ public class MainIconsActivity extends AppCompatActivity {
     }
 
     public void frequencia(View v){
+        frequency.setImageResource(R.drawable.frequenciapressed);
         abrirLink("https://www.mg.senac.br/ambienteacademico/detalheCurso");
     }
     public void mapeamento(View v){
+//        mapeamento.setImageResource(R.drawable.mapeamento);
         Toast.makeText(MainIconsActivity.this, "Recurso ainda não implementado", Toast.LENGTH_SHORT).show();
     }
     public void ava(View v){
+        ava.setImageResource(R.drawable.ambientevirtualpressed);
         abrirLink("https://ava.mg.senac.br/edu/");
     }
     public void biblioteca(View v){
-        ///corrigir link que está crashando o app
-//        Toast.makeText(MainIconsActivity.this, "Recurso ainda não implementado", Toast.LENGTH_SHORT).show();
+        biblio.setImageResource(R.drawable.bibliotecapressed);
         abrirLink("https://pergamum.mg.senac.br/pergamum/biblioteca_s/php/login_usu.php");
     }
     public void cursossenac(View v){
+//        cursosSenac.setImageResource(R.drawable.cursossenacpressed);
         ///abre a tela info cursos jenifer
         Toast.makeText(MainIconsActivity.this, "Recurso ainda não implementado", Toast.LENGTH_SHORT).show();
     }
     public void cursosdisponiveis(View v){
+        cursosDisponiveis.setImageResource(R.drawable.cursosdisponiveispressed);
         abrirLink("https://www.mg.senac.br/programasenacdegratuidade/vagas.aspx");
     }
     public void aprendizagemcomercial(View v){
+        aprendizagem.setImageResource(R.drawable.aprendizagemcomercailpressed);
         abrirLink("https://www.mg.senac.br/Paginas/aprendizagem-comercial.aspx");
     }
     public void redecarreiras(View v){
+        redeCarreiras.setImageResource(R.drawable.redecarreiraspressed);
         abrirLink("https://www.mg.senac.br/Paginas/rededecarreiras.aspx");
     }
     public void projetoint(View v){
         if (logged){
+            pi.setImageResource(R.drawable.projetointegradorpressed);
             Intent projint = new Intent(this, PiPostsActivity.class);
             startActivity(projint);
         }else{
@@ -98,6 +114,7 @@ public class MainIconsActivity extends AppCompatActivity {
     }
     public void openGames(View v){
         if (logged){
+            games.setImageResource(R.drawable.jogospressed);
             Intent intent = new Intent(MainIconsActivity.this, GamesActivity.class);
             startActivity(intent);
         }else{
@@ -133,5 +150,15 @@ public class MainIconsActivity extends AppCompatActivity {
     protected void onPostResume() {
         super.onPostResume();
         credits.setImageResource(R.drawable.creditos);
+        ava.setImageResource(R.drawable.ambientevirtual);
+        aprendizagem.setImageResource(R.drawable.aprendizagemcomercial);
+        biblio.setImageResource(R.drawable.biblioteca);
+        cursosDisponiveis.setImageResource(R.drawable.cursosdisponiveis);
+        cursosSenac.setImageResource(R.drawable.cursossenac);
+        games.setImageResource(R.drawable.jogos);
+        mapeamento.setImageResource(R.drawable.mapeamento);
+        pi.setImageResource(R.drawable.projetointegrador);
+        frequency.setImageResource(R.drawable.frequencia);
+        redeCarreiras.setImageResource(R.drawable.rededecarreiras);
     }
 }

@@ -1,60 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+<androidx.core.widget.NestedScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/orangebackground"
     tools:context=".ProjectsUploadActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:background="@drawable/orangebackground"
-        android:orientation="vertical">
-
-        <EditText
-            android:id="@+id/nomeprojetoet"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/projectnametv"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:hint="Digite o nome do projeto:"
-            android:textColor="@color/white"
-            android:textSize="30dp" />
+            android:text="digite o nome do projeto"
+            android:textColor="@color/black"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="50dp"
+            android:textSize="20dp"/>
 
-        <EditText
-            android:id="@+id/professoret"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:hint="Digite o nome do professor:"
-            android:textColor="@color/white"
-            android:textSize="30dp" />
+    <EditText
+        android:id="@+id/nomeprojetoet"
+        android:layout_width="252dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/projectnametv"
+        android:layout_alignLeft="@id/projectnametv"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        tools:ignore="SpeakableTextPresentCheck" />
 
-        <ImageView
-            android:id="@+id/projectimage"
-            android:layout_width="250dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center"
-            tools:srcCompat="@tools:sample/avatars" />
+        <TextView
+            android:id="@+id/teachernametv"
+            android:layout_width="260dp"
+            android:layout_height="30dp"
+            android:textColor="@color/black"
+            android:layout_alignLeft="@id/projectnametv"
+            android:layout_marginTop="10dp"
+            android:text="digite o nome do professor"
+            android:layout_below="@id/nomeprojetoet"
+            android:layout_alignParentRight="true"
+            android:textSize="20dp"/>
 
-        <EditText
-            android:id="@+id/informationprojectet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:hint="Digite um resumo do projeto:"
-            android:textColor="@color/white"
-            android:textSize="30dp" />
+    <EditText
+        android:id="@+id/professoret"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/teachernametv"
+        android:layout_alignLeft="@id/projectnametv"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        tools:ignore="SpeakableTextPresentCheck" />
 
-        <EditText
-            android:id="@+id/contatoprojetoet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:hint="Digite o contato do projeto:"
-            android:textColor="@color/white"
-            android:textSize="30dp" />
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/nomeprojetoet"
+        android:layout_alignLeft="@id/projectnametv"
+        android:layout_marginTop="115dp"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/nomeprojetoet"
+        android:layout_marginTop="224dp"
+        android:layout_alignLeft="@id/projectnametv"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/nomeprojetoet"
+        android:layout_marginTop="335dp"
+        android:layout_alignLeft="@id/projectnametv"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
+
+    <TextView
+            android:id="@+id/projectresumetv"
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:layout_alignLeft="@id/projectnametv"
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp"
+            android:text="digite um resumo do projeto"
+            android:layout_below="@id/professoret"
+            android:layout_alignParentRight="true"
+            android:textSize="20dp"/>
+
+    <EditText
+        android:id="@+id/informationprojectet"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/projectresumetv"
+        android:layout_alignLeft="@id/projectnametv"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/projectcontacttv"
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:layout_alignLeft="@id/projectnametv"
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp"
+            android:text="digite um resumo do projeto"
+            android:layout_below="@id/informationprojectet"
+            android:layout_alignParentRight="true"
+            android:textSize="20dp"/>
+
+    <EditText
+        android:id="@+id/contatoprojetoet"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/projectcontacttv"
+        android:layout_alignLeft="@id/projectnametv"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/porjectnameiv"
+        android:layout_width="110dp"
+        android:layout_height="103dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/white"
+        app:srcCompat="@drawable/pinameicon" />
+
+    <ImageView
+        android:id="@+id/teachernameiv"
+        android:layout_width="wrap_content"
+        android:layout_height="94dp"
+        android:layout_below="@id/porjectnameiv"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="18dp"
+        android:background="@color/white"
+        app:srcCompat="@drawable/piteachericon" />
+
+    <ImageView
+        android:id="@+id/projectresumeiv"
+        android:layout_width="108dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/teachernameiv"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="11dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/white"
+        app:srcCompat="@drawable/piresumeicon" />
+
+    <ImageView
+        android:id="@+id/projectcontactiv"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/projectresumeiv"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        app:srcCompat="@drawable/picontacticon" />
 
         <Button
             android:id="@+id/postarprojetobt"
@@ -62,7 +183,18 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:backgroundTint="@color/blue"
+            android:layout_below="@id/projectcontactiv"
+            android:layout_alignParentRight="true"
             android:text="Postar projeto" />
-    </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/nomeprojetoet"
+        android:layout_marginTop="16dp"
+        android:layout_alignLeft="@id/projectnametv"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
+
+</RelativeLayout>
+</androidx.core.widget.NestedScrollView>

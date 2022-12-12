@@ -89,6 +89,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView15"
         app:layout_constraintVertical_bias="0.918"
-        app:srcCompat="@drawable/imagem2" />
+        app:srcCompat="@drawable/logo_senac_png" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

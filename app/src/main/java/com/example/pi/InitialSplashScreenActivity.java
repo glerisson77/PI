@@ -14,7 +14,6 @@ import java.util.TimerTask;
 
 public class InitialSplashScreenActivity extends AppCompatActivity {
 
-    private TextView appName;
     private final Timer timer = new Timer();
     TimerTask timerTask;
 
@@ -24,6 +23,7 @@ public class InitialSplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_initial_splash_screen);
 
         animate();
+        animateTwo();
 
         timerTask = new TimerTask() {
             @Override
@@ -47,9 +47,22 @@ public class InitialSplashScreenActivity extends AppCompatActivity {
     }
 
     public void animate(){
-        YoYo.with(Techniques.RollOut)
-                .duration(700)
-                .repeat(3)
+        YoYo.with(Techniques.FadeOut)
+                .duration(2000)
+                .repeat(0)
+                .playOn(findViewById(R.id.senaclogoup));
+
+    }
+    public void animateTwo(){
+        YoYo.with(Techniques.FadeInDown)
+                .duration(5000)
+                .repeat(0)
                 .playOn(findViewById(R.id.splashapptittle));
+        YoYo.with(Techniques.FadeInDown)
+                .duration(5000)
+                .repeat(0)
+                .playOn(findViewById(R.id.logoimage));
+
+
     }
 }

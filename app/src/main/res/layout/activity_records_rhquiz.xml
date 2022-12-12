@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
+        android:fontFamily="@font/adventure"
         android:layout_centerHorizontal="true"
         android:textStyle="bold"
         android:textSize="30dp"
@@ -24,25 +25,27 @@
         android:layout_below="@id/ranking">
 
 
+
     </ListView>
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="100dp"
+        android:id="@+id/imageView4"
+        android:layout_width="243dp"
         android:layout_height="100dp"
-        android:layout_above="@id/minhapontuação"
-        android:layout_centerInParent="true"
-        app:srcCompat="@drawable/dgdfgdf" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/scoreicon" />
 
     <TextView
         android:id="@+id/minhapontuação"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="minha pontuação"
         android:textColor="@color/white"
+        android:fontFamily="@font/adventure"
+        android:hint="0"
         android:textSize="30dp"
         android:gravity="center_horizontal"
-        android:layout_alignParentRight="true"
-        android:paddingRight="10dp"
-        android:layout_alignParentBottom="true"/>
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="20dp"/>
 </RelativeLayout>

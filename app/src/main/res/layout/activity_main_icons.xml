@@ -112,7 +112,7 @@
                     tools:ignore="SpeakableTextPresentCheck" />
 
                 <ImageView
-                    android:id="@+id/imageView14"
+                    android:id="@+id/iconpi"
                     android:layout_width="126dp"
                     android:layout_height="122dp"
                     android:layout_below="@id/iconcursosdisponiveis"
@@ -123,7 +123,7 @@
                     app:srcCompat="@drawable/projetointegrador" />
 
                 <ImageView
-                    android:id="@+id/creditos"
+                    android:id="@+id/iconcreditos"
                     android:layout_width="126dp"
                     android:layout_height="125dp"
                     android:layout_below="@id/iconredecarreiras"
