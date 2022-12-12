@@ -19,7 +19,6 @@ public class CreditsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_credits);
-        animate();
     }
 
     @Override
@@ -43,12 +42,5 @@ public class CreditsActivity extends AppCompatActivity {
     public void showUpDialogMessage(String txt, String title) {
         MessageDialog messageDialog = new MessageDialog(txt, title);
         messageDialog.show(getSupportFragmentManager(), "mensagem");
-    }
-
-    public void animate(){
-        YoYo.with(Techniques.RubberBand)
-                .duration(700)
-                .repeat(3)
-                .playOn(findViewById(R.id.titlecredits));
     }
 }

@@ -24,18 +24,18 @@
         android:text="SISTEMA DE SUPORTE AO ALUNO"
         android:textSize="30dp"
         android:textStyle="bold"
-        android:fontFamily="@font/farceb"
+        android:fontFamily="@font/berlinerwand"
         android:textAlignment="center"
         android:textColor="@color/white" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieGear"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         app:lottie_autoPlay="true"
-        app:lottie_rawRes="@raw/gearlottie"
+        app:lottie_rawRes="@raw/processingcircle2"
         tools:ignore="ImageContrastCheck" />
 
     <ImageView

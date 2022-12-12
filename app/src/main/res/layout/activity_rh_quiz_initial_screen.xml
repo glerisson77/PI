@@ -47,6 +47,7 @@
         android:textSize="50dp" />
 
     <Button
+        android:id="@+id/startbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/quiztittle"
@@ -57,4 +58,12 @@
         android:text="COMEÇAR"
         android:textColor="@color/black"
         android:textSize="30dp" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/startbutton"
+        android:layout_centerHorizontal="true"
+        app:lottie_rawRes="@raw/startupmeeting"
+        app:lottie_autoPlay="true"/>
 </RelativeLayout>

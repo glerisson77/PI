@@ -18,6 +18,7 @@ import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.pi.models.DatabaseRA;
@@ -35,11 +36,10 @@ import com.google.firebase.storage.UploadTask;
 public class ProjectsUploadActivity extends AppCompatActivity {
 
     Button uploadImagebt;
-    EditText projectName;
-    EditText professorName;
-    EditText projectResume;
-    EditText projectContact;
+    EditText projectName, professorName, projectResume, projectContact;
     DatabaseRA myDB;
+    Boolean canUpload = false;
+    ImageView pickedImage;
 
     private static final int IMAGE_REQUEST = 2;
     private Uri imageUri;
@@ -55,19 +55,26 @@ public class ProjectsUploadActivity extends AppCompatActivity {
         projectResume = findViewById(R.id.informationprojectet);
         projectContact = findViewById(R.id.contatoprojetoet);
         uploadImagebt = findViewById(R.id.postarprojetobt);
+        pickedImage = findViewById(R.id.pickedimage);
 
         uploadImagebt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Boolean projectNameCheck = projectName.getText().toString().matches("");
-                Boolean professorNameCheck = professorName.getText().toString().matches("");
-                Boolean projectResumeCheck = projectResume.getText().toString().matches("");
-                Boolean projectContactCheck = projectContact.getText().toString().matches("");
-                if (projectNameCheck == true || professorNameCheck == true || projectResumeCheck == true || projectContactCheck == true){
-                    Toast.makeText(ProjectsUploadActivity.this, "Um ou mais campos estao vazios", Toast.LENGTH_SHORT).show();
+                if (canUpload == true){
+                    uploadImage();
                 }else{
-                    openImage();
+                    Toast.makeText(ProjectsUploadActivity.this, "Você não completou uma das etapas", Toast.LENGTH_SHORT).show();
                 }
+//                Boolean projectNameCheck = projectName.getText().toString().matches("");
+//                Boolean professorNameCheck = professorName.getText().toString().matches("");
+//                Boolean projectResumeCheck = projectResume.getText().toString().matches("");
+//                Boolean projectContactCheck = projectContact.getText().toString().matches("");
+//                if (projectNameCheck == true || professorNameCheck == true || projectResumeCheck == true || projectContactCheck == true){
+//                    Toast.makeText(ProjectsUploadActivity.this, "Um ou mais campos estao vazios", Toast.LENGTH_SHORT).show();
+//                }else{
+////                    openImage();
+//                    canUpload = true;
+//                }
             }
         });
     }
@@ -85,7 +92,9 @@ public class ProjectsUploadActivity extends AppCompatActivity {
 
         if (requestCode == IMAGE_REQUEST && resultCode == RESULT_OK) {
             imageUri = data.getData();
-            uploadImage();
+            pickedImage.setImageURI(imageUri);
+            canUpload = true;
+//            uploadImage();
         }
     }
     private void uploadImage() {
@@ -124,6 +133,7 @@ public class ProjectsUploadActivity extends AppCompatActivity {
                             Log.d("DownloadUrl", url);
                             pd.dismiss();
                             Toast.makeText(ProjectsUploadActivity.this, "O projeto foi postado", Toast.LENGTH_SHORT).show();
+
                         }
                     });
                 }
@@ -170,5 +180,17 @@ public class ProjectsUploadActivity extends AppCompatActivity {
     public void showUpDialogMessage(String txt, String title) {
         MessageDialog messageDialog = new MessageDialog(txt, title);
         messageDialog.show(getSupportFragmentManager(), "mensagem");
+    }
+
+    public void escolherImagem(View v){
+        Boolean projectNameCheck = projectName.getText().toString().matches("");
+        Boolean professorNameCheck = professorName.getText().toString().matches("");
+        Boolean projectResumeCheck = projectResume.getText().toString().matches("");
+        Boolean projectContactCheck = projectContact.getText().toString().matches("");
+        if (projectNameCheck == true || professorNameCheck == true || projectResumeCheck == true || projectContactCheck == true){
+            Toast.makeText(ProjectsUploadActivity.this, "Um ou mais campos estao vazios", Toast.LENGTH_SHORT).show();
+        }else {
+            openImage();
+        }
     }
 }
