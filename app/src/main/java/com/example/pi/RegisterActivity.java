@@ -11,15 +11,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.pi.models.UserInformation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText email;
-    private EditText password;
+    private EditText email, password, name;
     private Button register;
     private FirebaseAuth auth;
 
@@ -31,6 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
         email = findViewById(R.id.edit_racadastro);
         password = findViewById(R.id.edit_senhacadastro);
         register = findViewById(R.id.cadastrarbt);
+        name = findViewById(R.id.edit_nomecadastro);
 
         auth = FirebaseAuth.getInstance();
 
@@ -39,6 +41,12 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String txt_email = email.getText().toString() + "@senacminas.edu.br";
                 String txt_password = password.getText().toString();
+                String txt_name = name.getText().toString();
+
+                String userId = String.valueOf(System.currentTimeMillis());
+
+                UserInformation userInformation = new UserInformation(txt_name, email.getText().toString());
+                FirebaseDatabase.getInstance().getReference().child("users").child(userId).setValue(userInformation);
 
                 if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)){
                     Toast.makeText(RegisterActivity.this, "The camps must not be empty", Toast.LENGTH_SHORT).show();

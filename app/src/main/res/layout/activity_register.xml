@@ -32,20 +32,29 @@
         android:layout_below="@id/titulo_cadastre_se" />
 
     <EditText
+        android:id="@+id/edit_nomecadastro"
+        style="@style/Edit_Text_nome"
+        android:layout_alignTop="@id/containerComponents"
+        android:hint="Digite seu nome:"
+        android:inputType="text"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black" />
+
+    <EditText
         android:id="@+id/edit_racadastro"
         style="@style/Edit_Text"
         android:hint="Digite seu RA:"
         android:textColorHint="@color/black"
         android:inputType="numberDecimal"
         android:textColor="@color/black"
-        android:layout_alignTop="@id/containerComponents"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/edit_nomecadastro"/>
 
     <EditText
         android:id="@+id/edit_senhacadastro"
         style="@style/Edit_Text_senha"
         android:drawableRight="@drawable/ic_eye"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:textColorHint="@color/black"
         android:hint="Digite sua senha:"
         android:textColor="@color/black"

@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -18,6 +26,14 @@
         android:text="sair"
         android:textColor="@color/white"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/usernamequiz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:hint="nome do usuário"
+        android:textColor="@color/white"/>
 
     <TextView
         android:id="@+id/ucatual"
@@ -49,14 +65,14 @@
         android:id="@+id/layoutdasrespostas"
         android:layout_below="@id/perguntatv"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:orientation="vertical">
 
         <Button
             android:id="@+id/resposta1"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:backgroundTint="@color/lightyellow"
             android:gravity="left"
@@ -66,7 +82,7 @@
         <Button
             android:id="@+id/resposta2"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:backgroundTint="@color/lightyellow"
             android:gravity="left"
@@ -76,7 +92,7 @@
         <Button
             android:id="@+id/resposta3"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:backgroundTint="@color/lightyellow"
             android:gravity="left"
@@ -86,33 +102,13 @@
         <Button
             android:id="@+id/resposta4"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:backgroundTint="@color/lightyellow"
             android:gravity="left"
             android:text="resposta 4"
             android:textColor="@color/black" />
     </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/nameperson"
-        android:layout_alignParentLeft="true"
-        android:text="Digite o seu nome aqui: "
-        android:textColor="@color/white"
-        android:textSize="30dp" />
-
-    <EditText
-        android:id="@+id/nameperson"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/lightyellowbuttonbackground"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textColor="@color/black"
-        android:textSize="45dp" />
 
     <ProgressBar
         android:id="@+id/progressbarrhquiz"
@@ -133,3 +129,4 @@
 
 
 </RelativeLayout>
+</androidx.core.widget.NestedScrollView>

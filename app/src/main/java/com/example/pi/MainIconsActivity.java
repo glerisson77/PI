@@ -1,5 +1,6 @@
 package com.example.pi;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,15 +11,26 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pi.models.DatabaseRA;
 import com.example.pi.models.MessageDialog;
+import com.example.pi.models.StudentScore;
+import com.example.pi.models.UserInformation;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainIconsActivity extends AppCompatActivity {
     DatabaseRA myDB;
+    DatabaseReference databaseReference;
     Boolean logged = true;
     ImageView credits, ava, aprendizagem, biblio, cursosDisponiveis, cursosSenac, games, mapeamento, pi, frequency, redeCarreiras;
+    String passedRa, passedUserName;
+    TextView userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +48,9 @@ public class MainIconsActivity extends AppCompatActivity {
         cursosSenac  = findViewById(R.id.iconcursosenac);
         pi  = findViewById(R.id.iconpi);
         redeCarreiras  = findViewById(R.id.iconredecarreiras);
+        passedRa = getIntent().getStringExtra("keyra");
+        databaseReference = FirebaseDatabase.getInstance().getReference("users");
+        userName = findViewById(R.id.username);
 
         myDB = new DatabaseRA(this);
         String ra = getRaFromDB();
@@ -45,6 +60,23 @@ public class MainIconsActivity extends AppCompatActivity {
             logged = true;
         }
 //        Toast.makeText(this, ra, Toast.LENGTH_SHORT).show();
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot snapshot1 : snapshot.getChildren()){
+                    UserInformation userInformation = snapshot1.getValue(UserInformation.class);
+                    if (userInformation.getUserRa().equals(passedRa)){
+                        userName.setText(userInformation.getUserName());
+                        passedUserName = userInformation.getUserName();
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     @Override
@@ -116,6 +148,8 @@ public class MainIconsActivity extends AppCompatActivity {
         if (logged){
             games.setImageResource(R.drawable.jogospressed);
             Intent intent = new Intent(MainIconsActivity.this, GamesActivity.class);
+            intent.putExtra("keyra", passedRa);
+            intent.putExtra("keyusername", passedUserName);
             startActivity(intent);
         }else{
             Toast.makeText(this, "Você deve estar logado para usar esta ferramenta", Toast.LENGTH_SHORT).show();

@@ -1,6 +1,6 @@
 package com.example.pi.models;
 
-public class Questions {
+public class QuestionsRH {
 
     public static String question[] = {
             ///Perguntas
@@ -190,7 +190,9 @@ public class Questions {
             "A legislação trata sobre os direitos para com a proteção da saúde do colaborador",
             "Surgiu em 1833",
             "Alemanha",
-            "Remunerada ou então voluntári",
+//            pergunta abaixo não está acertada
+            "alinhar com a 110",
+            "Remunerada ou então voluntária",
             "São leis e regras que regem a relação entre colaboradores e empregadores",
             "Folga em todos os feriados",
             "Deve ser pago no começo do mês que ele entrar de férias",
@@ -263,6 +265,6 @@ public class Questions {
             "Hollywood "
     };
 
-    public Questions(){}
+    public QuestionsRH(){}
 
 }

@@ -9,19 +9,36 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.pi.models.MessageDialog;
 
 public class GamesActivity extends AppCompatActivity {
 
+    String passedRa, passedUserName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_games);
+
+        passedRa = getIntent().getStringExtra("keyra");
+        passedUserName = getIntent().getStringExtra("keyusername");
     }
 
     public void OpenQuizRH(View v) {
         Intent intent = new Intent(GamesActivity.this, RhQuizInitialScreenActivity.class);
+        intent.putExtra("keyra", passedRa);
+        intent.putExtra("keyusername", passedUserName);
+        intent.putExtra("keyquiz", "quizrh");
+        startActivity(intent);
+    }
+
+    public void OpenQuizLog(View v) {
+        Intent intent = new Intent(GamesActivity.this, LogQuizInitialScreenActivity.class);
+        intent.putExtra("keyra", passedRa);
+        intent.putExtra("keyusername", passedUserName);
+        intent.putExtra("keyquiz", "quizlog");
         startActivity(intent);
     }
 

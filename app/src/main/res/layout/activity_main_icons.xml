@@ -13,13 +13,21 @@
             android:background="@drawable/bluebackground"
             tools:context=".MainIconsActivity">
 
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="nome do usuário"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"/>
+
                 <ImageView
                     android:id="@+id/senacsimbolo"
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
                     android:layout_centerHorizontal="true"
+                    android:layout_below="@id/username"
                     android:layout_marginTop="16dp"
-
                     app:srcCompat="@drawable/logo_senac_png" />
 
                 <ImageView
@@ -145,7 +153,7 @@
 
                 <ImageView
                     android:id="@+id/icongame"
-                    android:layout_width="126dp"
+                    android:layout_width="124dp"
                     android:layout_height="106dp"
                     android:layout_below="@+id/iconaprendizagemcoemrcial"
                     android:layout_alignParentLeft="true"

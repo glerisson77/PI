@@ -1,39 +1,34 @@
 package com.example.pi;
 
-import static com.example.pi.R.drawable.whitecurledbackground;
-
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.pi.models.DatabaseRA;
-import com.example.pi.models.Questions;
+import com.example.pi.models.QuestionsLog;
+import com.example.pi.models.QuestionsRH;
 import com.example.pi.models.StudentScore;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.internal.Sleeper;
 
 public class QuizRhActivity extends AppCompatActivity implements View.OnClickListener{
     ///declaracao das variaveis
-    TextView question, actualuc, numberQuestions;
+    TextView question, actualuc, numberQuestions, userNameTV;
     Button answer1,answer2,answer3,answer4;
     LinearLayout linearLayout;
-    EditText nameForRecord;
     ProgressBar progressBar;
     DatabaseRA myDB;
+    String passedUserName = "", passedQuiz;
 
     int score = 0;
-    int totalquestions = Questions.question.length;
+    int totalquestions;
     int currentQuestionIndex = 0;
     int unidadeCurricular = 1;
     String selectedAnswer = "";
@@ -44,6 +39,12 @@ public class QuizRhActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_quiz_rh);
         ///atribui as views as variaveis
         myDB = new DatabaseRA(this);
+        passedQuiz = getIntent().getStringExtra("keyquiz");
+        if (passedQuiz.equals("quizlog")){
+            totalquestions = QuestionsLog.question.length;
+        }else {
+            totalquestions = QuestionsRH.question.length;
+        }
         question = findViewById(R.id.perguntatv);
         answer1 = findViewById(R.id.resposta1);
         answer2 = findViewById(R.id.resposta2);
@@ -52,7 +53,10 @@ public class QuizRhActivity extends AppCompatActivity implements View.OnClickLis
         actualuc = findViewById(R.id.ucatual);
         numberQuestions = findViewById(R.id.nperguntasdetperguntas);
         linearLayout = findViewById(R.id.layoutdasrespostas);
-        nameForRecord = findViewById(R.id.nameperson);
+        userNameTV = findViewById(R.id.usernamequiz);
+        passedUserName = getIntent().getStringExtra("keyusername");
+
+        userNameTV.setText(passedUserName);
 
         ///seta o metodo de click nos botoes
         answer1.setOnClickListener(this);
@@ -75,50 +79,61 @@ public class QuizRhActivity extends AppCompatActivity implements View.OnClickLis
 
     private void loadNewQuestion() {
         prog();
-        numberQuestions.setText(currentQuestionIndex + "/" + totalquestions);
+        numberQuestions.setText((currentQuestionIndex + 1) + "/" + totalquestions);
 
-        if(currentQuestionIndex == totalquestions){
+        if((currentQuestionIndex + 1) == totalquestions){
             finishQuiz();
             return;
         }
+//        Toast.makeText(this, String.valueOf(score), Toast.LENGTH_SHORT).show();
         ///seta o texto das perguntas e respostas nos botoes
-        question.setText(" '" + Questions.question[currentQuestionIndex] + "'");
-        answer1.setText(Questions.choices[currentQuestionIndex][0]);
-        answer2.setText(Questions.choices[currentQuestionIndex][1]);
-        answer3.setText(Questions.choices[currentQuestionIndex][2]);
-        answer4.setText(Questions.choices[currentQuestionIndex][3]);
+
+        if (passedQuiz.equals("quizlog")){
+            question.setText(" '" + QuestionsLog.question[currentQuestionIndex] + "'");
+            answer1.setText(QuestionsLog.choices[currentQuestionIndex][0]);
+            answer2.setText(QuestionsLog.choices[currentQuestionIndex][1]);
+            answer3.setText(QuestionsLog.choices[currentQuestionIndex][2]);
+            answer4.setText(QuestionsLog.choices[currentQuestionIndex][3]);
+        }else {
+
+            question.setText(" '" + QuestionsRH.question[currentQuestionIndex] + "'");
+            answer1.setText(QuestionsRH.choices[currentQuestionIndex][0]);
+            answer2.setText(QuestionsRH.choices[currentQuestionIndex][1]);
+            answer3.setText(QuestionsRH.choices[currentQuestionIndex][2]);
+            answer4.setText(QuestionsRH.choices[currentQuestionIndex][3]);
+        }
+
         answer1.setBackgroundColor(Color.rgb(255,230,153));
         answer2.setBackgroundColor(Color.rgb(255,230,153));
         answer3.setBackgroundColor(Color.rgb(255,230,153));
         answer4.setBackgroundColor(Color.rgb(255,230,153));
 
-        if (currentQuestionIndex >= 10){
-            unidadeCurricular = 2;
-        }else if (currentQuestionIndex >= 20){
-            unidadeCurricular = 3;
-        }else if (currentQuestionIndex >= 30) {
-            unidadeCurricular = 4;
-        }else if (currentQuestionIndex >= 40) {
-            unidadeCurricular = 5;
-        }else if (currentQuestionIndex >= 50) {
-            unidadeCurricular = 6;
-        }else if (currentQuestionIndex >= 60) {
-            unidadeCurricular = 7;
-        }else if (currentQuestionIndex >= 70) {
-            unidadeCurricular = 8;
-        }else if (currentQuestionIndex >= 80) {
-            unidadeCurricular = 9;
-        }else if (currentQuestionIndex >= 90) {
-            unidadeCurricular = 10;
-        }
-        actualuc.setText("UC " + unidadeCurricular);
+//        if (currentQuestionIndex >= 10){
+//            unidadeCurricular = 2;
+//        }else if (currentQuestionIndex >= 20){
+//            unidadeCurricular = 3;
+//        }else if (currentQuestionIndex >= 30) {
+//            unidadeCurricular = 4;
+//        }else if (currentQuestionIndex >= 40) {
+//            unidadeCurricular = 5;
+//        }else if (currentQuestionIndex >= 50) {
+//            unidadeCurricular = 6;
+//        }else if (currentQuestionIndex >= 60) {
+//            unidadeCurricular = 7;
+//        }else if (currentQuestionIndex >= 70) {
+//            unidadeCurricular = 8;
+//        }else if (currentQuestionIndex >= 80) {
+//            unidadeCurricular = 9;
+//        }else if (currentQuestionIndex >= 90) {
+//            unidadeCurricular = 10;
+//        }
+//        actualuc.setText("UC " + unidadeCurricular);
 
     }
 
-
     private void finishQuiz() {
         ///mostra os pontos que a pessoa fez
-        String getName = nameForRecord.getText().toString();
+        String getName = passedUserName;
 
         if (getName.equals(""))
             getName = "Anônimo";
@@ -134,12 +149,16 @@ public class QuizRhActivity extends AppCompatActivity implements View.OnClickLis
         }else{
             passStatus = "Failed";
         }
-        new AlertDialog.Builder(this)
-                .setTitle(passStatus)
-                .setMessage("Score is " + score + "out of" + totalquestions)
-                .setPositiveButton("restart", ((dialogInterface, i) -> restartQuiz()))
-                .setCancelable(false)
-                .show();
+
+        passScore(score);
+
+
+//        new AlertDialog.Builder(this)
+//                .setTitle(passStatus)
+//                .setMessage("Score is " + score + "out of" + totalquestions)
+//                .setPositiveButton("restart", ((dialogInterface, i) -> restartQuiz()))
+//                .setCancelable(false)
+//                .show();
     }
 
     private void restartQuiz() {
@@ -168,11 +187,20 @@ public class QuizRhActivity extends AppCompatActivity implements View.OnClickLis
         selectedAnswer = clickedButton.getText().toString();
         clickedButton.setBackgroundColor(Color.BLUE);
 
-        if(selectedAnswer.equals(Questions.correctAnswers[currentQuestionIndex])){
-            score++;
+        if (passedQuiz.equals("quizlog")){
+            if(selectedAnswer.equals(QuestionsLog.correctAnswers[currentQuestionIndex])){
+                score++;
+            }
+        }else {
+            if(selectedAnswer.equals(QuestionsRH.correctAnswers[currentQuestionIndex])){
+                score++;
+            }
         }
+
+
         currentQuestionIndex++;
         loadNewQuestion();
+
 
     }
 
@@ -189,6 +217,18 @@ public class QuizRhActivity extends AppCompatActivity implements View.OnClickLis
 
         String ra_text = buffer.toString();
         return ra_text;
+    }
+
+    public void passScore(int score){
+        String getName = passedUserName;
+        String scoreString = String.valueOf(score);
+        if (getName.equals(""))
+            getName = "Anônimo";
+        Intent intent = new Intent(QuizRhActivity.this, ShowFinalScoreActivity.class);
+        intent.putExtra("keyscore", scoreString);
+        intent.putExtra("keyname", getName);
+        restartQuiz();
+        startActivity(intent);
     }
 
 }
