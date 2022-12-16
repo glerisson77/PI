@@ -105,7 +105,9 @@ public class LoginActivity extends AppCompatActivity {
     public void enterWithoutUser(View v){
         String ra = "empty";
         dataBaseHelper.insertData(ra);
-        startActivity(new Intent(LoginActivity.this, MainIconsActivity.class));
+        Intent intent = new Intent(LoginActivity.this, MainIconsActivity.class);
+        intent.putExtra("keyra", "empty");
+        startActivity(intent);
         finish();
     }
 

@@ -20,7 +20,7 @@ public class LogQuizInitialScreenActivity extends AppCompatActivity {
         passedUserName = getIntent().getStringExtra("keyusername");
     }
     public void startQuizRh(View v) {
-        Intent intent = new Intent(LogQuizInitialScreenActivity.this, QuizRhActivity.class);
+        Intent intent = new Intent(LogQuizInitialScreenActivity.this, QuizActivity.class);
         intent.putExtra("keyra", passedRa);
         intent.putExtra("keyusername", passedUserName);
         intent.putExtra("keyquiz", passedquiz);
@@ -28,7 +28,7 @@ public class LogQuizInitialScreenActivity extends AppCompatActivity {
     }
 
     public void startQuizLog(View v) {
-        Intent intent = new Intent(LogQuizInitialScreenActivity.this, QuizRhActivity.class);
+        Intent intent = new Intent(LogQuizInitialScreenActivity.this, QuizActivity.class);
         intent.putExtra("keyra", passedRa);
         intent.putExtra("keyusername", passedUserName);
         intent.putExtra("keyquiz", passedquiz);

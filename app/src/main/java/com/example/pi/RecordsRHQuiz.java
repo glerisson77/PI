@@ -40,7 +40,7 @@ public class RecordsRHQuiz extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_records_rhquiz);
-        databaseReference = FirebaseDatabase.getInstance().getReference("rankingrhquiz");
+        databaseReference = FirebaseDatabase.getInstance().getReference("rankingrhquizrh");
         myDB = new DatabaseRA(this);
         studentsScoreListView = findViewById(R.id.rankinglist);
         studentScoresSortList = new ArrayList<>();

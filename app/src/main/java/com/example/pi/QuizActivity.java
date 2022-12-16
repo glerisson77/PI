@@ -18,7 +18,7 @@ import com.example.pi.models.QuestionsRH;
 import com.example.pi.models.StudentScore;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class QuizRhActivity extends AppCompatActivity implements View.OnClickListener{
+public class QuizActivity extends AppCompatActivity implements View.OnClickListener{
     ///declaracao das variaveis
     TextView question, actualuc, numberQuestions, userNameTV;
     Button answer1,answer2,answer3,answer4;
@@ -143,7 +143,12 @@ public class QuizRhActivity extends AppCompatActivity implements View.OnClickLis
 
         String id = "id" + System.currentTimeMillis();
 
-        FirebaseDatabase.getInstance().getReference().child("rankingrhquiz").child(id).setValue(studentScore);
+        if (passedQuiz.equals("quizlog")){
+            FirebaseDatabase.getInstance().getReference().child("rankingrhquizrh").child(id).setValue(studentScore);
+        }else {
+            FirebaseDatabase.getInstance().getReference().child("rankingrhquizlog").child(id).setValue(studentScore);
+        }
+
         if(score > totalquestions*0.60){
             passStatus = "Passed";
         }else{
@@ -196,12 +201,8 @@ public class QuizRhActivity extends AppCompatActivity implements View.OnClickLis
                 score++;
             }
         }
-
-
         currentQuestionIndex++;
         loadNewQuestion();
-
-
     }
 
     public String getRaFromDB(){
@@ -224,7 +225,7 @@ public class QuizRhActivity extends AppCompatActivity implements View.OnClickLis
         String scoreString = String.valueOf(score);
         if (getName.equals(""))
             getName = "Anônimo";
-        Intent intent = new Intent(QuizRhActivity.this, ShowFinalScoreActivity.class);
+        Intent intent = new Intent(QuizActivity.this, ShowFinalScoreActivity.class);
         intent.putExtra("keyscore", scoreString);
         intent.putExtra("keyname", getName);
         restartQuiz();

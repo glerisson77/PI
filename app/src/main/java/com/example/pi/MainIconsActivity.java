@@ -29,7 +29,7 @@ public class MainIconsActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     Boolean logged = true;
     ImageView credits, ava, aprendizagem, biblio, cursosDisponiveis, cursosSenac, games, mapeamento, pi, frequency, redeCarreiras;
-    String passedRa, passedUserName;
+    String passedRa = "empty", passedUserName = "None";
     TextView userName;
 
     @Override
@@ -60,23 +60,16 @@ public class MainIconsActivity extends AppCompatActivity {
             logged = true;
         }
 //        Toast.makeText(this, ra, Toast.LENGTH_SHORT).show();
+        getUserFromFB();
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot snapshot1 : snapshot.getChildren()){
-                    UserInformation userInformation = snapshot1.getValue(UserInformation.class);
-                    if (userInformation.getUserRa().equals(passedRa)){
-                        userName.setText(userInformation.getUserName());
-                        passedUserName = userInformation.getUserName();
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        databaseReference = FirebaseDatabase.getInstance().getReference("users");
+        getUserFromFB();
     }
 
     @Override
@@ -129,11 +122,7 @@ public class MainIconsActivity extends AppCompatActivity {
         }
     }
     public void creditos(View v){
-
-
         credits.setImageResource(R.drawable.creditospressed);
-
-
         Intent cred = new Intent(this, CreditsActivity.class);
         startActivity(cred);
 //        credits.setImageResource(R.drawable.creditos);
@@ -194,5 +183,24 @@ public class MainIconsActivity extends AppCompatActivity {
         pi.setImageResource(R.drawable.projetointegrador);
         frequency.setImageResource(R.drawable.frequencia);
         redeCarreiras.setImageResource(R.drawable.rededecarreiras);
+    }
+
+    public void getUserFromFB(){
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot snapshot1 : snapshot.getChildren()){
+                    UserInformation userInformation = snapshot1.getValue(UserInformation.class);
+                    if (userInformation.getUserRa().equals(getRaFromDB())){
+                        userName.setText(userInformation.getUserName());
+                        passedUserName = userInformation.getUserName();
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }

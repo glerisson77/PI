@@ -6,23 +6,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="8dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:layout_gravity="center"
-        android:background="@color/orange_strong"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:background="@color/orange_strong">
 
         <TextView
             android:id="@+id/nomeprojeto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:gravity="center"
             android:textStyle="bold"
             android:textSize="35dp"
             android:hint="nome do projeto"
-            android:text="@string/projectsname" />
+            android:text="@string/projectsname"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="10dp"/>
 
         <TextView
             android:id="@+id/professor"
@@ -33,14 +35,17 @@
             android:textStyle="bold"
             android:textSize="25dp"
             android:hint="nome do projeto"
-            android:text="@string/teachersname" />
+            android:text="@string/teachersname"
+            android:layout_alignTop="@id/projectimage"
+            android:layout_toRightOf="@id/projectimage"/>
 
         <ImageView
             android:id="@+id/projectimage"
             android:layout_gravity="center"
             android:layout_width="250dp"
             android:layout_height="200dp"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@tools:sample/avatars"
+            android:layout_below="@id/nomeprojeto"/>
 
         <TextView
             android:id="@+id/informationproject"
@@ -51,7 +56,9 @@
             android:textSize="15dp"
             android:textStyle="bold"
             android:hint="nome do projeto"
-            android:text="@string/projectinfo" />
+            android:text="@string/projectinfo"
+            android:layout_below="@id/projectimage"
+            android:layout_marginTop="10px"/>
 
         <TextView
             android:id="@+id/contatoprojeto"
@@ -62,7 +69,9 @@
             android:textStyle="bold"
             android:textSize="25dp"
             android:hint="contato do projeto"
-            android:text="@string/projectcontact" />
+            android:text="@string/projectcontact"
+            android:layout_below="@id/professor"
+            android:layout_toRightOf="@id/projectimage"/>
 
         <TextView
             android:id="@+id/projectid"
@@ -73,7 +82,11 @@
             android:textStyle="bold"
             android:textSize="25dp"
             android:text= "" />
-    </LinearLayout>
+
+
+    </RelativeLayout>
+
+
 
 
 </androidx.cardview.widget.CardView>

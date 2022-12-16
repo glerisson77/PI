@@ -14,7 +14,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/lightbluebackgorund"
     android:padding="24dp"
-    tools:context=".QuizRhActivity">
+    tools:context=".QuizActivity">
 
     <Button
         android:id="@+id/sairquizbt"

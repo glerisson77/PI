@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 public class RhQuizInitialScreenActivity extends AppCompatActivity {
 
@@ -27,7 +26,7 @@ public class RhQuizInitialScreenActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void startQuizRh(View v) {
-        Intent intent = new Intent(RhQuizInitialScreenActivity.this, QuizRhActivity.class);
+        Intent intent = new Intent(RhQuizInitialScreenActivity.this, QuizActivity.class);
         intent.putExtra("keyra", passedRa);
         intent.putExtra("keyusername", passedUserName);
         intent.putExtra("keyquiz", passedQuiz);

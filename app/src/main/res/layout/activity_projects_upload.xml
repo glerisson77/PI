@@ -181,16 +181,7 @@
         app:lottie_rawRes="@raw/education"
         app:lottie_autoPlay="true" />
 
-        <Button
-            android:id="@+id/postarprojetobt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:backgroundTint="@color/blue"
-            android:layout_below="@id/pickedimage"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="20dp"
-            android:text="Postar projeto" />
+
 
     <ImageView
         android:id="@+id/imageView10"
@@ -201,23 +192,49 @@
         android:layout_alignLeft="@id/projectnametv"
         app:srcCompat="@android:drawable/ic_menu_edit" />
 
+    <LinearLayout
+        android:id="@+id/imagelayout"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_below="@id/lottiecontact"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:id="@+id/pickedimage"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            tools:srcCompat="@tools:sample/avatars"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:id="@+id/choseimage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lottiecontact"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/heineken"
+            android:onClick="escolherImagem"
+            android:text="escolher imagem" />
+
+    </LinearLayout>
+
+
+
     <Button
-        android:id="@+id/choseimage"
+        android:id="@+id/postarprojetobt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/lottiecontact"
-        android:layout_centerHorizontal="true"
-        android:onClick="escolherImagem"
-        android:text="escolher imagem" />
-
-    <ImageView
-        android:id="@+id/pickedimage"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        tools:srcCompat="@tools:sample/avatars"
-        android:layout_below="@id/choseimage"
+        android:layout_gravity="right"
+        android:backgroundTint="@color/blue"
+        android:layout_below="@id/imagelayout"
+        android:layout_alignParentRight="true"
         android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"/>
+        android:text="Postar projeto" />
 
 </RelativeLayout>
 </androidx.core.widget.NestedScrollView>

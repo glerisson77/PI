@@ -48,7 +48,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".QuizRhActivity"
+            android:name=".QuizActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
