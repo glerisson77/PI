@@ -70,6 +70,7 @@ public class MainIconsActivity extends AppCompatActivity {
         super.onResume();
         databaseReference = FirebaseDatabase.getInstance().getReference("users");
         getUserFromFB();
+//
     }
 
     @Override
