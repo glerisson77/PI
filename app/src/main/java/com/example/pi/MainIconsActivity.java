@@ -61,16 +61,12 @@ public class MainIconsActivity extends AppCompatActivity {
         }
 //        Toast.makeText(this, ra, Toast.LENGTH_SHORT).show();
         getUserFromFB();
-
-
     }
-
     @Override
     protected void onResume() {
         super.onResume();
         databaseReference = FirebaseDatabase.getInstance().getReference("users");
         getUserFromFB();
-//
     }
 
     @Override
@@ -117,6 +113,7 @@ public class MainIconsActivity extends AppCompatActivity {
         if (logged){
             pi.setImageResource(R.drawable.projetointegradorpressed);
             Intent projint = new Intent(this, PiPostsActivity.class);
+            projint.putExtra("keyusername", passedUserName);
             startActivity(projint);
         }else{
             Toast.makeText(this, "Você deve estar logado para usar esta ferramenta", Toast.LENGTH_SHORT).show();
@@ -169,7 +166,6 @@ public class MainIconsActivity extends AppCompatActivity {
         String ra_text = buffer.toString();
         return ra_text;
     }
-
     @Override
     protected void onPostResume() {
         super.onPostResume();
@@ -200,7 +196,6 @@ public class MainIconsActivity extends AppCompatActivity {
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
     }

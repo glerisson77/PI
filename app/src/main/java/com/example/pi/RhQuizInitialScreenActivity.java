@@ -22,7 +22,7 @@ public class RhQuizInitialScreenActivity extends AppCompatActivity {
 
     public void exitRhInitialScreen(View v){
         finish();
-        Intent intent = new Intent(RhQuizInitialScreenActivity.this, GamesActivity.class);
+        Intent intent = new Intent(RhQuizInitialScreenActivity.this, MainIconsActivity.class);
         startActivity(intent);
     }
     public void startQuizRh(View v) {

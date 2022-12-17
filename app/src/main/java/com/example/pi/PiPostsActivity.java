@@ -36,6 +36,7 @@ public class PiPostsActivity extends AppCompatActivity {
     DatabaseRA myDB;
     EditText projectNameInput;
     Boolean deleteButtonPressed = false;
+    String passedUserName;
 
 
     @Override
@@ -50,6 +51,14 @@ public class PiPostsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pi_posts);
 
+        if (getIntent().getBooleanExtra("keyusername", false) == true){
+            passedUserName = "None";
+        }else{
+            passedUserName = getIntent().getStringExtra("keyusername");
+        }
+
+        Toast.makeText(this, passedUserName, Toast.LENGTH_SHORT).show();
+
         recyclerView = findViewById(R.id.recyclerviewpi);
         projectNameInput = findViewById(R.id.inputprojectnameet);
         databaseReference = FirebaseDatabase.getInstance().getReference("projects");
@@ -59,6 +68,11 @@ public class PiPostsActivity extends AppCompatActivity {
         adapter = new ImagesAdapter(this, list);
         recyclerView.setAdapter(adapter);
         myDB = new DatabaseRA(this);
+
+
+        if (passedUserName.equals("")){
+            Toast.makeText(this, passedUserName, Toast.LENGTH_SHORT).show();
+        }
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
