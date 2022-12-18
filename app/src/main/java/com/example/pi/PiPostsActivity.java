@@ -92,6 +92,7 @@ public class PiPostsActivity extends AppCompatActivity {
     }
     public void postarProjeto(View v){
         Intent intent = new Intent(PiPostsActivity.this, ProjectsUploadActivity.class);
+        intent.putExtra("keyusername", passedUserName);
         startActivity(intent);
     }
     public void deleteProject(View v) {

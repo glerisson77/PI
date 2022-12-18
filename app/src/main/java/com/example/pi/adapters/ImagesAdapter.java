@@ -59,6 +59,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
         holder.professorName.setText(projectInformation.getProfessorName());
         holder.projectResume.setText(projectInformation.getProjectResume());
         holder.projectContact.setText(projectInformation.getProjectContact());
+        holder.uploaderUser.setText("Postado por " + projectInformation.getUserUploader() );
         String imageID = projectInformation.getImageName();
 
 //        storageReference = FirebaseStorage.getInstance().getReference("uploads/" +imageID + ".png");
@@ -91,7 +92,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView projectName, professorName, projectResume, projectContact;
+        TextView projectName, professorName, projectResume, projectContact, uploaderUser;
         ImageView imageView;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -99,6 +100,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
             professorName = itemView.findViewById(R.id.professor);
             projectResume = itemView.findViewById(R.id.informationproject);
             projectContact = itemView.findViewById(R.id.contatoprojeto);
+            uploaderUser = itemView.findViewById(R.id.useruploader);
             imageView = itemView.findViewById(R.id.projectimage);
         }
     }

@@ -8,16 +8,18 @@ public class ProjectInformation {
     private String projectContact;
     private String imageName;
     private String raMatching;
+    private String userUploader;
 
     public ProjectInformation(){}
 
-    public ProjectInformation(String projectName, String professorName, String projectResume, String projectContact, String imageName, String raMatching) {
+    public ProjectInformation(String projectName, String professorName, String projectResume, String projectContact, String imageName, String raMatching, String userUploader) {
         this.projectName = projectName;
         this.professorName = professorName;
         this.projectResume = projectResume;
         this.projectContact = projectContact;
         this.imageName = imageName;
         this.raMatching = raMatching;
+        this.userUploader = userUploader;
     }
 
     public String getProjectName() {
@@ -68,4 +70,11 @@ public class ProjectInformation {
         this.raMatching = raMatching;
     }
 
+    public String getUserUploader() {
+        return userUploader;
+    }
+
+    public void setUserUploader(String userUploader) {
+        this.userUploader = userUploader;
+    }
 }

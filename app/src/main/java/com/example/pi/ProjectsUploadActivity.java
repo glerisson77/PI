@@ -40,6 +40,7 @@ public class ProjectsUploadActivity extends AppCompatActivity {
     DatabaseRA myDB;
     Boolean canUpload = false;
     ImageView pickedImage;
+    String passedUserName;
 
     private static final int IMAGE_REQUEST = 2;
     private Uri imageUri;
@@ -56,6 +57,12 @@ public class ProjectsUploadActivity extends AppCompatActivity {
         projectContact = findViewById(R.id.contatoprojetoet);
         uploadImagebt = findViewById(R.id.postarprojetobt);
         pickedImage = findViewById(R.id.pickedimage);
+
+        if (getIntent().getBooleanExtra("keyusername", false) == true){
+            passedUserName = "None";
+        }else{
+            passedUserName = getIntent().getStringExtra("keyusername");
+        }
 
         uploadImagebt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,7 +128,7 @@ public class ProjectsUploadActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                     ///store the name of the file on the database to after retrieving
                     String ra = getRaFromDB();
-                    ProjectInformation projectInformation = new ProjectInformation(projectNameS, professorNameS, projectResumeS, projectContactS, imageName, ra);
+                    ProjectInformation projectInformation = new ProjectInformation(projectNameS, professorNameS, projectResumeS, projectContactS, imageName, ra, passedUserName);
 //                    FirebaseDatabase.getInstance().getReference().child("imagesnames").child("id" + System.currentTimeMillis()).setValue(imageName);
                     String projectid = "id" + imageName;
                     ///storage the project id to exclude after #implement
