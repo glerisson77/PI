@@ -16,8 +16,10 @@
     <color name="orange_light">#FFF8AF43</color>
     <color name="blueicon">#4472C3</color>
     <color name="green">#8BC34A</color>
+    <color name="lightgreen">#92D050</color>
     <color name="azule">#FF3366CB</color>
     <color name="lightyellow">#FFE699</color>
+    <color name="yellow">#FBE308</color>
     <color name="buttonorange">#FFC000</color>
     <color name="lightseablue">#00B0F0</color>
     <color name="red">#FF5722</color>

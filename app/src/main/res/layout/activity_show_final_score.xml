@@ -4,8 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blueicon"
+    android:background="@drawable/bluegradbackground"
     tools:context=".ShowFinalScoreActivity">
+
+    <ImageView
+        android:id="@+id/pontuationbox"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:srcCompat="@drawable/greenbox"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"/>
+
+    <TextView
+        android:id="@+id/observationtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/pontuationbox"
+        android:layout_marginTop="18dp"
+        android:layout_centerHorizontal="true"
+        android:text="Perfeito!"
+        android:textSize="28dp"
+        android:fontFamily="@font/extraold"
+        android:textColor="@color/black"
+        />
 
     <TextView
         android:id="@+id/finalscore"
@@ -14,16 +35,50 @@
         android:hint="Pontuação"
         android:layout_centerHorizontal="true"
         android:textSize="30dp"
-        android:textColor="@color/white" />
+        android:textStyle="bold"
+        android:textColor="@color/lightgreen"
+        android:fontFamily="@font/farceb"
+        android:gravity="center"
+        android:text="100"
+        android:layout_marginTop="70dp"
+        android:layout_alignTop="@id/pontuationbox"/>
 
     <TextView
-        android:id="@+id/namescore"
+        android:id="@+id/finishedquiztv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Nome"
-        android:textColor="@color/white"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/finalscore"
-        android:textSize="30dp"/>
+        android:text="Quiz finalizado!"
+        android:textColor="@color/yellow"
+        android:textSize="50dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/berlinerwand"/>
+
+    <TextView
+        android:id="@+id/pontuationtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/pontuationbox"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"
+        android:text="Sua pontuação"
+        android:textColor="@color/yellow"
+        android:textSize="50dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/berlinerwand"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/scorelottie"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:layout_below="@id/finishedquiztv"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        app:lottie_rawRes="@raw/businessmanwinnerwithtrophy"/>
+
+
+
 
 </RelativeLayout>
