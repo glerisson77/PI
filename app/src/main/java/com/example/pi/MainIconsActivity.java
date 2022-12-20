@@ -143,6 +143,18 @@ public class MainIconsActivity extends AppCompatActivity {
         }
     }
 
+    public void openStudentProfile(View v){
+        if (logged){
+            games.setImageResource(R.drawable.jogospressed);
+            Intent intent = new Intent(MainIconsActivity.this, StudentProfileActivity.class);
+            intent.putExtra("keyra", passedRa);
+            intent.putExtra("keyusername", passedUserName);
+            startActivity(intent);
+        }else{
+            Toast.makeText(this, "Você deve estar logado para usar esta ferramenta", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     public void about(View v){
         showUpDialogMessage("aqui vai ficar o texto sobre o app ", "Sobre o aplicativo");
     }

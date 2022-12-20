@@ -38,7 +38,6 @@ public class PiPostsActivity extends AppCompatActivity {
     Boolean deleteButtonPressed = false;
     String passedUserName;
 
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -151,5 +150,9 @@ public class PiPostsActivity extends AppCompatActivity {
         }
         String ra_text = buffer.toString();
         return ra_text;
+    }
+//    codigo que vai ser usado para alterar valores
+    public void changeProjectName(View v){
+        FirebaseDatabase.getInstance().getReference("projects").child("id1671392851600").child("projectName").setValue("aprovado");
     }
 }

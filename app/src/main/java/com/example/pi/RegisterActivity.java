@@ -44,8 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String txt_name = name.getText().toString();
 
                 String userId = String.valueOf(System.currentTimeMillis());
-
-                UserInformation userInformation = new UserInformation(txt_name, email.getText().toString());
+                UserInformation userInformation = new UserInformation(txt_name, email.getText().toString(), "", "", "");
                 FirebaseDatabase.getInstance().getReference().child("users").child(userId).setValue(userInformation);
 
                 if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)){
