@@ -7,16 +7,18 @@ public class UserInformation {
     private String courses;
     private String profilePicture;
     private String status;
+    private String userId;
 //    add the id to find the right user
 
     public UserInformation(){}
 
-    public UserInformation(String userName, String userRa, String courses, String profilePicture, String status) {
+    public UserInformation(String userName, String userRa, String courses, String profilePicture, String status, String userId) {
         this.userName = userName;
         this.userRa = userRa;
         this.courses = courses;
         this.profilePicture = profilePicture;
         this.status = status;
+        this.userId = userId;
     }
 
     public String getUserName() {
@@ -57,5 +59,13 @@ public class UserInformation {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }
