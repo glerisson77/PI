@@ -37,7 +37,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
     ArrayList<ProjectInformation> list;
     DatabaseRA myDB;
 
-    public ImagesAdapter(RecordsRHQuiz context, ArrayList<StudentScore> list){}
+//    public ImagesAdapter(RecordsRHQuiz context, ArrayList<StudentScore> list){}
 
     public ImagesAdapter(Context context, ArrayList<ProjectInformation> list) {
         this.context = context;

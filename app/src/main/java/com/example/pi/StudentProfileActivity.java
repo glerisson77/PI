@@ -39,7 +39,7 @@ public class StudentProfileActivity extends AppCompatActivity {
 
     TextView studentName, studentRa, studentStatus, studentCourses;
     ImageView studenPicture;
-    String passedUserName, passedRa;
+    String passedUserName, passedRa, passedUserID;
     ArrayList<String> names;
     StorageReference storageReference;
 
@@ -60,6 +60,7 @@ public class StudentProfileActivity extends AppCompatActivity {
 
         passedUserName = getIntent().getStringExtra("keyusername");
         passedRa = getIntent().getStringExtra("keyra");
+        passedRa = getIntent().getStringExtra("keyuserid");
 
         if (getIntent().getBooleanExtra("keyusername", false) == true){
             passedUserName = "None";
@@ -71,6 +72,12 @@ public class StudentProfileActivity extends AppCompatActivity {
             passedRa = "None";
         }else{
             passedRa = getIntent().getStringExtra("keyra");
+        }
+
+        if (getIntent().getBooleanExtra("keyuserid", false) == true){
+            passedUserID = "None";
+        }else{
+            passedUserID = getIntent().getStringExtra("keyuserid");
         }
 
         getTheUsers();
@@ -85,9 +92,9 @@ public class StudentProfileActivity extends AppCompatActivity {
 
                     if (passedUserName.equals(userInformation.getUserName()) && passedRa.equals(userInformation.getUserRa())){
                         studentName.setText(userInformation.getUserName());
-                        studentRa.setText(userInformation.getUserRa());
-                        studentCourses.setText(userInformation.getCourses());
-                        studentStatus.setText(userInformation.getStatus());
+                        studentRa.setText(studentRa.getText() + userInformation.getUserRa());
+                        studentCourses.setText(studentCourses.getText() + userInformation.getCourses());
+                        studentStatus.setText(studentStatus.getText() + userInformation.getStatus());
                     }
 
                     storageReference = FirebaseStorage.getInstance().getReference("userspictures/" +userInformation.getProfilePicture());
@@ -171,23 +178,29 @@ public class StudentProfileActivity extends AppCompatActivity {
     }
 
     private void putImageNameInUserInfo(String ImageName) {
-        FirebaseDatabase.getInstance().getReference("users").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot snapshot1: snapshot.getChildren()){
-                    UserInformation userInformation = snapshot1.getValue(UserInformation.class);
 
-                    if (passedUserName.equals(userInformation.getUserName()) && passedRa.equals(userInformation.getUserRa())){
-                        FirebaseDatabase.getInstance().getReference().child(userInformation.getUserId()).child("profilePicture").setValue(ImageName);
-                    }
+        FirebaseDatabase.getInstance().getReference().child("users").child(passedUserID).child("profilePicture").setValue(ImageName);
 
-                }
-            }
+//        FirebaseDatabase.getInstance().getReference("users").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                for (DataSnapshot snapshot1: snapshot.getChildren()){
+//                    UserInformation userInformation = snapshot1.getValue(UserInformation.class);
+//
+//                    if (passedUserName.equals(userInformation.getUserName()) && passedRa.equals(userInformation.getUserRa())){
+//                        FirebaseDatabase.getInstance().getReference().child("users").child(userInformation.getUserId()).child("profilePicture").setValue(ImageName);
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+    }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+    public void editUserInfo(View v){
 
-            }
-        });
     }
 }

@@ -36,12 +36,15 @@ public class PiPostsActivity extends AppCompatActivity {
     DatabaseRA myDB;
     EditText projectNameInput;
     Boolean deleteButtonPressed = false;
-    String passedUserName;
+    String passedUserName, passedRa;
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(PiPostsActivity.this, MainIconsActivity.class));
+        Intent intent = new Intent(PiPostsActivity.this, MainIconsActivity.class);
+        intent.putExtra("keyusername", passedUserName);
+        intent.putExtra("keyra", passedRa);
+        startActivity(intent);
         finish();
     }
 
@@ -53,7 +56,13 @@ public class PiPostsActivity extends AppCompatActivity {
         if (getIntent().getBooleanExtra("keyusername", false) == true){
             passedUserName = "None";
         }else{
-            passedUserName = getIntent().getStringExtra("keyusername");
+            passedUserName = getIntent().getStringExtra("keyra");
+        }
+
+        if (getIntent().getBooleanExtra("keyra", false) == true){
+            passedRa = "None";
+        }else{
+            passedRa = getIntent().getStringExtra("keyra");
         }
 
         Toast.makeText(this, passedUserName, Toast.LENGTH_SHORT).show();

@@ -29,7 +29,7 @@ public class MainIconsActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     Boolean logged = true;
     ImageView credits, ava, aprendizagem, biblio, cursosDisponiveis, cursosSenac, games, mapeamento, pi, frequency, redeCarreiras;
-    String passedRa = "empty", passedUserName = "None";
+    String passedRa = "empty", passedUserName = "None", passedUserID = "None";
     TextView userName;
 
     @Override
@@ -114,6 +114,7 @@ public class MainIconsActivity extends AppCompatActivity {
             pi.setImageResource(R.drawable.projetointegradorpressed);
             Intent projint = new Intent(this, PiPostsActivity.class);
             projint.putExtra("keyusername", passedUserName);
+            projint.putExtra("keyra", passedRa);
             startActivity(projint);
         }else{
             Toast.makeText(this, "Você deve estar logado para usar esta ferramenta", Toast.LENGTH_SHORT).show();
@@ -149,6 +150,7 @@ public class MainIconsActivity extends AppCompatActivity {
             Intent intent = new Intent(MainIconsActivity.this, StudentProfileActivity.class);
             intent.putExtra("keyra", passedRa);
             intent.putExtra("keyusername", passedUserName);
+            intent.putExtra("keyuserid", passedUserID);
             startActivity(intent);
         }else{
             Toast.makeText(this, "Você deve estar logado para usar esta ferramenta", Toast.LENGTH_SHORT).show();
@@ -203,6 +205,7 @@ public class MainIconsActivity extends AppCompatActivity {
                     if (userInformation.getUserRa().equals(getRaFromDB())){
                         userName.setText(userInformation.getUserName());
                         passedUserName = userInformation.getUserName();
+                        passedUserID = userInformation.getUserId();
                     }
                 }
             }
