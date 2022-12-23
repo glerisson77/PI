@@ -7,13 +7,17 @@ public class userPost {
     private String userProfilePicture;
     private String postContent;
     private String userCourses;
+    private String userRa;
 
-    public userPost(String userName, String posteDate, String userProfilePicture, String postContent, String userCourses) {
+    public userPost(){}
+
+    public userPost(String userName, String posteDate, String userProfilePicture, String postContent, String userCourses, String userRa) {
         this.userName = userName;
         this.posteDate = posteDate;
         this.userProfilePicture = userProfilePicture;
         this.postContent = postContent;
         this.userCourses = userCourses;
+        this.userRa = userRa;
     }
 
     public String getUserName() {
@@ -54,5 +58,13 @@ public class userPost {
 
     public void setUserCourses(String userCourses) {
         this.userCourses = userCourses;
+    }
+
+    public String getUserRa() {
+        return userRa;
+    }
+
+    public void setUserRa(String userRa) {
+        this.userRa = userRa;
     }
 }

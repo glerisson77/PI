@@ -163,6 +163,7 @@
                     app:srcCompat="@drawable/jogos" />
 
                 <Button
+                    android:id="@+id/profileicon"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="Perfil"
@@ -171,6 +172,16 @@
                     android:layout_marginTop="30dp"
                     android:layout_marginLeft="20dp"
                     android:onClick="openStudentProfile"/>
+
+                <Button
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="posts"
+                    android:layout_toRightOf="@id/iconcreditos"
+                    android:layout_below="@id/profileicon"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:onClick="openUsersPost"/>
 
 
 

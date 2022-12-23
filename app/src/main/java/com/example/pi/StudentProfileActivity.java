@@ -60,7 +60,7 @@ public class StudentProfileActivity extends AppCompatActivity {
 
         passedUserName = getIntent().getStringExtra("keyusername");
         passedRa = getIntent().getStringExtra("keyra");
-        passedRa = getIntent().getStringExtra("keyuserid");
+        passedUserID = getIntent().getStringExtra("keyuserid");
 
         if (getIntent().getBooleanExtra("keyusername", false) == true){
             passedUserName = "None";
@@ -92,12 +92,12 @@ public class StudentProfileActivity extends AppCompatActivity {
 
                     if (passedUserName.equals(userInformation.getUserName()) && passedRa.equals(userInformation.getUserRa())){
                         studentName.setText(userInformation.getUserName());
-                        studentRa.setText(studentRa.getText() + userInformation.getUserRa());
-                        studentCourses.setText(studentCourses.getText() + userInformation.getCourses());
-                        studentStatus.setText(studentStatus.getText() + userInformation.getStatus());
+                        studentRa.setText("ra: " + userInformation.getUserRa());
+                        studentCourses.setText("cursos: " + userInformation.getCourses());
+                        studentStatus.setText("status: " + userInformation.getStatus());
                     }
 
-                    storageReference = FirebaseStorage.getInstance().getReference("userspictures/" +userInformation.getProfilePicture());
+                    storageReference = FirebaseStorage.getInstance().getReference("userspictures/" + passedRa + passedUserName + "/" +userInformation.getProfilePicture());
                     try {
                         File localfile = File.createTempFile("tempfile", ".png");
                         storageReference.getFile(localfile)
@@ -155,7 +155,7 @@ public class StudentProfileActivity extends AppCompatActivity {
 
             ///storage the image
 //            StorageReference fileRef = FirebaseStorage.getInstance().getReference().child("uploads").child(imageName + "." + getFileExtension(imageUri));
-            StorageReference fileRef = FirebaseStorage.getInstance().getReference().child("userspictures").child(imageName);
+            StorageReference fileRef = FirebaseStorage.getInstance().getReference().child("userspictures").child(passedRa + passedUserName).child(imageName);
             fileRef.putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {

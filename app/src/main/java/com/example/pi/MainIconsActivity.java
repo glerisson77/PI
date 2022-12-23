@@ -157,6 +157,18 @@ public class MainIconsActivity extends AppCompatActivity {
         }
     }
 
+    public void openUsersPost(View v){
+        if (logged){
+            Intent intent = new Intent(MainIconsActivity.this, UsersPostsActivity.class);
+            intent.putExtra("keyra", passedRa);
+            intent.putExtra("keyusername", passedUserName);
+            intent.putExtra("keyuserid", passedUserID);
+            startActivity(intent);
+        }else{
+            Toast.makeText(this, "Você deve estar logado para usar esta ferramenta", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     public void about(View v){
         showUpDialogMessage("aqui vai ficar o texto sobre o app ", "Sobre o aplicativo");
     }
