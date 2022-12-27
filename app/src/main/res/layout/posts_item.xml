@@ -63,6 +63,15 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="10dp"/>
 
+                <Button
+                    android:id="@+id/deletepostbt"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/red"
+                    android:layout_marginLeft="10dp"
+                    android:text="X"
+                    app:cornerRadius="20dp"/>
+
             </LinearLayout>
 
             <LinearLayout

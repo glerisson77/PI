@@ -16,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.pi.models.ProjectInformation;
 import com.example.pi.models.UserInformation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -39,7 +38,7 @@ public class StudentProfileActivity extends AppCompatActivity {
 
     TextView studentName, studentRa, studentStatus, studentCourses;
     ImageView studenPicture;
-    String passedUserName, passedRa, passedUserID;
+    String passedUserName, passedRa, passedUserID, imageNameToDelete;
     ArrayList<String> names;
     StorageReference storageReference;
 
@@ -49,7 +48,7 @@ public class StudentProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_profile);
+        setContentView(R.layout.activity_user_profile);
 
         studentName = findViewById(R.id.studentname);
         studentRa = findViewById(R.id.studentra);
@@ -152,6 +151,7 @@ public class StudentProfileActivity extends AppCompatActivity {
 
         if (imageUri != null){
             String imageName = String.valueOf(System.currentTimeMillis());
+            imageNameToDelete = imageName;
 
             ///storage the image
 //            StorageReference fileRef = FirebaseStorage.getInstance().getReference().child("uploads").child(imageName + "." + getFileExtension(imageUri));
@@ -202,5 +202,8 @@ public class StudentProfileActivity extends AppCompatActivity {
 
     public void editUserInfo(View v){
 
+    }
+
+    public void deleteImages(){
     }
 }

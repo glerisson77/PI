@@ -8,16 +8,18 @@ public class userPost {
     private String postContent;
     private String userCourses;
     private String userRa;
+    private String postID;
 
     public userPost(){}
 
-    public userPost(String userName, String posteDate, String userProfilePicture, String postContent, String userCourses, String userRa) {
+    public userPost(String userName, String posteDate, String userProfilePicture, String postContent, String userCourses, String userRa, String postID) {
         this.userName = userName;
         this.posteDate = posteDate;
         this.userProfilePicture = userProfilePicture;
         this.postContent = postContent;
         this.userCourses = userCourses;
         this.userRa = userRa;
+        this.postID = postID;
     }
 
     public String getUserName() {
@@ -66,5 +68,13 @@ public class userPost {
 
     public void setUserRa(String userRa) {
         this.userRa = userRa;
+    }
+
+    public String getPostID() {
+        return postID;
+    }
+
+    public void setPostID(String postID) {
+        this.postID = postID;
     }
 }
