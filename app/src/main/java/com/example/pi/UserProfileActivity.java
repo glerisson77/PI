@@ -12,7 +12,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,13 +36,16 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class StudentProfileActivity extends AppCompatActivity {
+public class UserProfileActivity extends AppCompatActivity {
 
     TextView studentName, studentRa, studentStatus, studentCourses;
+    EditText studentEditStatus, studentEditCourses;
     ImageView studenPicture;
     String passedUserName, passedRa, passedUserID, imageNameToDelete;
     ArrayList<String> names;
     StorageReference storageReference;
+    LinearLayout editInfoLayout;
+    Boolean activeEditInfo = false;
 
     private static final int IMAGE_REQUEST = 2;
     private Uri imageUri;
@@ -50,36 +55,13 @@ public class StudentProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
-        studentName = findViewById(R.id.studentname);
-        studentRa = findViewById(R.id.studentra);
-        studentStatus = findViewById(R.id.studentstats);
-        studentCourses = findViewById(R.id.studentcourses);
-        studenPicture = findViewById(R.id.studentpicture);
+        connectViews();
+        makeAppearEditInfoLayout();
+
         names = new ArrayList<>();
-
-        passedUserName = getIntent().getStringExtra("keyusername");
-        passedRa = getIntent().getStringExtra("keyra");
-        passedUserID = getIntent().getStringExtra("keyuserid");
-
-        if (getIntent().getBooleanExtra("keyusername", false) == true){
-            passedUserName = "None";
-        }else{
-            passedUserName = getIntent().getStringExtra("keyusername");
-        }
-
-        if (getIntent().getBooleanExtra("keyra", false) == true){
-            passedRa = "None";
-        }else{
-            passedRa = getIntent().getStringExtra("keyra");
-        }
-
-        if (getIntent().getBooleanExtra("keyuserid", false) == true){
-            passedUserID = "None";
-        }else{
-            passedUserID = getIntent().getStringExtra("keyuserid");
-        }
-
+        getExtra();
         getTheUsers();
+
     }
 
     private void getTheUsers() {
@@ -109,7 +91,7 @@ public class StudentProfileActivity extends AppCompatActivity {
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(StudentProfileActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(UserProfileActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 });
                     } catch (IOException e) {
@@ -168,7 +150,7 @@ public class StudentProfileActivity extends AppCompatActivity {
                             String url = uri.toString();
                             Log.d("DownloadUrl", url);
                             pd.dismiss();
-                            Toast.makeText(StudentProfileActivity.this, "O projeto foi postado", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UserProfileActivity.this, "O projeto foi postado", Toast.LENGTH_SHORT).show();
 
                         }
                     });
@@ -201,9 +183,68 @@ public class StudentProfileActivity extends AppCompatActivity {
     }
 
     public void editUserInfo(View v){
+        if (activeEditInfo == false){
+            activeEditInfo = true;
+        }else {
+            activeEditInfo = false;
+        }
+        makeAppearEditInfoLayout();
+    }
 
+    public void makeAppearEditInfoLayout(){
+        if (activeEditInfo == false){
+            editInfoLayout.setVisibility(View.GONE);
+        }else {
+            editInfoLayout.setVisibility(View.VISIBLE);
+        }
     }
 
     public void deleteImages(){
+    }
+
+    public void connectViews(){
+        studentName = findViewById(R.id.studentname);
+        studentRa = findViewById(R.id.studentra);
+        studentStatus = findViewById(R.id.studentstats);
+        studentCourses = findViewById(R.id.studentcourses);
+        studenPicture = findViewById(R.id.studentpicture);
+        editInfoLayout = findViewById(R.id.editinfolayout);
+        studentEditStatus = findViewById(R.id.editprofilestats);
+        studentEditCourses = findViewById(R.id.editprofilecourses);
+    }
+
+    public void getExtra(){
+        passedUserName = getIntent().getStringExtra("keyusername");
+        passedRa = getIntent().getStringExtra("keyra");
+        passedUserID = getIntent().getStringExtra("keyuserid");
+
+        if (getIntent().getBooleanExtra("keyusername", false) == true){
+            passedUserName = "None";
+        }else{
+            passedUserName = getIntent().getStringExtra("keyusername");
+        }
+
+        if (getIntent().getBooleanExtra("keyra", false) == true){
+            passedRa = "None";
+        }else{
+            passedRa = getIntent().getStringExtra("keyra");
+        }
+
+        if (getIntent().getBooleanExtra("keyuserid", false) == true){
+            passedUserID = "None";
+        }else{
+            passedUserID = getIntent().getStringExtra("keyuserid");
+        }
+    }
+
+    public void saveInformations(View v){
+        if (studentEditStatus.getText().toString().matches("")) {
+
+        }else {
+            FirebaseDatabase.getInstance().getReference().child("users/").child(passedUserID + "/").child("status").setValue(studentEditStatus.getText().toString());
+        }
+
+        getTheUsers();
+
     }
 }

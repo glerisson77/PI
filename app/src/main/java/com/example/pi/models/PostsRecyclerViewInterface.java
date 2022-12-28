@@ -1,5 +1,5 @@
 package com.example.pi.models;
 
-public interface RecyclerViewInterface {
+public interface PostsRecyclerViewInterface {
     void onItemClick(int position);
 }

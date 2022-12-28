@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.pi.adapters.ImagesAdapter;
 import com.example.pi.adapters.PostsAdapter;
+import com.example.pi.models.PostsRecyclerViewInterface;
 import com.example.pi.models.ProjectInformation;
 import com.example.pi.models.UserInformation;
 import com.example.pi.models.userPost;
@@ -41,7 +43,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class UsersPostsActivity extends AppCompatActivity {
+public class UsersPostsActivity extends AppCompatActivity implements PostsRecyclerViewInterface {
 
     String passedUserName = "None", passedRa = "None" , passedUserID = "None", date, profilePictureString = "None", userCourses = "None";
     RecyclerView recyclerView;
@@ -94,7 +96,7 @@ public class UsersPostsActivity extends AppCompatActivity {
             passedUserID = getIntent().getStringExtra("keyuserid");
         }
 
-        adapter = new PostsAdapter(this, list, passedUserName, passedRa);
+        adapter = new PostsAdapter(this, list, passedUserName, passedRa, this);
         recyclerView.setAdapter(adapter);
 
         usernameTv.setText(passedUserName);
@@ -196,5 +198,15 @@ public class UsersPostsActivity extends AppCompatActivity {
     public void onPostLongClick(int position){
         list.remove(position);
         adapter.notifyItemRemoved(position);
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        Intent intent = new Intent(UsersPostsActivity.this, LoadClickedProfileActivity.class);
+        intent.putExtra("keyusername", list.get(position).getUserName());
+        intent.putExtra("keyuserra", list.get(position).getUserRa());
+        intent.putExtra("keyusercourses", list.get(position).getUserCourses());
+        intent.putExtra("keyuserprofilepicture", list.get(position).getUserProfilePicture());
+        startActivity(intent);
     }
 }

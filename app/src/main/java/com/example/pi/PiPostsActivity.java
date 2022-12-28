@@ -56,7 +56,7 @@ public class PiPostsActivity extends AppCompatActivity {
         if (getIntent().getBooleanExtra("keyusername", false) == true){
             passedUserName = "None";
         }else{
-            passedUserName = getIntent().getStringExtra("keyra");
+            passedUserName = getIntent().getStringExtra("keyusername");
         }
 
         if (getIntent().getBooleanExtra("keyra", false) == true){

@@ -16,7 +16,6 @@ import android.widget.Toast;
 
 import com.example.pi.models.DatabaseRA;
 import com.example.pi.models.MessageDialog;
-import com.example.pi.models.StudentScore;
 import com.example.pi.models.UserInformation;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -147,7 +146,7 @@ public class MainIconsActivity extends AppCompatActivity {
     public void openStudentProfile(View v){
         if (logged){
             games.setImageResource(R.drawable.jogospressed);
-            Intent intent = new Intent(MainIconsActivity.this, StudentProfileActivity.class);
+            Intent intent = new Intent(MainIconsActivity.this, UserProfileActivity.class);
             intent.putExtra("keyra", passedRa);
             intent.putExtra("keyusername", passedUserName);
             intent.putExtra("keyuserid", passedUserID);

@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pi.R;
 import com.example.pi.UsersPostsActivity;
+import com.example.pi.models.PostsRecyclerViewInterface;
 import com.example.pi.models.userPost;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -32,24 +33,26 @@ import java.util.ArrayList;
 
 public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.MyViewHolder>{
 
+    private final PostsRecyclerViewInterface postsRecyclerViewInterface;
     String passedName;
     String passedRa;
     Context context;
     ArrayList<userPost> list;
     StorageReference storageReference;
 
-    public PostsAdapter(Context context, ArrayList<userPost> list, String passedName, String passedRa) {
+    public PostsAdapter(Context context, ArrayList<userPost> list, String passedName, String passedRa, PostsRecyclerViewInterface postsRecyclerViewInterface) {
         this.context = context;
         this.list = list;
         this.passedName = passedName;
         this.passedRa = passedRa;
+        this.postsRecyclerViewInterface = postsRecyclerViewInterface;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.posts_item, parent, false);
-        return new MyViewHolder(v);
+        return new MyViewHolder(v, postsRecyclerViewInterface);
     }
 
     @Override
@@ -109,7 +112,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.MyViewHolder
         TextView userName, userCourses, content, currentdate;
         ImageView imageView;
         Button deletePost;
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView, PostsRecyclerViewInterface postsRecyclerViewInterface) {
             super(itemView);
             userName = itemView.findViewById(R.id.usernameitem);
             userCourses = itemView.findViewById(R.id.usercoursesitem);
@@ -121,7 +124,13 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.MyViewHolder
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    if (postsRecyclerViewInterface != null) {
+                        int pos = getAdapterPosition();
 
+                        if (pos != RecyclerView.NO_POSITION) {
+                            postsRecyclerViewInterface.onItemClick(pos);
+                        }
+                    }
                 }
             });
 

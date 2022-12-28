@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:backgroundTint="@color/blueicon"
     android:background="@color/white"
-    tools:context=".StudentProfileActivity">
+    tools:context=".UserProfileActivity">
 
 
 
@@ -90,6 +90,7 @@
         tools:ignore="TouchTargetSizeCheck" />
 
     <Button
+        android:id="@+id/editinfo"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/studentinfogrid"
@@ -99,4 +100,48 @@
         android:text="Editar informações"
         app:cornerRadius="20dp"
         android:onClick="editUserInfo"/>
+
+    <LinearLayout
+        android:id="@+id/editinfolayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/customborder"
+        android:orientation="vertical"
+        android:layout_below="@id/editinfo"
+        android:layout_marginTop="20dp">
+
+<!--        <EditText-->
+<!--            android:id="@+id/editprofilename"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="Digite seu nome:"-->
+<!--            android:textColorHint="@color/white"-->
+<!--            android:textColor="@color/white"/>-->
+
+        <EditText
+            android:id="@+id/editprofilecourses"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Digite seu(s) cursos: Ex.: informática, administração"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"/>
+
+        <EditText
+            android:id="@+id/editprofilestats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Adicione ou altere seu status:"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="salvar informações"
+            android:backgroundTint="@color/black"
+            android:textColor="@color/orange_strong"
+            app:cornerRadius="20dp"
+            android:layout_gravity="end"
+            android:onClick="saveInformations"/>
+    </LinearLayout>
 </RelativeLayout>
