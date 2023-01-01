@@ -28,7 +28,7 @@ public class MainIconsActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     Boolean logged = true;
     ImageView credits, ava, aprendizagem, biblio, cursosDisponiveis, cursosSenac, games, mapeamento, pi, frequency, redeCarreiras;
-    String passedRa = "empty", passedUserName = "None", passedUserID = "None";
+    String passedRa = "empty", passedUserName = "None", passedUserID = "None", passedOldProfilePicture = "None";
     TextView userName;
 
     @Override
@@ -150,6 +150,7 @@ public class MainIconsActivity extends AppCompatActivity {
             intent.putExtra("keyra", passedRa);
             intent.putExtra("keyusername", passedUserName);
             intent.putExtra("keyuserid", passedUserID);
+            intent.putExtra("keyuseroldprofilepic", passedOldProfilePicture);
             startActivity(intent);
         }else{
             Toast.makeText(this, "Você deve estar logado para usar esta ferramenta", Toast.LENGTH_SHORT).show();
@@ -217,6 +218,7 @@ public class MainIconsActivity extends AppCompatActivity {
                         userName.setText(userInformation.getUserName());
                         passedUserName = userInformation.getUserName();
                         passedUserID = userInformation.getUserId();
+                        passedOldProfilePicture = userInformation.getOldProfilePicture();
                     }
                 }
             }

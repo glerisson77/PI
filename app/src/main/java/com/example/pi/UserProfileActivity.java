@@ -29,6 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -38,14 +39,15 @@ import java.util.ArrayList;
 
 public class UserProfileActivity extends AppCompatActivity {
 
-    TextView studentName, studentRa, studentStatus, studentCourses;
-    EditText studentEditStatus, studentEditCourses;
-    ImageView studenPicture;
-    String passedUserName, passedRa, passedUserID, imageNameToDelete;
+    TextView userName, userRa, userStatus, userCourses;
+    EditText userEditStatus, userEditCourses, userEditName;
+    ImageView userPicture;
+    String passedUserName, passedRa, passedUserID, passedUserOldProfile, imageNameToDelete;
     ArrayList<String> names;
     StorageReference storageReference;
     LinearLayout editInfoLayout;
     Boolean activeEditInfo = false;
+
 
     private static final int IMAGE_REQUEST = 2;
     private Uri imageUri;
@@ -61,6 +63,7 @@ public class UserProfileActivity extends AppCompatActivity {
         names = new ArrayList<>();
         getExtra();
         getTheUsers();
+        Toast.makeText(this, passedUserOldProfile, Toast.LENGTH_SHORT).show();
 
     }
 
@@ -72,13 +75,13 @@ public class UserProfileActivity extends AppCompatActivity {
                     UserInformation userInformation = snapshot1.getValue(UserInformation.class);
 
                     if (passedUserName.equals(userInformation.getUserName()) && passedRa.equals(userInformation.getUserRa())){
-                        studentName.setText(userInformation.getUserName());
-                        studentRa.setText("ra: " + userInformation.getUserRa());
-                        studentCourses.setText("cursos: " + userInformation.getCourses());
-                        studentStatus.setText("status: " + userInformation.getStatus());
+                        userName.setText(userInformation.getUserName());
+                        userRa.setText("ra: " + userInformation.getUserRa());
+                        userCourses.setText("cursos: " + userInformation.getCourses());
+                        userStatus.setText("status: " + userInformation.getStatus());
                     }
 
-                    storageReference = FirebaseStorage.getInstance().getReference("userspictures/" + passedRa + passedUserName + "/" +userInformation.getProfilePicture());
+                    storageReference = FirebaseStorage.getInstance().getReference("userspictures/" + passedRa + passedUserID + "/" +userInformation.getProfilePicture());
                     try {
                         File localfile = File.createTempFile("tempfile", ".png");
                         storageReference.getFile(localfile)
@@ -86,7 +89,7 @@ public class UserProfileActivity extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                                         Bitmap bitmap = BitmapFactory.decodeFile(localfile.getAbsolutePath());
-                                        studenPicture.setImageBitmap(bitmap);
+                                        userPicture.setImageBitmap(bitmap);
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
@@ -121,7 +124,7 @@ public class UserProfileActivity extends AppCompatActivity {
 
         if (requestCode == IMAGE_REQUEST && resultCode == RESULT_OK) {
             imageUri = data.getData();
-            studenPicture.setImageURI(imageUri);
+            userPicture.setImageURI(imageUri);
             uploadImage();
         }
     }
@@ -133,11 +136,14 @@ public class UserProfileActivity extends AppCompatActivity {
 
         if (imageUri != null){
             String imageName = String.valueOf(System.currentTimeMillis());
-            imageNameToDelete = imageName;
 
             ///storage the image
 //            StorageReference fileRef = FirebaseStorage.getInstance().getReference().child("uploads").child(imageName + "." + getFileExtension(imageUri));
-            StorageReference fileRef = FirebaseStorage.getInstance().getReference().child("userspictures").child(passedRa + passedUserName).child(imageName);
+            FirebaseDatabase.getInstance().getReference().child("users").child(passedUserID).child("profilePicture").setValue(imageName);
+            deleteExtraImages();
+            FirebaseDatabase.getInstance().getReference().child("users").child(passedUserID).child("oldProfilePicture").setValue(imageName);
+
+            StorageReference fileRef = FirebaseStorage.getInstance().getReference().child("userspictures").child(passedRa + passedUserID).child(imageName);
             fileRef.putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
@@ -150,7 +156,7 @@ public class UserProfileActivity extends AppCompatActivity {
                             String url = uri.toString();
                             Log.d("DownloadUrl", url);
                             pd.dismiss();
-                            Toast.makeText(UserProfileActivity.this, "O projeto foi postado", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UserProfileActivity.this, "Foto do perfil alterada com sucesso", Toast.LENGTH_SHORT).show();
 
                         }
                     });
@@ -163,23 +169,6 @@ public class UserProfileActivity extends AppCompatActivity {
 
         FirebaseDatabase.getInstance().getReference().child("users").child(passedUserID).child("profilePicture").setValue(ImageName);
 
-//        FirebaseDatabase.getInstance().getReference("users").addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for (DataSnapshot snapshot1: snapshot.getChildren()){
-//                    UserInformation userInformation = snapshot1.getValue(UserInformation.class);
-//
-//                    if (passedUserName.equals(userInformation.getUserName()) && passedRa.equals(userInformation.getUserRa())){
-//                        FirebaseDatabase.getInstance().getReference().child("users").child(userInformation.getUserId()).child("profilePicture").setValue(ImageName);
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
     }
 
     public void editUserInfo(View v){
@@ -199,18 +188,46 @@ public class UserProfileActivity extends AppCompatActivity {
         }
     }
 
-    public void deleteImages(){
+    public void deleteExtraImages(){
+        FirebaseDatabase.getInstance().getReference().child("users").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                    UserInformation userInformation = snapshot1.getValue(UserInformation.class);
+
+                    if (userInformation.getUserId().equals(passedUserID)){
+                        if (userInformation.getOldProfilePicture().equals(userInformation.getProfilePicture())){
+
+                        }else{
+                            FirebaseStorage.getInstance().getReference().child("userspictures").child(userInformation.getProfilePicture()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+
+                                }
+                            });
+                        }
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     public void connectViews(){
-        studentName = findViewById(R.id.studentname);
-        studentRa = findViewById(R.id.studentra);
-        studentStatus = findViewById(R.id.studentstats);
-        studentCourses = findViewById(R.id.studentcourses);
-        studenPicture = findViewById(R.id.studentpicture);
+        userName = findViewById(R.id.studentname);
+        userRa = findViewById(R.id.studentra);
+        userStatus = findViewById(R.id.studentstats);
+        userCourses = findViewById(R.id.studentcourses);
+        userPicture = findViewById(R.id.studentpicture);
         editInfoLayout = findViewById(R.id.editinfolayout);
-        studentEditStatus = findViewById(R.id.editprofilestats);
-        studentEditCourses = findViewById(R.id.editprofilecourses);
+        userEditStatus = findViewById(R.id.editprofilestats);
+        userEditCourses = findViewById(R.id.editprofilecourses);
+        userEditName = findViewById(R.id.editprofilename);
     }
 
     public void getExtra(){
@@ -235,15 +252,32 @@ public class UserProfileActivity extends AppCompatActivity {
         }else{
             passedUserID = getIntent().getStringExtra("keyuserid");
         }
+
+        if (getIntent().getBooleanExtra("keyuseroldprofilepic", false) == true){
+            passedUserOldProfile = "None";
+        }else{
+            passedUserOldProfile = getIntent().getStringExtra("keyuseroldprofilepic");
+        }
     }
 
     public void saveInformations(View v){
-        if (studentEditStatus.getText().toString().matches("")) {
+        if (userEditStatus.getText().toString().matches("")) {
 
         }else {
-            FirebaseDatabase.getInstance().getReference().child("users/").child(passedUserID + "/").child("status").setValue(studentEditStatus.getText().toString());
+            FirebaseDatabase.getInstance().getReference().child("users/").child(passedUserID + "/").child("status").setValue(userEditStatus.getText().toString());
         }
 
+        if (userEditCourses.getText().toString().matches("")) {
+
+        }else {
+            FirebaseDatabase.getInstance().getReference().child("users/").child(passedUserID + "/").child("courses").setValue(userEditCourses.getText().toString());
+        }
+
+        if (userEditName.getText().toString().matches("")) {
+
+        }else {
+            FirebaseDatabase.getInstance().getReference().child("users/").child(passedUserID + "/").child("userName").setValue(userEditName.getText().toString());
+        }
         getTheUsers();
 
     }

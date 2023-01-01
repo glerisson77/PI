@@ -110,13 +110,13 @@
         android:layout_below="@id/editinfo"
         android:layout_marginTop="20dp">
 
-<!--        <EditText-->
-<!--            android:id="@+id/editprofilename"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:hint="Digite seu nome:"-->
-<!--            android:textColorHint="@color/white"-->
-<!--            android:textColor="@color/white"/>-->
+        <EditText
+            android:id="@+id/editprofilename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Digite seu nome:"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"/>
 
         <EditText
             android:id="@+id/editprofilecourses"

@@ -74,7 +74,7 @@ public class LoadClickedProfileActivity extends AppCompatActivity {
         userNametv.setText(userName);
         userCousestv.setText("cursos" +userCourses);
         userStatustv.setText("status: " + "implement after");
-
+//        pegar o userid
         storageReference = FirebaseStorage.getInstance().getReference("userspictures/" + userRa + userName + "/" + userProfilePicture);
         try {
             File localfile = File.createTempFile("tempfile", ".png");

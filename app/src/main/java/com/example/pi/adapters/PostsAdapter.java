@@ -81,7 +81,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.MyViewHolder
         String imageID = userPost.getUserProfilePicture();
 
 //        storageReference = FirebaseStorage.getInstance().getReference("uploads/" +imageID + ".png");
-        storageReference = FirebaseStorage.getInstance().getReference("userspictures/" + userPost.getUserRa() + userPost.getUserName() + "/" +imageID);
+        storageReference = FirebaseStorage.getInstance().getReference("userspictures/" + userPost.getUserRa() + userPost.getUserID() + "/" +imageID);
         try {
             File localfile = File.createTempFile("tempfile", ".png");
             storageReference.getFile(localfile)
@@ -94,7 +94,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.MyViewHolder
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
         } catch (IOException e) {

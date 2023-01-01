@@ -140,7 +140,7 @@ public class UsersPostsActivity extends AppCompatActivity implements PostsRecycl
             String postid = String.valueOf(System.currentTimeMillis());
             dateFormat = new SimpleDateFormat("dd/MM/yyy HH:mm");
             date = dateFormat.format(calendar.getTime());
-            userPost userPost = new userPost(passedUserName, date, profilePictureString, postContentString, "ti", passedRa, passedRa + postid);
+            userPost userPost = new userPost(passedUserName, date, profilePictureString, postContentString, "ti", passedRa, passedRa + postid, passedUserID);
             FirebaseDatabase.getInstance().getReference().child("usersposts/").child(passedRa + postid).setValue(userPost);
         }
     }
@@ -157,7 +157,7 @@ public class UsersPostsActivity extends AppCompatActivity implements PostsRecycl
 //                        studentStatus.setText("status: " + userInformation.getStatus());
                     }
 
-                    storageReference = FirebaseStorage.getInstance().getReference("userspictures/" + passedRa + passedUserName + "/" +userInformation.getProfilePicture());
+                    storageReference = FirebaseStorage.getInstance().getReference("userspictures/" + passedRa + passedUserID + "/" +userInformation.getProfilePicture());
                     try {
                         File localfile = File.createTempFile("tempfile", ".png");
                         storageReference.getFile(localfile)
@@ -207,6 +207,7 @@ public class UsersPostsActivity extends AppCompatActivity implements PostsRecycl
         intent.putExtra("keyuserra", list.get(position).getUserRa());
         intent.putExtra("keyusercourses", list.get(position).getUserCourses());
         intent.putExtra("keyuserprofilepicture", list.get(position).getUserProfilePicture());
+        intent.putExtra("keyuserid", list.get(position).getUserID());
         startActivity(intent);
     }
 }
