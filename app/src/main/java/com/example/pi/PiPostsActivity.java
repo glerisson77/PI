@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.pi.adapters.ImagesAdapter;
 import com.example.pi.models.DatabaseRA;
+import com.example.pi.models.PostsRecyclerViewInterface;
 import com.example.pi.models.ProjectInformation;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,7 +27,7 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
-public class PiPostsActivity extends AppCompatActivity {
+public class PiPostsActivity extends AppCompatActivity implements PostsRecyclerViewInterface {
 
     RecyclerView recyclerView;
     ArrayList<ProjectInformation> list;
@@ -34,7 +35,6 @@ public class PiPostsActivity extends AppCompatActivity {
     StorageReference storageReference;
     ImagesAdapter adapter;
     DatabaseRA myDB;
-    EditText projectNameInput;
     Boolean deleteButtonPressed = false;
     String passedUserName, passedRa;
 
@@ -68,12 +68,11 @@ public class PiPostsActivity extends AppCompatActivity {
         Toast.makeText(this, passedUserName, Toast.LENGTH_SHORT).show();
 
         recyclerView = findViewById(R.id.recyclerviewpi);
-        projectNameInput = findViewById(R.id.inputprojectnameet);
         databaseReference = FirebaseDatabase.getInstance().getReference("projects");
         storageReference = FirebaseStorage.getInstance().getReference("uploads/");
         list = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new ImagesAdapter(this, list);
+        adapter = new ImagesAdapter(this, list, passedUserName, passedRa);
         recyclerView.setAdapter(adapter);
         myDB = new DatabaseRA(this);
 
@@ -103,45 +102,6 @@ public class PiPostsActivity extends AppCompatActivity {
         intent.putExtra("keyusername", passedUserName);
         startActivity(intent);
     }
-    public void deleteProject(View v) {
-        String message = "Digite o nome do projeto que você deseja excluir";
-        if (deleteButtonPressed){
-            databaseReference = FirebaseDatabase.getInstance().getReference("projects");
-            storageReference = FirebaseStorage.getInstance().getReference("uploads/");
-            String id;
-            String projectNametxt = projectNameInput.getText().toString();
-
-            if (projectNametxt.isEmpty()){
-                message = "Você não digitou o nome do projeto";
-                projectNameInput.setHint("nome do projeto:");
-                projectNameInput.setHintTextColor(Color.RED);
-            }else {
-                for (ProjectInformation pi : list){
-                    String pira = pi.getRaMatching();
-                    String projectNameFromClass = pi.getProjectName();
-                    String raFromDB = getRaFromDB();
-                    if (projectNametxt.equals(projectNameFromClass)){
-                        if (pira.equals(raFromDB)){
-                            message = "O projeto " + projectNametxt + " foi excluído";
-                            id = pi.getImageName();
-                            databaseReference.child("id" + id).removeValue();
-                            storageReference.child(id).delete();
-                            deleteButtonPressed = false;
-                        }else{
-                            message = "Possivelmente você está tentando excluir um projeto de outro usuário";
-                        }
-                    }else{
-                        message = "O nome do projeto ou está errado ou não existe";
-                    }
-                }
-            }
-        }else{
-            projectNameInput.setHint("digite o nome do projeto que você quer excluir");
-            projectNameInput.setTextSize(20);
-            deleteButtonPressed = true;
-        }
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-        }
 
     public void voltar(View v){
         Intent intent = new Intent(PiPostsActivity.this, MainIconsActivity.class);
@@ -163,5 +123,10 @@ public class PiPostsActivity extends AppCompatActivity {
 //    codigo que vai ser usado para alterar valores
     public void changeProjectName(View v){
         FirebaseDatabase.getInstance().getReference("projects").child("id1671392851600").child("projectName").setValue("aprovado");
+    }
+
+    @Override
+    public void onItemClick(int position) {
+
     }
 }

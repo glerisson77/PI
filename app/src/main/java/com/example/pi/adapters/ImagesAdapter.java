@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +22,7 @@ import com.example.pi.models.StudentScore;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -36,12 +38,16 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
     Context context;
     ArrayList<ProjectInformation> list;
     DatabaseRA myDB;
+    String passedName;
+    String passedRa;
 
 //    public ImagesAdapter(RecordsRHQuiz context, ArrayList<StudentScore> list){}
 
-    public ImagesAdapter(Context context, ArrayList<ProjectInformation> list) {
+    public ImagesAdapter(Context context, ArrayList<ProjectInformation> list, String passedName, String passedRa) {
         this.context = context;
         this.list = list;
+        this.passedName = passedName;
+        this.passedRa = passedRa;
     }
 
     @NonNull
@@ -61,6 +67,23 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
         holder.projectContact.setText(projectInformation.getProjectContact());
         holder.uploaderUser.setText("Postado por " + projectInformation.getUserUploader() );
         String imageID = projectInformation.getImageName();
+
+        if (passedName.equals(projectInformation.getUserUploader()) && passedRa.equals(projectInformation.getRaMatching())){
+            holder.deletePost.setVisibility(View.VISIBLE);
+        }else {
+            holder.deletePost.setVisibility(View.INVISIBLE);
+        }
+
+        holder.deletePost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (passedName.equals(projectInformation.getUserUploader()) && passedRa.equals(projectInformation.getRaMatching())) {
+                    FirebaseDatabase.getInstance().getReference("projects").child("id" +projectInformation.getImageName()).removeValue();
+                    FirebaseStorage.getInstance().getReference("uploads/").child(projectInformation.getImageName()).delete();
+                }
+            }
+
+        });
 
 //        storageReference = FirebaseStorage.getInstance().getReference("uploads/" +imageID + ".png");
         storageReference = FirebaseStorage.getInstance().getReference("uploads/" +imageID);
@@ -94,6 +117,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
 
         TextView projectName, professorName, projectResume, projectContact, uploaderUser;
         ImageView imageView;
+        Button deletePost;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             projectName = itemView.findViewById(R.id.nomeprojeto);
@@ -102,6 +126,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.MyViewHold
             projectContact = itemView.findViewById(R.id.contatoprojeto);
             uploaderUser = itemView.findViewById(R.id.useruploader);
             imageView = itemView.findViewById(R.id.projectimage);
+            deletePost = itemView.findViewById(R.id.deleteprojectpostbt);
         }
     }
 }

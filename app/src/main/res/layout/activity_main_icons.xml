@@ -136,7 +136,7 @@
                     android:layout_height="125dp"
                     android:layout_below="@id/iconredecarreiras"
                     android:layout_centerHorizontal="true"
-                    android:onClick="creditos"
+                    android:onClick="openCreditsActivity"
                     android:paddingTop="20dp"
                     app:srcCompat="@drawable/creditos" />
 
@@ -162,26 +162,28 @@
                     android:paddingTop="20dp"
                     app:srcCompat="@drawable/jogos" />
 
-                <Button
+                <ImageView
                     android:id="@+id/profileicon"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="Perfil"
-                    android:layout_toRightOf="@id/iconcreditos"
+                    android:layout_width="103dp"
+                    android:layout_height="106dp"
                     android:layout_below="@id/iconpi"
-                    android:layout_marginTop="30dp"
                     android:layout_marginLeft="20dp"
-                    android:onClick="openStudentProfile"/>
-
-                <Button
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="posts"
+                    android:layout_marginTop="11dp"
                     android:layout_toRightOf="@id/iconcreditos"
+                    android:onClick="openStudentProfile"
+                    android:text="Perfil"
+                    app:srcCompat="@drawable/perfil" />
+
+                <ImageView
+                    android:id="@+id/postsicon"
+                    android:layout_width="100dp"
+                    android:layout_height="106dp"
+                    android:text="posts"
+                    android:layout_centerHorizontal="true"
                     android:layout_below="@id/profileicon"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginLeft="20dp"
-                    android:onClick="openUsersPost"/>
+                    android:layout_marginTop="10dp"
+                    android:onClick="openUsersPost"
+                    app:srcCompat="@drawable/posts"/>
 
 
 

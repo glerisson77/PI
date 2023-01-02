@@ -45,7 +45,7 @@ import java.util.Calendar;
 
 public class UsersPostsActivity extends AppCompatActivity implements PostsRecyclerViewInterface {
 
-    String passedUserName = "None", passedRa = "None" , passedUserID = "None", date, profilePictureString = "None", userCourses = "None";
+    String passedUserName = "None", passedRa = "None" , passedUserID = "None", date, profilePictureString = "None", userCourses = "None", passedUsersStats = "None";
     RecyclerView recyclerView;
     ArrayList<userPost> list;
     DatabaseReference databaseReference;
@@ -73,6 +73,7 @@ public class UsersPostsActivity extends AppCompatActivity implements PostsRecycl
         passedUserName = getIntent().getStringExtra("keyusername");
         passedRa = getIntent().getStringExtra("keyra");
         passedUserID = getIntent().getStringExtra("keyuserid");
+        passedUsersStats = getIntent().getStringExtra("keyuserstats");
 
         usernameTv = findViewById(R.id.usernametv);
         postContent = findViewById(R.id.postcontentet);
@@ -94,6 +95,12 @@ public class UsersPostsActivity extends AppCompatActivity implements PostsRecycl
             passedUserID = "None";
         }else{
             passedUserID = getIntent().getStringExtra("keyuserid");
+        }
+
+        if (getIntent().getBooleanExtra("keyuserstats", false) == true){
+            passedUsersStats = "None";
+        }else{
+            passedUsersStats = getIntent().getStringExtra("keyuserstats");
         }
 
         adapter = new PostsAdapter(this, list, passedUserName, passedRa, this);
@@ -140,7 +147,7 @@ public class UsersPostsActivity extends AppCompatActivity implements PostsRecycl
             String postid = String.valueOf(System.currentTimeMillis());
             dateFormat = new SimpleDateFormat("dd/MM/yyy HH:mm");
             date = dateFormat.format(calendar.getTime());
-            userPost userPost = new userPost(passedUserName, date, profilePictureString, postContentString, "ti", passedRa, passedRa + postid, passedUserID);
+            userPost userPost = new userPost(passedUserName, date, profilePictureString, postContentString, "ti", passedRa, passedRa + postid, passedUserID, passedUsersStats);
             FirebaseDatabase.getInstance().getReference().child("usersposts/").child(passedRa + postid).setValue(userPost);
         }
     }
@@ -208,6 +215,7 @@ public class UsersPostsActivity extends AppCompatActivity implements PostsRecycl
         intent.putExtra("keyusercourses", list.get(position).getUserCourses());
         intent.putExtra("keyuserprofilepicture", list.get(position).getUserProfilePicture());
         intent.putExtra("keyuserid", list.get(position).getUserID());
+        intent.putExtra("keyuserstats", list.get(position).getUserStats());
         startActivity(intent);
     }
 }

@@ -63,7 +63,6 @@ public class UserProfileActivity extends AppCompatActivity {
         names = new ArrayList<>();
         getExtra();
         getTheUsers();
-        Toast.makeText(this, passedUserOldProfile, Toast.LENGTH_SHORT).show();
 
     }
 
@@ -94,7 +93,7 @@ public class UserProfileActivity extends AppCompatActivity {
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(UserProfileActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(UserProfileActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 });
                     } catch (IOException e) {

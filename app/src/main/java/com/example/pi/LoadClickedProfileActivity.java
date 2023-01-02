@@ -21,7 +21,7 @@ import java.io.IOException;
 
 public class LoadClickedProfileActivity extends AppCompatActivity {
 
-    String userName = "", userRa = "", userCourses = "", userStatus = "", userProfilePicture = "";
+    String userName = "", userRa = "", userCourses = "", userStatus = "", userProfilePicture = "", userID = "";
     TextView userNametv, userCousestv, userStatustv;
     ImageView userProfilePictureiv;
     StorageReference storageReference;
@@ -61,6 +61,18 @@ public class LoadClickedProfileActivity extends AppCompatActivity {
         }else{
             userProfilePicture = getIntent().getStringExtra("keyuserprofilepicture");
         }
+
+        if (getIntent().getBooleanExtra("keyuserstats", false) == true){
+            userStatus = "None";
+        }else{
+            userStatus = getIntent().getStringExtra("keyuserstats");
+        }
+
+        if (getIntent().getBooleanExtra("keyuserid", false) == true){
+            userID = "None";
+        }else{
+            userID = getIntent().getStringExtra("keyuserid");
+        }
     }
 
     public void connectViews(){
@@ -73,9 +85,9 @@ public class LoadClickedProfileActivity extends AppCompatActivity {
     public void setValuesonViews(){
         userNametv.setText(userName);
         userCousestv.setText("cursos" +userCourses);
-        userStatustv.setText("status: " + "implement after");
+        userStatustv.setText("status: " + userStatus);
 //        pegar o userid
-        storageReference = FirebaseStorage.getInstance().getReference("userspictures/" + userRa + userName + "/" + userProfilePicture);
+        storageReference = FirebaseStorage.getInstance().getReference("userspictures/" + userRa + userID + "/" + userProfilePicture);
         try {
             File localfile = File.createTempFile("tempfile", ".png");
             storageReference.getFile(localfile)
@@ -88,7 +100,7 @@ public class LoadClickedProfileActivity extends AppCompatActivity {
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(LoadClickedProfileActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(LoadClickedProfileActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
         } catch (IOException e) {

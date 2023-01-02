@@ -72,8 +72,9 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.MyViewHolder
         holder.deletePost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (passedName.equals(userPost.getUserName()) && passedRa.equals(userPost.getUserRa()))
-                FirebaseDatabase.getInstance().getReference("usersposts/").child(userPost.getPostID()).removeValue();
+                if (passedName.equals(userPost.getUserName()) && passedRa.equals(userPost.getUserRa())) {
+                    FirebaseDatabase.getInstance().getReference("usersposts/").child(userPost.getPostID()).removeValue();
+                }
             }
 
         });

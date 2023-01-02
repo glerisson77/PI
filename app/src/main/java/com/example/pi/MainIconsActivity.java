@@ -28,7 +28,7 @@ public class MainIconsActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     Boolean logged = true;
     ImageView credits, ava, aprendizagem, biblio, cursosDisponiveis, cursosSenac, games, mapeamento, pi, frequency, redeCarreiras;
-    String passedRa = "empty", passedUserName = "None", passedUserID = "None", passedOldProfilePicture = "None";
+    String passedRa = "empty", passedUserName = "None", passedUserID = "None", passedOldProfilePicture = "None", passedStats = "None";
     TextView userName;
 
     @Override
@@ -119,7 +119,7 @@ public class MainIconsActivity extends AppCompatActivity {
             Toast.makeText(this, "Você deve estar logado para usar esta ferramenta", Toast.LENGTH_SHORT).show();
         }
     }
-    public void creditos(View v){
+    public void openCreditsActivity(View v){
         credits.setImageResource(R.drawable.creditospressed);
         Intent cred = new Intent(this, CreditsActivity.class);
         startActivity(cred);
@@ -163,6 +163,7 @@ public class MainIconsActivity extends AppCompatActivity {
             intent.putExtra("keyra", passedRa);
             intent.putExtra("keyusername", passedUserName);
             intent.putExtra("keyuserid", passedUserID);
+            intent.putExtra("keyuserstats", passedStats);
             startActivity(intent);
         }else{
             Toast.makeText(this, "Você deve estar logado para usar esta ferramenta", Toast.LENGTH_SHORT).show();
@@ -215,10 +216,11 @@ public class MainIconsActivity extends AppCompatActivity {
                 for (DataSnapshot snapshot1 : snapshot.getChildren()){
                     UserInformation userInformation = snapshot1.getValue(UserInformation.class);
                     if (userInformation.getUserRa().equals(getRaFromDB())){
-                        userName.setText(userInformation.getUserName());
+                        userName.setText("Bem vindo(a) " +userInformation.getUserName());
                         passedUserName = userInformation.getUserName();
                         passedUserID = userInformation.getUserId();
                         passedOldProfilePicture = userInformation.getOldProfilePicture();
+                        passedStats = userInformation.getStatus();
                     }
                 }
             }

@@ -10,10 +10,11 @@ public class userPost {
     private String userRa;
     private String postID;
     private String userID;
+    private String userStats;
 
     public userPost(){}
 
-    public userPost(String userName, String posteDate, String userProfilePicture, String postContent, String userCourses, String userRa, String postID, String userID) {
+    public userPost(String userName, String posteDate, String userProfilePicture, String postContent, String userCourses, String userRa, String postID, String userID, String userStats) {
         this.userName = userName;
         this.posteDate = posteDate;
         this.userProfilePicture = userProfilePicture;
@@ -22,6 +23,7 @@ public class userPost {
         this.userRa = userRa;
         this.postID = postID;
         this.userID = userID;
+        this.userStats = userStats;
     }
 
     public String getUserName() {
@@ -86,5 +88,13 @@ public class userPost {
 
     public void setUserID(String userID) {
         this.userID = userID;
+    }
+
+    public String getUserStats() {
+        return userStats;
+    }
+
+    public void setUserStats(String userStats) {
+        this.userStats = userStats;
     }
 }
