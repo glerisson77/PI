@@ -109,16 +109,17 @@ public class UsersPostsActivity extends AppCompatActivity implements PostsRecycl
         usernameTv.setText(passedUserName);
 
         getTheUsers();
+        DisplayPosts();
 
+    }
+
+    private void DisplayPosts() {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
                     userPost userPost = dataSnapshot.getValue(userPost.class);
-
-//                    verifica se o nome e ra do usuario é igual a de um dos posts, se for igual ele vai permitir excluir
-
                     list.add(userPost);
                     for (userPost up : list){
                         if (up.getUserName().equals(passedUserName)){
@@ -133,8 +134,6 @@ public class UsersPostsActivity extends AppCompatActivity implements PostsRecycl
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-
-
     }
 
     public void createPost(View v){
@@ -147,7 +146,7 @@ public class UsersPostsActivity extends AppCompatActivity implements PostsRecycl
             String postid = String.valueOf(System.currentTimeMillis());
             dateFormat = new SimpleDateFormat("dd/MM/yyy HH:mm");
             date = dateFormat.format(calendar.getTime());
-            userPost userPost = new userPost(passedUserName, date, profilePictureString, postContentString, "ti", passedRa, passedRa + postid, passedUserID, passedUsersStats);
+            userPost userPost = new userPost(passedUserName, date, profilePictureString, postContentString, userCourses, passedRa, passedRa + postid, passedUserID, passedUsersStats);
             FirebaseDatabase.getInstance().getReference().child("usersposts/").child(passedRa + postid).setValue(userPost);
         }
     }
@@ -157,10 +156,12 @@ public class UsersPostsActivity extends AppCompatActivity implements PostsRecycl
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot snapshot1: snapshot.getChildren()){
                     UserInformation userInformation = snapshot1.getValue(UserInformation.class);
-
+//                    verifica se o nome e ra do usuario é igual a de um dos posts, se for igual ele vai permitir excluir
                     if (passedUserName.equals(userInformation.getUserName()) && passedRa.equals(userInformation.getUserRa())){
                         profilePictureString = userInformation.getProfilePicture();
                         userCourses = userInformation.getCourses();
+                        passedUserName = userInformation.getCourses();
+                        passedUsersStats = userInformation.getStatus();
 //                        studentStatus.setText("status: " + userInformation.getStatus());
                     }
 
@@ -177,6 +178,7 @@ public class UsersPostsActivity extends AppCompatActivity implements PostsRecycl
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
+                                        userProfilePictureIv.setImageResource(R.drawable.unknownprofilepicture);
 //                                        Toast.makeText(UsersPostsActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 });

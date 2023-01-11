@@ -84,7 +84,7 @@ public class LoadClickedProfileActivity extends AppCompatActivity {
 
     public void setValuesonViews(){
         userNametv.setText(userName);
-        userCousestv.setText("cursos" +userCourses);
+        userCousestv.setText("cursos: " +userCourses);
         userStatustv.setText("status: " + userStatus);
 //        pegar o userid
         storageReference = FirebaseStorage.getInstance().getReference("userspictures/" + userRa + userID + "/" + userProfilePicture);
@@ -100,6 +100,7 @@ public class LoadClickedProfileActivity extends AppCompatActivity {
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
+                            userProfilePictureiv.setImageResource(R.drawable.unknownprofilepicture);
 //                            Toast.makeText(LoadClickedProfileActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });

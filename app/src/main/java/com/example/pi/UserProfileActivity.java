@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pi.models.UserInformation;
+import com.example.pi.models.userPost;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -29,7 +30,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -42,11 +42,12 @@ public class UserProfileActivity extends AppCompatActivity {
     TextView userName, userRa, userStatus, userCourses;
     EditText userEditStatus, userEditCourses, userEditName;
     ImageView userPicture;
-    String passedUserName, passedRa, passedUserID, passedUserOldProfile, imageNameToDelete;
+    String passedUserName, passedRa, passedUserID, passedUserOldProfile;
     ArrayList<String> names;
     StorageReference storageReference;
     LinearLayout editInfoLayout;
     Boolean activeEditInfo = false;
+    Boolean canChange = false;
 
 
     private static final int IMAGE_REQUEST = 2;
@@ -62,16 +63,17 @@ public class UserProfileActivity extends AppCompatActivity {
 
         names = new ArrayList<>();
         getExtra();
-        getTheUsers();
+        getUsers();
 
     }
 
-    private void getTheUsers() {
+    private void getUsers() {
         FirebaseDatabase.getInstance().getReference("users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot snapshot1: snapshot.getChildren()){
                     UserInformation userInformation = snapshot1.getValue(UserInformation.class);
+
 
                     if (passedUserName.equals(userInformation.getUserName()) && passedRa.equals(userInformation.getUserRa())){
                         userName.setText(userInformation.getUserName());
@@ -260,6 +262,7 @@ public class UserProfileActivity extends AppCompatActivity {
     }
 
     public void saveInformations(View v){
+        canChange = true;
         if (userEditStatus.getText().toString().matches("")) {
 
         }else {
@@ -277,7 +280,33 @@ public class UserProfileActivity extends AppCompatActivity {
         }else {
             FirebaseDatabase.getInstance().getReference().child("users/").child(passedUserID + "/").child("userName").setValue(userEditName.getText().toString());
         }
-        getTheUsers();
+        getUsers();
+//        IdentifyPostsId(passedUserName, passedUserStatus, passedUserCourses);
 
+
+    }
+
+    public void IdentifyPostsId(String name, String status, String courses){
+        FirebaseDatabase.getInstance().getReference().child("usersposts/").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
+                    userPost userPost = dataSnapshot.getValue(userPost.class);
+                    if (canChange == true){
+                        if (userPost.getUserID().equals(passedUserID) && userPost.getUserRa().equals(passedRa)){
+                            FirebaseDatabase.getInstance().getReference().child("usersposts/").child(userPost.getPostID()).child("userName").setValue(name);
+                            FirebaseDatabase.getInstance().getReference().child("usersposts/").child(userPost.getPostID()).child("userCourses").setValue(courses);
+                            FirebaseDatabase.getInstance().getReference().child("usersposts/").child(userPost.getPostID()).child("userStats").setValue(status);
+                        }
+                    }
+                }
+                canChange = false;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }
